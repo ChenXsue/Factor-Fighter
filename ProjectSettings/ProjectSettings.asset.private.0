@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 26
-  productGUID: 31e0865a1b9244e3c86973778f52c4e8
+  productGUID: 118b9d3403dfe4805b619cd2e770de3a
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: Factor Fighter (4)
+  productName: Factor Fighter
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.12156863, g: 0.12156863, b: 0.1254902, a: 1}
@@ -497,7 +497,7 @@ PlayerSettings:
   ps4GarlicHeapSize: 2048
   ps4ProGarlicHeapSize: 2560
   playerPrefsMaxSize: 32768
-  ps4Passcode: E0oFon1KnVi2k8wYrvumuqCdSPNoknT0
+  ps4Passcode: 7Dw89QGsoKvxxBKEe8cevJCxJNhSnix7
   ps4pnSessions: 1
   ps4pnPresence: 1
   ps4pnFriends: 1
@@ -578,14 +578,14 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: Factor Fighter (4)
+  metroPackageName: Factor Fighter
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: Factor Fighter (4)
+  metroApplicationDescription: Factor Fighter
   wsaImages: {}
   metroTileShortName: 
   metroTileShowName: 0

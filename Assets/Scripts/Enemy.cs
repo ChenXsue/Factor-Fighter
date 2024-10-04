@@ -67,6 +67,7 @@ public class Enemy : MonoBehaviour
         // Check if the object that touched the enemy has the "Player" tag
         if (other.CompareTag("Player"))
         {
+            GetComponent<Collider2D>().enabled = false;
             // Show the math problem when the player touches the enemy
             MathProblemUI mathUI = FindObjectOfType<MathProblemUI>();
             mathUI.ShowMathProblem(this);  // Show the math problem UI
