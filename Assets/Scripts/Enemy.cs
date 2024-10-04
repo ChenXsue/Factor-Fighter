@@ -7,7 +7,6 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     private MathProblem currentProblem;
-    public TMPro.TextMeshProUGUI operators;
     public GameObject buttonPrefab;  // Prefab for the operator button to be instantiated
     public GameObject operatorsPanel; // Panel where operator buttons will be displayed
 
@@ -60,32 +59,18 @@ public class Enemy : MonoBehaviour
         newButton.AddComponent<DraggableItem>();
         newButton.name = operatorToAdd.ToString();
         newButton.SetActive(true);
-        UpdatePanelAText();
         // Optionally, destroy the defeated enemy object
         Destroy(gameObject);
     }
-    private void UpdatePanelAText()
-    {
-        string operatorsText = "";  // String to store all operators
-        foreach (char op in operator1.OperatorInstance.Operators_Bag)
-        {
-            operatorsText += op + " ";  // Append each operator to the string
-        }
-
-        // Update the TextMeshProUGUI component with the concatenated operators string
-        if (operators != null)
-        {
-            operators.text = operatorsText;  // Update the text field in panelA
-        }
-        else
-        {
-            Debug.LogError("Operators is not assigned!");
-        }
-    }
     void OnTriggerEnter2D(Collider2D other)
     {
-        MathProblemUI mathUI = FindObjectOfType<MathProblemUI>();
-        mathUI.ShowMathProblem(this);
+        // Check if the object that touched the enemy has the "Player" tag
+        if (other.CompareTag("Player"))
+        {
+            // Show the math problem when the player touches the enemy
+            MathProblemUI mathUI = FindObjectOfType<MathProblemUI>();
+            mathUI.ShowMathProblem(this);  // Show the math problem UI
+        }
     }
 
 }

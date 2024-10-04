@@ -43,8 +43,6 @@ public class DropZone : MonoBehaviour, IDropHandler
                 string value = textComponent.text;
                 Debug.Log("Dropped value: " + value);
 
-                // Call AddToEquation on the game manager to add the value
-                gameManager.AddToEquation(value);
             }
             else
             {

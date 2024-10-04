@@ -1,46 +1,19 @@
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
 using System;
+using UnityEngine;
 
 public class MathGameManager : MonoBehaviour
 {
-    public GameObject equationPanel; // Reference to the 'equation' panel
-    public TMPro.TextMeshProUGUI resultText; // Reference to the target result (e.g., "= 12")
-    public TMPro.TextMeshProUGUI userInputText; // Displays the current expression
-    private string currentInput = ""; // Stores the user's input expression
-    private List<string> expressionElements = new List<string>(); // List to hold numbers and operators
+    public TMPro.TMP_InputField userInputField; // Input field for user expression
+    public TMPro.TextMeshProUGUI resultText; // Target result (e.g., "= 12")
     public GameObject quizPanel;
     public GameObject passPanel;
 
-        // This method is called when a number or operator is dropped onto the equation panel
-    public void AddToEquation(string value)
-    {
-        if (string.IsNullOrEmpty(value))
-        {
-            Debug.LogError("Attempted to add an empty or null value to equation!");
-            return;
-        }
-
-        expressionElements.Add(value); // Add the dragged number or operator to the list
-        currentInput += value; // Update the expression string
-        userInputText.text = currentInput; // Update the displayed expression in the UI
-
-        // Log the current state of expressionElements and currentInput
-        Debug.Log("Added value: " + value);
-        Debug.Log("Current expressionElements: " + string.Join(" ", expressionElements)); // Ensure this is not empty
-        Debug.Log("Current input string: " + currentInput);
-    }
-
-        // This method is called when the user clicks the "Calculate" button
+    // This method is called when the user clicks the "Calculate" button
     public void CalculateResult()
     {
-        // Before joining the elements into a single expression, print the list
-        Debug.Log("expressionElements before joining: " + string.Join(" ", expressionElements));
+        string expression = userInputField.text; // Get the expression from the input field
 
-        string expression = string.Join("", expressionElements); // Join all elements into a single expression
-
-        // Debug to check the expression being evaluated
+        // Debug to check the input expression
         Debug.Log("Evaluating expression: '" + expression + "'");
 
         if (string.IsNullOrEmpty(expression))
@@ -93,7 +66,7 @@ public class MathGameManager : MonoBehaviour
         try
         {
             // Ensure that '*' is used for multiplication and other operators are correct
-            expression = expression.Replace("×", "*");  // Just in case there's a symbol issue
+            expression = expression.Replace("×", "*");  // Handle potential symbol issues
 
             System.Data.DataTable table = new System.Data.DataTable();
             var result = table.Compute(expression, null).ToString();
