@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public GameObject buttonPrefab;  // Prefab for the operator button to be instantiated
     public GameObject operatorsPanel; // Panel where operator buttons will be displayed
 
+    public static bool isGamePaused = false;
 
     void Start()
     {
@@ -67,10 +68,25 @@ public class Enemy : MonoBehaviour
         // Check if the object that touched the enemy has the "Player" tag
         if (other.CompareTag("Player"))
         {
+            PauseGame();
             // Show the math problem when the player touches the enemy
             MathProblemUI mathUI = FindObjectOfType<MathProblemUI>();
             mathUI.ShowMathProblem(this);  // Show the math problem UI
         }
+    }
+
+    public static void PauseGame()
+    {
+        Time.timeScale = 0f; // 停止游戏时间
+        isGamePaused = true;
+        Debug.Log("Game paused");
+    }
+
+    public static void ResumeGame()
+    {
+        Time.timeScale = 1f; // 恢复正常游戏时间
+        isGamePaused = false;
+        Debug.Log("Game resumed");
     }
 
 }

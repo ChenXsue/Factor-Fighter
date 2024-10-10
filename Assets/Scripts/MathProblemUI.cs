@@ -39,6 +39,8 @@ public class MathProblemUI : MonoBehaviour
                 Debug.Log("wrong");  // Output incorrect message
                 
             }
+            mathProblemPanel.SetActive(false);
+            Enemy.ResumeGame();
         }
         else  // Invalid (non-numeric) input
         {
