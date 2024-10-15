@@ -77,14 +77,14 @@ public class Enemy : MonoBehaviour
 
     public static void PauseGame()
     {
-        Time.timeScale = 0f; // 停止游戏时间
+        Time.timeScale = 0f; 
         isGamePaused = true;
         Debug.Log("Game paused");
     }
 
     public static void ResumeGame()
     {
-        Time.timeScale = 1f; // 恢复正常游戏时间
+        Time.timeScale = 1f; 
         isGamePaused = false;
         Debug.Log("Game resumed");
     }
