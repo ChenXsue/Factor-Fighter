@@ -21,24 +21,6 @@ public class NumberInventoryManager : MonoBehaviour
         RefreshNumberInventory();
     }
 
-    // public void RefreshNumberInventory()
-    // {
-    //     foreach (Transform child in numberSlotGrid.transform)
-    //     {
-    //         Destroy(child.gameObject);
-    //     }
-    //
-    //     foreach (Item item in myNumberBag.items)
-    //     {
-    //         if (item is NumberSO numberItem)
-    //         {
-    //             NumberSlot newSlot = Instantiate(numberSlotPrefab, numberSlotGrid.transform);
-    //             newSlot.SetNumber(numberItem, item.count);
-    //             Debug.Log($"Created UI slot for number: {numberItem.value}, Count: {item.count}");
-    //         }
-    //     }
-    // }
-    
     public void RefreshNumberInventory()
     {
         foreach (Transform child in numberSlotGrid.transform)
