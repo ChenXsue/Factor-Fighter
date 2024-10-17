@@ -3,44 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Number Inventory", menuName = "Inventory/Number Inventory")]
-// public class NumberInventorySO : InventorySO
-// {
-//     
-//     [SerializeField] private List<int> serializedNumbers = new List<int>();
-//
-//     protected override bool ItemsAreEqual(Item item1, Item item2)
-//     {
-//         if (item1 is NumberSO num1 && item2 is NumberSO num2)
-//         {
-//             return num1.value == num2.value;
-//         }
-//         return base.ItemsAreEqual(item1, item2);
-//     }
-//
-//     private void OnBeforeSerialize()
-//     {
-//         serializedNumbers.Clear();
-//         foreach (var item in items)
-//         {
-//             if (item is NumberSO numberSO)
-//             {
-//                 serializedNumbers.Add(numberSO.value);
-//             }
-//         }
-//     }
-//
-//     private void OnAfterDeserialize()
-//     {
-//         items.Clear();
-//         foreach (var number in serializedNumbers)
-//         {
-//             var numberSO = CreateInstance<NumberSO>();
-//             numberSO.value = number;
-//             numberSO.itemName = number.ToString();
-//             items.Add(numberSO);
-//         }
-//     }
-// }
 public class NumberInventorySO : ScriptableObject
 {
     [System.Serializable]

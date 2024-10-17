@@ -7,7 +7,8 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     private MathProblem currentProblem;
-    public GameObject buttonPrefab;  // Prefab for the operator button to be instantiated
+    //public GameObject buttonPrefab;  // Prefab for the operator button to be instantiated
+    public OperatorSO operatorData;
     public GameObject operatorsPanel; // Panel where operator buttons will be displayed
 
     public static bool isGamePaused = false;
@@ -34,33 +35,17 @@ public class Enemy : MonoBehaviour
 
     public void Defeat()
     {
-        Debug.LogError(operator1.OperatorInstance.Operators_Bag.Count);
-
-        char operatorToAdd = ' ';
-        // Check which enemy was defeated and decide which operator to add
-        if (this.gameObject.CompareTag("Enemy1"))
+        if (operatorData != null)
         {
-            operator1.OperatorInstance.Operators_Bag.Add('*');
-            operatorToAdd = '*';
+            OperatorInventoryManager.instance.AddOperator(operatorData);
+            Debug.Log($"Added operator {operatorData.operatorChar} to inventory");
         }
-        else if (this.gameObject.CompareTag("Enemy2"))
+        else
         {
-            operator1.OperatorInstance.Operators_Bag.Add('+');
-            operatorToAdd = '+';
+            Debug.LogWarning("No operator set for this enemy!");
         }
-        
-        // Create a new button dynamically
-        GameObject newButton = Instantiate(buttonPrefab); // Instantiate the button prefab
-        newButton.transform.SetParent(operatorsPanel.transform, false); // Set it as a child of the operator panel
 
-        // Set the button's text to display the operator
-        newButton.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = operatorToAdd.ToString();
-
-        // Add the DraggableItem script dynamically to the new button
-        newButton.AddComponent<DraggableItem>();
-        newButton.name = operatorToAdd.ToString();
-        newButton.SetActive(true);
-        // Optionally, destroy the defeated enemy object
+        // 销毁敌人对象
         Destroy(gameObject);
     }
     void OnTriggerEnter2D(Collider2D other)
