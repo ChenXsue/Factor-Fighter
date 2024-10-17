@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour
 
     public void level2()
     {
-        SceneManager.LoadSceneAsync("SampleScene");
+        SceneManager.LoadSceneAsync("Level1");
     }
 
 }

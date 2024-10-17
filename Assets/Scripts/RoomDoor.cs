@@ -6,22 +6,17 @@ using UnityEngine;
 public class RoomDoor : MonoBehaviour
 {
     private MathProblem currentProblem;
-    public GameObject buttonPrefab;  // Prefab for the operator button to be instantiated
-    public GameObject operatorsPanel; // Panel where operator buttons will be displayed
-
+    public GameObject numbersPanel;
     public static bool isGamePaused = false;
+    public int doorNumber;
+    public string nextRoomScene;
+    public int associatedNumber; // 门上标记的数字
 
-    private bool firstTime = true;
-
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         Ene_MathProblemManager problemManager = FindObjectOfType<Ene_MathProblemManager>();
-        
         currentProblem = problemManager.GetRandomMathProblem();
-
-        Debug.Log("Math problem for this enemy: " + currentProblem.question);
-
+        Debug.Log($"Math problem for door {doorNumber}: {currentProblem.question}");
     }
 
     public string GetMathProblem()
@@ -36,62 +31,51 @@ public class RoomDoor : MonoBehaviour
 
     public void Defeat()
     {
-        Debug.LogError("Room Door unlocked");
+        Debug.Log($"Door {doorNumber} defeated");
+        Unlock();
+    }
 
-        int numberToAdd = 0;
-        // Check which door was touched to decide which number to add
-        if (this.gameObject.CompareTag("Door1"))
-        {
-            // Add number to list
-            // Number to add = 
-        }
-        else if (this.gameObject.CompareTag("Door2"))
-        {
-            // Add number to list
-            // Number to add =
-        }
+    private void Unlock()
+    {
+        Debug.Log($"Door {doorNumber} unlocked");
+        RoomManager.Instance.UnlockDoor(doorNumber);
         
-        // Create a new button dynamically
-        GameObject newButton = Instantiate(buttonPrefab); // Instantiate the button prefab
-        // Set it as a child of the numbers panel
-
-        // Set the button's text to display the number
-
+        // 获取与门关联的数字并添加到玩家的库存中
+        NumberSO numberSO = NumberManager.instance.GetNumber(associatedNumber);
+        NumberInventoryManager.instance.AddNumber(numberSO);
+        
+        Debug.Log($"Obtained number: {associatedNumber} from door {doorNumber}");
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Check if the object colliding with the door is the player
-        if (other.gameObject.CompareTag("Player")) // Assuming the player has the "Player" tag
+        if (other.CompareTag("Player"))
         {
-            PauseGame();
-            // Check if the player is passing through the door the first time
-            if (!firstTime)
+            if (!RoomManager.Instance.IsDoorUnlocked(doorNumber))
             {
-                // Go to the next room
-                SceneManager.LoadSceneAsync("Room2");   // suppose next room is called "Room2"
+                MathProblemUI mathUI = FindObjectOfType<MathProblemUI>();
+                mathUI.ShowMathProblem(this);
+                PauseGame();
             }
             else
             {
-                // Show the math problem when the player touches the door
-                MathProblemUI mathUI = FindObjectOfType<MathProblemUI>();
-                mathUI.ShowMathProblem(this);   // Show the math problem UI
-                firstTime = false;
-                SceneManager.LoadSceneAsync("Room2");   // suppose next room is called "Room2"
+                
+                SceneManager.LoadScene(nextRoomScene);
             }
         }
     }
 
+
     public static void PauseGame()
     {
-        Time.timeScale = 0f; // 停止游戏时间
+        Time.timeScale = 0f;
         isGamePaused = true;
         Debug.Log("Game paused");
     }
 
     public static void ResumeGame()
     {
-        Time.timeScale = 1f; // 恢复正常游戏时间
+        Time.timeScale = 1f;
         isGamePaused = false;
         Debug.Log("Game resumed");
     }

@@ -2,20 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class Enemy : MonoBehaviour
+public class BasicEnemy : MonoBehaviour
 {
     public string enemyId;
     private MathProblem currentProblem;
-    public OperatorSO operatorData;
-    public GameObject operatorsPanel;
     public static bool isGamePaused = false;
 
     void Start()
     {
         if (string.IsNullOrEmpty(enemyId))
         {
-            enemyId = "Enemy_" + GetInstanceID();
+            enemyId = "BasicEnemy_" + GetInstanceID();
         }
 
         if (EnemyManager.Instance.IsEnemyDefeated(enemyId))
@@ -42,15 +39,7 @@ public class Enemy : MonoBehaviour
     public void Defeat()
     {
         EnemyManager.Instance.DefeatEnemy(enemyId);
-        if (operatorData != null)
-        {
-            OperatorInventoryManager.instance.AddOperator(operatorData);
-            Debug.Log($"Added operator {operatorData.operatorChar} to inventory");
-        }
-        else
-        {
-            Debug.LogWarning("No operator set for this enemy!");
-        }
+        Debug.Log("Enemy defeated!");
         gameObject.SetActive(false);
     }
 
