@@ -25,7 +25,6 @@ public class Ene_MathProblemManager : MonoBehaviour
         Debug.Log("Math problems initialized with count: " + mathProblems.Count);
     }
 
-
     public MathProblem GetRandomMathProblem()
     {
 

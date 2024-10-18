@@ -4,46 +4,111 @@ using UnityEngine.UI;
 
 public class MathProblemUI : MonoBehaviour
 {
-    public TextMeshProUGUI problemText;  // TextMeshPro component for displaying the math problem
-    public TMP_InputField answerInputField;  // InputField for player input
-    public GameObject mathProblemPanel;  // Panel to show and hide the math problem UI
+    public TextMeshProUGUI problemText;
+    public TMP_InputField answerInputField;
+    public GameObject mathProblemPanel;
+    
     private Enemy currentEnemy;
+    private RoomDoor currentRoomDoor;
+    private BasicEnemy currentBasicEnemy;
 
-    // Display the math problem
     public void ShowMathProblem(Enemy enemy)
     {
         currentEnemy = enemy;
-        problemText.text = enemy.GetMathProblem();  // Display the math problem
-        answerInputField.text = "";  // Clear the input field
-        answerInputField.ActivateInputField();  // Activate the input field for player input
-        mathProblemPanel.SetActive(true);  // Show the math problem panel
+        currentRoomDoor = null;
+        currentBasicEnemy = null;
+        SetupProblem(enemy.GetMathProblem());
     }
 
-    // Check the player's input answer
+    public void ShowMathProblem(RoomDoor roomDoor)
+    {
+        currentRoomDoor = roomDoor;
+        currentEnemy = null;
+        currentBasicEnemy = null;
+        SetupProblem(roomDoor.GetMathProblem());
+    }
+
+    public void ShowMathProblem(BasicEnemy basicEnemy)
+    {
+        currentBasicEnemy = basicEnemy;
+        currentEnemy = null;
+        currentRoomDoor = null;
+        SetupProblem(basicEnemy.GetMathProblem());
+    }
+
+    private void SetupProblem(string problem)
+    {
+        problemText.text = problem;
+        answerInputField.text = "";
+        answerInputField.ActivateInputField();
+        mathProblemPanel.SetActive(true);
+    }
+
     public void CheckAnswer()
     {
-        int playerAnswer;
+        if (int.TryParse(answerInputField.text, out int playerAnswer))
+        {
+            bool isCorrect = false;
 
-        // Safely parse player's input and handle non-numeric input
-        if (int.TryParse(answerInputField.text, out playerAnswer))
-        {
-            if (currentEnemy.CheckAnswer(playerAnswer))  // Correct answer
+            if (currentEnemy != null)
             {
-                currentEnemy.Defeat();  // Defeat the enemy
-                mathProblemPanel.SetActive(false);  // Hide the math problem panel
-                Debug.Log("correct");  // Output correct message
-                
+                isCorrect = currentEnemy.CheckAnswer(playerAnswer);
+                if (isCorrect) currentEnemy.Defeat();
             }
-            else  // Incorrect answer
+            else if (currentRoomDoor != null)
             {
-                Debug.Log("wrong");  // Output incorrect message
-                
+                isCorrect = currentRoomDoor.CheckAnswer(playerAnswer);
+                if (isCorrect) currentRoomDoor.Defeat();
             }
+            else if (currentBasicEnemy != null)
+            {
+                isCorrect = currentBasicEnemy.CheckAnswer(playerAnswer);
+                if (isCorrect) currentBasicEnemy.Defeat();
+            }
+
+            if (isCorrect)
+            {
+                mathProblemPanel.SetActive(false);
+                Debug.Log("correct");
+            }
+            else
+            {
+                Debug.Log("wrong");
+            }
+
+            mathProblemPanel.SetActive(false);
+            ResumeGame();
         }
-        else  // Invalid (non-numeric) input
+        else
         {
-            Debug.Log("Invalid input!");  // Output invalid input message
-            
+            Debug.Log("Invalid input!");
         }
+    }
+
+    private void ResumeGame()
+    {
+        if (currentEnemy != null)
+        {
+            Enemy.ResumeGame();
+        }
+        else if (currentBasicEnemy != null)
+        {
+            BasicEnemy.ResumeGame();
+        }
+        else if (currentRoomDoor != null)
+        {
+            RoomDoor.ResumeGame();
+        }
+        else
+        {
+            // 以防万一，如果所有当前对象都是null，我们仍然恢复游戏
+            Time.timeScale = 1f;
+            Debug.Log("Game resumed (fallback)");
+        }
+
+        // 重置当前对象
+        currentEnemy = null;
+        currentBasicEnemy = null;
+        currentRoomDoor = null;
     }
 }
