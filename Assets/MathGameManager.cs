@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
 
+
+//通关门的文本解析与判断
 public class MathGameManager : MonoBehaviour
 {
     public TMPro.TMP_InputField userInputField; // Input field for user expression

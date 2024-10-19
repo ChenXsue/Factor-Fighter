@@ -22,7 +22,7 @@ public class MoveOnWayPoints1 : MonoBehaviour
         float distance = Vector3.Distance(transform.position, destination);
         if(distance <= 0.05)
         {
-            index++;
+            index = (index + 1) % waypoints.Count;
         }
     }
 
