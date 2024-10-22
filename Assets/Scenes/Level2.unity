@@ -133,12 +133,12 @@ PrefabInstance:
     - target: {fileID: 1646863768299808447, guid: 7d867ca1e08994cb381ef8e7c20b7cb6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.943275
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1646863768299808447, guid: 7d867ca1e08994cb381ef8e7c20b7cb6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.57619023
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1646863768299808447, guid: 7d867ca1e08994cb381ef8e7c20b7cb6,
         type: 3}
@@ -2306,6 +2306,7 @@ MonoBehaviour:
   doorNumber: 3
   nextRoomScene: Level3
   associatedNumber: 3
+  nextRoomPlayerPosition: {x: -15, y: 1, z: 0}
 --- !u!1001 &3737842573507499105
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2405,6 +2406,7 @@ MonoBehaviour:
   doorNumber: 2
   nextRoomScene: Level1
   associatedNumber: 2
+  nextRoomPlayerPosition: {x: 17, y: -8, z: 0}
 --- !u!1001 &8806988772750035941
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2504,6 +2506,7 @@ MonoBehaviour:
   doorNumber: 4
   nextRoomScene: Level4
   associatedNumber: 4
+  nextRoomPlayerPosition: {x: -17, y: 5, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
