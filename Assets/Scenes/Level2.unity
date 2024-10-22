@@ -2406,7 +2406,7 @@ MonoBehaviour:
   doorNumber: 2
   nextRoomScene: Level1
   associatedNumber: 2
-  nextRoomPlayerPosition: {x: 17, y: -8, z: 0}
+  nextRoomPlayerPosition: {x: 15, y: -8, z: 0}
 --- !u!1001 &8806988772750035941
 PrefabInstance:
   m_ObjectHideFlags: 0
