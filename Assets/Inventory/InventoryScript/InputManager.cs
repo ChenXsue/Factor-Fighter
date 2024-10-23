@@ -205,7 +205,7 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    private OperatorSO GetOperatorPreset(char operatorChar)
+    public OperatorSO GetOperatorPreset(char operatorChar)
     {
         switch (operatorChar)
         {

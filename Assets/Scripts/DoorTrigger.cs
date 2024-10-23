@@ -27,6 +27,7 @@ public class DoorTrigger : MonoBehaviour
             quizPanel.SetActive(true);
             operatorsPanel.SetActive(true);
             input.SetActive(true);
+            //Enemy.PauseGame();
 
             // Call the method to create buttons for each operator in Operators_Bag
             // CreateOperatorButtons();
