@@ -1038,7 +1038,8 @@ PrefabInstance:
       value: 265
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7211114083043294641, guid: 7f8a4858c33ca43d5bdc6ceaa32f336b, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1892220470006379857, guid: 7f8a4858c33ca43d5bdc6ceaa32f336b,
         type: 3}
@@ -2474,6 +2475,7 @@ MonoBehaviour:
   doorNumber: 4
   nextRoomScene: Level2
   associatedNumber: 4
+  nextRoomPlayerPosition: {x: -1, y: -6, z: 0}
 --- !u!1 &1341898793
 GameObject:
   m_ObjectHideFlags: 0
@@ -2486,7 +2488,7 @@ GameObject:
   - component: {fileID: 1341898796}
   - component: {fileID: 1341898795}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: Number Bag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
