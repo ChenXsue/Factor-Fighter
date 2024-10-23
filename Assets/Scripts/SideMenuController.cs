@@ -37,7 +37,7 @@ public class SideMenuController : MonoBehaviour
     public void GoToMainMenu()
     {
         Time.timeScale = 1; // Reset the time scale in case the game was paused
-        // SceneManager.LoadScene("MainMenu"); // Load the main menu scene (replace with your main menu scene name)
+        SceneManager.LoadScene("MainMenu"); // Load the main menu scene (replace with your main menu scene name)
     }
 
     // Function to restart the game
