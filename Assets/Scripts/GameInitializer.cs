@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameInitializer : MonoBehaviour
 {
+    // 如果您想在Inspector中设置这些初始值，可以将它们设为public
     [SerializeField] private int[] initialNumbers = { 3, 2, 4 };
 
     private void Start()

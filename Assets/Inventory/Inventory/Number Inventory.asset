@@ -12,10 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe40476d9f86a4dd28cbbb954c2e4d9b, type: 3}
   m_Name: Number Inventory
   m_EditorClassIdentifier: 
-  serializedItems:
-  - value: 3
-    count: 1
-  - value: 2
-    count: 1
-  - value: 4
-    count: 1
+  serializedItems: []
