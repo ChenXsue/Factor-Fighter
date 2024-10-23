@@ -30,6 +30,7 @@ public class DoorTrigger : MonoBehaviour
 
             // Call the method to create buttons for each operator in Operators_Bag
             // CreateOperatorButtons();
+            Enemy.PauseGame();
         }
     }
 
