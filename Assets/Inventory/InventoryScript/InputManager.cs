@@ -169,9 +169,10 @@ public class InputManager : MonoBehaviour
             NumberInventoryManager.instance.RefreshNumberInventory();
         }
     }
-    
     public void OnBackspaceClicked()
     {
+        Debug.Log("Backspace button clicked");
+
         if (string.IsNullOrEmpty(inputField.text))
         {
             Debug.Log("Input field is empty, nothing to backspace");
@@ -190,6 +191,11 @@ public class InputManager : MonoBehaviour
             {
                 NumberInventoryManager.instance.myNumberBag.AddItem(numberToAdd);
                 NumberInventoryManager.instance.RefreshNumberInventory();
+                Debug.Log($"Number {number} added back to inventory");
+            }
+            else
+            {
+                Debug.LogWarning($"Failed to get NumberSO for {number}");
             }
         }
         else
