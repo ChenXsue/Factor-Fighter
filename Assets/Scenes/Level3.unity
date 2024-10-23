@@ -872,6 +872,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoorCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5859411172943705655, guid: 7f8a4858c33ca43d5bdc6ceaa32f336b,
+        type: 3}
+      propertyPath: plusOperator
+      value: 
+      objectReference: {fileID: 11400000, guid: 676709c5424274aaa9551a35912ca567,
+        type: 2}
+    - target: {fileID: 5859411172943705655, guid: 7f8a4858c33ca43d5bdc6ceaa32f336b,
+        type: 3}
+      propertyPath: minusOperator
+      value: 
+      objectReference: {fileID: 11400000, guid: d9070315bbc954cc29807090bfa9fa86,
+        type: 2}
+    - target: {fileID: 5859411172943705655, guid: 7f8a4858c33ca43d5bdc6ceaa32f336b,
+        type: 3}
+      propertyPath: divideOperator
+      value: 
+      objectReference: {fileID: 11400000, guid: 0c11bfb759d034dd295bab9e0aa21b12,
+        type: 2}
+    - target: {fileID: 5859411172943705655, guid: 7f8a4858c33ca43d5bdc6ceaa32f336b,
+        type: 3}
+      propertyPath: multipleOperator
+      value: 
+      objectReference: {fileID: 11400000, guid: 631f416f4d3444bf6aab47d7e7e42eb0,
+        type: 2}
     - target: {fileID: 6578795716208456841, guid: 7f8a4858c33ca43d5bdc6ceaa32f336b,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1211,7 +1235,7 @@ Transform:
   m_GameObject: {fileID: 1419657335}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.46, y: 2.7316105, z: 0}
+  m_LocalPosition: {x: 7.59, y: 2.7316105, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
