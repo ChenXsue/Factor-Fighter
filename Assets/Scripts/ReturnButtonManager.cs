@@ -44,6 +44,7 @@ public class ReturnButtonManager : MonoBehaviour
         }
 
         //Enemy.ResumeGame();
+        //Time.timeScale = 1f;
 
         // 刷新UI状态
         InputManager inputManager = FindObjectOfType<InputManager>();
