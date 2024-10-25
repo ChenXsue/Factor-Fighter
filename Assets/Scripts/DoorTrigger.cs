@@ -28,12 +28,10 @@ public class DoorTrigger : MonoBehaviour
             operatorsPanel.SetActive(true);
             input.SetActive(true);
             //Enemy.PauseGame();
-            //Time.timeScale = 0f;
 
             // Call the method to create buttons for each operator in Operators_Bag
             // CreateOperatorButtons();
         }
     }
-
 
 }

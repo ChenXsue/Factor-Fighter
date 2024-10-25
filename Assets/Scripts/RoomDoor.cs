@@ -62,7 +62,7 @@ public class RoomDoor : MonoBehaviour
             }
             else
             {
-                Debug.Log("door number: " + doorNumber + " next room player position: " + nextRoomPlayerPosition);
+                // Debug.Log("door number: " + doorNumber + " next room player position: " + nextRoomPlayerPosition);
                 RoomManager.Instance.playerSpawnPosition = nextRoomPlayerPosition;
                 SceneManager.LoadScene(nextRoomScene);
             }
