@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEditor.Build.Content;
 
 public class RoomDoor : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class RoomDoor : MonoBehaviour
     public int doorNumber;
     public string nextRoomScene;
     public int associatedNumber; // 门上标记的数字
+
+    public Vector3 nextRoomPlayerPosition;  // Position where the player will spawn in the next room
 
     private void Start()
     {
@@ -59,7 +62,8 @@ public class RoomDoor : MonoBehaviour
             }
             else
             {
-                
+                // Debug.Log("door number: " + doorNumber + " next room player position: " + nextRoomPlayerPosition);
+                RoomManager.Instance.playerSpawnPosition = nextRoomPlayerPosition;
                 SceneManager.LoadScene(nextRoomScene);
             }
         }

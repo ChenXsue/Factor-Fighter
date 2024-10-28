@@ -5,6 +5,8 @@ using System.Collections.Generic;
 public class RoomManager : MonoBehaviour
 {
     public static RoomManager Instance { get; private set; }
+    public Vector3 playerSpawnPosition;
+    public bool isFirstSpawn = true;
 
     private HashSet<int> unlockedDoors = new HashSet<int>();
     private List<int> collectedNumbers = new List<int>();

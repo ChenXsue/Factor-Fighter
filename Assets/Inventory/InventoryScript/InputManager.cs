@@ -16,6 +16,12 @@ public class InputManager : MonoBehaviour
     private List<WeakReference<NumberSlot>> numberSlots = new List<WeakReference<NumberSlot>>();
     private float updateInterval = 1f;
     private float lastUpdateTime;
+    
+    [Header("Operator Presets")]
+    [SerializeField] private OperatorSO plusOperator;
+    [SerializeField] private OperatorSO minusOperator;
+    [SerializeField] private OperatorSO multipleOperator;
+    [SerializeField] private OperatorSO divideOperator;
 
     private void Start()
     {
@@ -174,15 +180,12 @@ public class InputManager : MonoBehaviour
         }
 
         char lastChar = inputField.text[inputField.text.Length - 1];
-        Debug.Log($"Last character removed: {lastChar}");
-
         inputField.text = inputField.text.Substring(0, inputField.text.Length - 1);
-        Debug.Log($"New input field text: {inputField.text}");
 
         if (char.IsDigit(lastChar))
         {
+            // 数字的处理保持不变
             int number = int.Parse(lastChar.ToString());
-            Debug.Log($"Trying to add number {number} back to inventory");
             NumberSO numberToAdd = NumberManager.instance.GetNumber(number);
             if (numberToAdd != null)
             {
@@ -197,13 +200,32 @@ public class InputManager : MonoBehaviour
         }
         else
         {
-            Debug.Log($"Trying to add operator {lastChar} back to inventory");
-            OperatorSO operatorToAdd = ScriptableObject.CreateInstance<OperatorSO>();
-            operatorToAdd.operatorChar = lastChar;
-            operatorToAdd.itemName = lastChar.ToString();
-            OperatorInventoryManager.instance.myOperatorBag.AddItem(operatorToAdd);
-            OperatorInventoryManager.instance.RefreshOperatorInventory();
-            Debug.Log($"Operator {lastChar} added back to inventory");
+            // 直接使用预设的OperatorSO
+            OperatorSO operatorToAdd = GetOperatorPreset(lastChar);
+            if (operatorToAdd != null)
+            {
+                OperatorInventoryManager.instance.myOperatorBag.AddItem(operatorToAdd);
+                OperatorInventoryManager.instance.RefreshOperatorInventory();
+                Debug.Log($"Added operator {lastChar} back to inventory");
+            }
+        }
+    }
+
+    public OperatorSO GetOperatorPreset(char operatorChar)
+    {
+        switch (operatorChar)
+        {
+            case '+':
+                return plusOperator;
+            case '-':
+                return minusOperator;
+            case '*':
+                return multipleOperator;
+            case '/':
+                return divideOperator;
+            default:
+                Debug.LogError($"Unknown operator character: {operatorChar}");
+                return null;
         }
     }
 
