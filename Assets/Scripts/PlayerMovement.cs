@@ -4,14 +4,24 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
     public float movementSpeed;
     float speedX, speedY;
     Rigidbody2D rb;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        if (RoomManager.Instance.isFirstSpawn)
+        {
+            Debug.Log("Game instance is first spawn");
+            RoomManager.Instance.isFirstSpawn = false;
+        }
+        else
+        {
+            // Debug.Log("Player spawn position: " + RoomManager.Instance.playerSpawnPosition);
+            transform.position = RoomManager.Instance.playerSpawnPosition;
+        }
     }
 
     // Update is called once per frame

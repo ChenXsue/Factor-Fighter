@@ -7,6 +7,8 @@ public class MathProblemUI : MonoBehaviour
     public TextMeshProUGUI problemText;
     public TMP_InputField answerInputField;
     public GameObject mathProblemPanel;
+
+    public GameObject responsePanel;
     
     private Enemy currentEnemy;
     private RoomDoor currentRoomDoor;
@@ -53,31 +55,57 @@ public class MathProblemUI : MonoBehaviour
             if (currentEnemy != null)
             {
                 isCorrect = currentEnemy.CheckAnswer(playerAnswer);
-                if (isCorrect) currentEnemy.Defeat();
+                if (isCorrect)
+                {
+                    currentEnemy.Defeat();
+                }
+                else
+                {
+                    mathProblemPanel.SetActive(false);
+                    responsePanel.SetActive(true);
+                    HealthManager.Instance.TakeDamage(1); // 答错时减少1点生命值
+                }
             }
             else if (currentRoomDoor != null)
             {
                 isCorrect = currentRoomDoor.CheckAnswer(playerAnswer);
-                if (isCorrect) currentRoomDoor.Defeat();
+                if (isCorrect)
+                {
+                    currentRoomDoor.Defeat();
+                }
+                else
+                {
+                    mathProblemPanel.SetActive(false);
+                    responsePanel.SetActive(true);
+                    HealthManager.Instance.TakeDamage(1); // 答错时减少1点生命值
+                }
             }
             else if (currentBasicEnemy != null)
             {
                 isCorrect = currentBasicEnemy.CheckAnswer(playerAnswer);
-                if (isCorrect) currentBasicEnemy.Defeat();
+                if (isCorrect)
+                {
+                    currentBasicEnemy.Defeat();
+                }
+                else
+                {
+                    mathProblemPanel.SetActive(false);
+                    responsePanel.SetActive(true);
+                    HealthManager.Instance.TakeDamage(1); // 答错时减少1点生命值
+                }
             }
 
             if (isCorrect)
             {
                 mathProblemPanel.SetActive(false);
                 Debug.Log("correct");
+                mathProblemPanel.SetActive(false);
+                ResumeGame();
             }
             else
             {
                 Debug.Log("wrong");
             }
-
-            mathProblemPanel.SetActive(false);
-            ResumeGame();
         }
         else
         {
