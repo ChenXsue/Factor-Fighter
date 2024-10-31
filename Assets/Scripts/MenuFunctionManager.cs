@@ -125,6 +125,13 @@ public class MenuFunctionManager : MonoBehaviour
             Debug.Log("Reset cube state: all cubes restored");
         }
 
+        // 重置计时器状态
+        if (CountDownTimer.instance != null)
+        {
+            CountDownTimer.instance.ResetTimer();
+            Debug.Log("Reset timer state: timer reset to 90 seconds");
+        }
+
         // 清空背包
         ClearInventories();
 
