@@ -50,11 +50,11 @@ public class InputManager : MonoBehaviour
     private void Update()
     {
         UpdateSlotsInteractability();
-        
-        if (Time.time - lastUpdateTime >= updateInterval)
+    
+        if (Time.unscaledTime - lastUpdateTime >= updateInterval)
         {
             UpdateSlots();
-            lastUpdateTime = Time.time;
+            lastUpdateTime = Time.unscaledTime;
         }
     }
 
@@ -140,11 +140,35 @@ public class InputManager : MonoBehaviour
         if (invisibleObject == null || !invisibleObject.activeSelf) return;
         if (slot == null || inputField == null) return;
 
-        char operatorChar = slot.operatorText.text[0];
-        inputField.text += operatorChar;
+        // 检查当前输入的最后一个token
+        string[] tokens = inputField.text.Trim().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+        
+        // 如果输入为空，只允许输入+ -
+        if (tokens.Length == 0)
+        {
+            char operatorChar = slot.operatorText.text[0];
+            if (operatorChar != '+' && operatorChar != '-')
+            {
+                Debug.Log("Can only input + or - at the beginning");
+                return;
+            }
+        }
+        // 如果最后一个token是运算符，不允许继续输入运算符
+        else if (tokens.Length > 0 && IsOperator(tokens[tokens.Length - 1][0]))
+        {
+            Debug.Log("Cannot input two operators consecutively");
+            return;
+        }
+
+        char op = slot.operatorText.text[0];
+        if (!string.IsNullOrEmpty(inputField.text) && !inputField.text.EndsWith(" "))
+        {
+            inputField.text += " ";
+        }
+        inputField.text += op + " ";
 
         OperatorSO operatorToRemove = OperatorInventoryManager.instance.myOperatorBag.items
-            .Find(item => item is OperatorSO && (item as OperatorSO).operatorChar == operatorChar) as OperatorSO;
+            .Find(item => item is OperatorSO && (item as OperatorSO).operatorChar == op) as OperatorSO;
 
         if (operatorToRemove != null)
         {
@@ -158,10 +182,27 @@ public class InputManager : MonoBehaviour
         if (invisibleObject == null || !invisibleObject.activeSelf) return;
         if (slot == null || inputField == null) return;
 
-        int number = int.Parse(slot.numberText.text);
-        inputField.text += number.ToString();
+        // 检查当前输入的最后一个token
+        string[] tokens = inputField.text.Trim().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+        if (tokens.Length > 0)
+        {
+            string lastToken = tokens[tokens.Length - 1];
+            // 如果最后一个token是数字，不允许继续输入数字
+            if (int.TryParse(lastToken, out _))
+            {
+                Debug.Log("Cannot input number after number, please input an operator first");
+                return;
+            }
+        }
 
-        NumberSO numberToRemove = NumberManager.instance.GetNumber(number);
+        string number = slot.numberText.text;
+        if (!string.IsNullOrEmpty(inputField.text) && !inputField.text.EndsWith(" "))
+        {
+            inputField.text += " ";
+        }
+        inputField.text += number + " ";
+
+        NumberSO numberToRemove = NumberManager.instance.GetNumber(int.Parse(number));
 
         if (numberToRemove != null)
         {
@@ -169,6 +210,7 @@ public class InputManager : MonoBehaviour
             NumberInventoryManager.instance.RefreshNumberInventory();
         }
     }
+
     public void OnBackspaceClicked()
     {
         Debug.Log("Backspace button clicked");
@@ -179,13 +221,22 @@ public class InputManager : MonoBehaviour
             return;
         }
 
-        char lastChar = inputField.text[inputField.text.Length - 1];
-        inputField.text = inputField.text.Substring(0, inputField.text.Length - 1);
+        string[] tokens = inputField.text.Trim().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+        if (tokens.Length == 0) return;
 
-        if (char.IsDigit(lastChar))
+        string lastToken = tokens[tokens.Length - 1];
+
+        if (inputField.text.EndsWith(" "))
         {
-            // 数字的处理保持不变
-            int number = int.Parse(lastChar.ToString());
+            inputField.text = inputField.text.Substring(0, inputField.text.Length - lastToken.Length - 1);
+        }
+        else
+        {
+            inputField.text = inputField.text.Substring(0, inputField.text.Length - lastToken.Length);
+        }
+
+        if (int.TryParse(lastToken, out int number))
+        {
             NumberSO numberToAdd = NumberManager.instance.GetNumber(number);
             if (numberToAdd != null)
             {
@@ -193,20 +244,15 @@ public class InputManager : MonoBehaviour
                 NumberInventoryManager.instance.RefreshNumberInventory();
                 Debug.Log($"Number {number} added back to inventory");
             }
-            else
-            {
-                Debug.LogWarning($"Failed to get NumberSO for {number}");
-            }
         }
-        else
+        else if (lastToken.Length == 1 && IsOperator(lastToken[0]))
         {
-            // 直接使用预设的OperatorSO
-            OperatorSO operatorToAdd = GetOperatorPreset(lastChar);
+            OperatorSO operatorToAdd = GetOperatorPreset(lastToken[0]);
             if (operatorToAdd != null)
             {
                 OperatorInventoryManager.instance.myOperatorBag.AddItem(operatorToAdd);
                 OperatorInventoryManager.instance.RefreshOperatorInventory();
-                Debug.Log($"Added operator {lastChar} back to inventory");
+                Debug.Log($"Added operator {lastToken} back to inventory");
             }
         }
     }
@@ -227,6 +273,11 @@ public class InputManager : MonoBehaviour
                 Debug.LogError($"Unknown operator character: {operatorChar}");
                 return null;
         }
+    }
+    
+    private bool IsOperator(char c)
+    {
+        return c == '+' || c == '-' || c == '*' || c == '/';
     }
 
     public void OnInvisibleObjectStateChanged()
