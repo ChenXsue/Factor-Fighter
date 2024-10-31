@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            Debug.Log("Player spawn position: " + RoomManager.Instance.playerSpawnPosition);
+            // Debug.Log("Player spawn position: " + RoomManager.Instance.playerSpawnPosition);
             transform.position = RoomManager.Instance.playerSpawnPosition;
         }
     }
