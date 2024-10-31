@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;           // 用于 Button 类
 using TMPro;                    // 用于 TMP_InputField 类
 using System.Text;     
+using System;  
 
 public class ReturnButtonManager : MonoBehaviour
 {
@@ -44,7 +45,7 @@ public class ReturnButtonManager : MonoBehaviour
         }
 
         //Enemy.ResumeGame();
-        //Time.timeScale = 1f;
+        Time.timeScale = 1f;
 
         // 刷新UI状态
         InputManager inputManager = FindObjectOfType<InputManager>();
@@ -58,37 +59,19 @@ public class ReturnButtonManager : MonoBehaviour
     {
         string currentInput = inputField.text;
         Debug.Log($"Processing return of items from input: {currentInput}");
-        
-        StringBuilder currentNumber = new StringBuilder();
-        
-        for (int i = 0; i < currentInput.Length; i++)
+
+        // 分割输入字符串，使用空格作为分隔符
+        string[] tokens = currentInput.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+        foreach (string token in tokens)
         {
-            char c = currentInput[i];
-            
-            if (char.IsDigit(c))
+            if (int.TryParse(token, out int number))
             {
-                currentNumber.Append(c);
-                
-                if (i == currentInput.Length - 1 || !char.IsDigit(currentInput[i + 1]))
-                {
-                    if (currentNumber.Length > 0)
-                    {
-                        int number = int.Parse(currentNumber.ToString());
-                        ReturnNumberToBag(number);
-                        currentNumber.Clear();
-                    }
-                }
+                ReturnNumberToBag(number);
             }
-            else if (IsOperator(c))
+            else if (token.Length == 1 && IsOperator(token[0]))
             {
-                if (currentNumber.Length > 0)
-                {
-                    int number = int.Parse(currentNumber.ToString());
-                    ReturnNumberToBag(number);
-                    currentNumber.Clear();
-                }
-                
-                ReturnOperatorToBag(c);
+                ReturnOperatorToBag(token[0]);
             }
         }
 

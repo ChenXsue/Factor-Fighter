@@ -9,11 +9,12 @@ public class OperatorInventoryManager : MonoBehaviour
     public OperatorInventorySO myOperatorBag;
     public GameObject operatorSlotGrid;
     public OperatorSlot operatorSlotPrefab;
+    
+    private Dictionary<char, OperatorSlot> activeSlots = new Dictionary<char, OperatorSlot>();
 
     void Awake()
     {
-        if (instance != null)
-            Destroy(this);
+        if (instance != null) Destroy(this);
         instance = this;
     }
 
@@ -24,20 +25,38 @@ public class OperatorInventoryManager : MonoBehaviour
 
     public void RefreshOperatorInventory()
     {
-        Debug.Log("RefreshOperatorInventory called");
-        foreach (Transform child in operatorSlotGrid.transform)
-        {
-            Destroy(child.gameObject);
-        }
-
+        HashSet<char> usedOperators = new HashSet<char>();
+        
         foreach (Item item in myOperatorBag.items)
         {
             if (item is OperatorSO operatorItem)
             {
-                OperatorSlot newSlot = Instantiate(operatorSlotPrefab, operatorSlotGrid.transform);
-                newSlot.SetOperator(operatorItem, item.count);
-                Debug.Log($"Created UI slot for operator: {operatorItem.operatorChar}, Count: {item.count}");
+                if (activeSlots.TryGetValue(operatorItem.operatorChar, out OperatorSlot slot))
+                {
+                    slot.SetOperator(operatorItem, item.count);
+                }
+                else
+                {
+                    OperatorSlot newSlot = Instantiate(operatorSlotPrefab, operatorSlotGrid.transform);
+                    newSlot.SetOperator(operatorItem, item.count);
+                    activeSlots[operatorItem.operatorChar] = newSlot;
+                }
+                usedOperators.Add(operatorItem.operatorChar);
             }
+        }
+        
+        List<char> operatorsToRemove = new List<char>();
+        foreach (var kvp in activeSlots)
+        {
+            if (!usedOperators.Contains(kvp.Key))
+            {
+                Destroy(kvp.Value.gameObject);
+                operatorsToRemove.Add(kvp.Key);
+            }
+        }
+        foreach (char op in operatorsToRemove)
+        {
+            activeSlots.Remove(op);
         }
     }
 
