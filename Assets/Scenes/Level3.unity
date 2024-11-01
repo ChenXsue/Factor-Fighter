@@ -1556,6 +1556,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8854348539792848645, guid: 03f5bff3ef54448abb070ba56200999a,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2091241994017011291, guid: 20e6b79514e294a76951f93a29db10f9,
         type: 3}
       propertyPath: waypoints.Array.size
@@ -1565,6 +1570,7 @@ PrefabInstance:
     - {fileID: 2091241994017011291, guid: 20e6b79514e294a76951f93a29db10f9, type: 3}
     - {fileID: 2520770451323461613, guid: 03f5bff3ef54448abb070ba56200999a, type: 3}
     - {fileID: 3008577232841140589, guid: 03f5bff3ef54448abb070ba56200999a, type: 3}
+    - {fileID: 7491735220882661209, guid: 03f5bff3ef54448abb070ba56200999a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -2314,6 +2320,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8854348539792848645, guid: 03f5bff3ef54448abb070ba56200999a,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2091241994017011291, guid: 20e6b79514e294a76951f93a29db10f9,
         type: 3}
       propertyPath: waypoints.Array.size
@@ -2329,7 +2340,8 @@ PrefabInstance:
       propertyPath: waypoints.Array.data[1]
       value: 
       objectReference: {fileID: 2097060305}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7491735220882661209, guid: 03f5bff3ef54448abb070ba56200999a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

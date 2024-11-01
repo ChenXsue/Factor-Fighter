@@ -4315,6 +4315,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3236762291517367235, guid: 20e6b79514e294a76951f93a29db10f9,
         type: 3}
+      propertyPath: m_Size.x
+      value: 4.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 3236762291517367235, guid: 20e6b79514e294a76951f93a29db10f9,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 9.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 3236762291517367235, guid: 20e6b79514e294a76951f93a29db10f9,
+        type: 3}
       propertyPath: m_Offset.x
       value: 0
       objectReference: {fileID: 0}
@@ -4323,10 +4333,20 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3236762291517367235, guid: 20e6b79514e294a76951f93a29db10f9,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4893484695465373634, guid: 20e6b79514e294a76951f93a29db10f9,
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5302946603298596067, guid: 20e6b79514e294a76951f93a29db10f9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5302946603298596067, guid: 20e6b79514e294a76951f93a29db10f9,
         type: 3}
@@ -4469,7 +4489,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Factor_enemy
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5302946603298596067, guid: 20e6b79514e294a76951f93a29db10f9, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5581972040346498615, guid: 20e6b79514e294a76951f93a29db10f9,
@@ -4536,6 +4557,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Factor_enemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7491735220882661209, guid: 03f5bff3ef54448abb070ba56200999a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8003295077151036748, guid: 03f5bff3ef54448abb070ba56200999a,
         type: 3}
       propertyPath: m_LocalScale.y
@@ -4601,12 +4627,18 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8854348539792848645, guid: 03f5bff3ef54448abb070ba56200999a,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9133919157755565570, guid: 03f5bff3ef54448abb070ba56200999a,
         type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7491735220882661209, guid: 03f5bff3ef54448abb070ba56200999a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
