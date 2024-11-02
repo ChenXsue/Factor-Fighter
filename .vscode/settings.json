@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Factor-Fighter-develop.sln"
+    "dotnet.defaultSolution": "Factor-Fighter.sln"
 }
