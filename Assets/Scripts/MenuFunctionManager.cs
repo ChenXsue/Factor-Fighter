@@ -60,6 +60,8 @@ public class MenuFunctionManager : MonoBehaviour
 
     public void RestartGame()
     {
+        GameTimer.Instance.ResetTimer();
+
         // 重置所有游戏状态
         ResetAllGameState();
         
@@ -91,17 +93,25 @@ public class MenuFunctionManager : MonoBehaviour
         
         // 加载选定的场景
         SceneManager.LoadScene(sceneToLoad);
+        StartCoroutine(StartTimerAfterLoad(sceneToLoad));
+
         
         Debug.Log($"Restarting game: Loading scene {sceneToLoad} from {currentSceneName}");
     }
 
     public void GoToMainMenu()
     {
+        GameTimer.Instance.ResetTimer();
         ResetAllGameState();
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");  // 确保有这个场景名称
     }
-
+    // This coroutine will start the timer after the new scene has loaded
+    private IEnumerator StartTimerAfterLoad(string levelName)
+    {
+        yield return new WaitForSeconds(0.1f); // Delay to ensure the scene is loaded
+        GameTimer.Instance.StartTimer(levelName);
+    }
     private void ResetAllGameState()
     {
         // 重置房间状态
