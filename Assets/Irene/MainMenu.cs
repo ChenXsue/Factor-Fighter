@@ -7,10 +7,15 @@ public class MainMenu : MonoBehaviour
 {
     public void level1()
     {
-        SceneManager.LoadSceneAsync("SampleScene");
+        SceneManager.LoadSceneAsync("Tutorial");
     }
 
     public void level2()
+    {
+        SceneManager.LoadSceneAsync("SampleScene");
+    }
+
+    public void level3()
     {
         SceneManager.LoadSceneAsync("Level1");
     }

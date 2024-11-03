@@ -59,7 +59,12 @@ public class Enemy : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             PauseGame();
+            Debug.Log(this);
+  
+
             MathProblemUI mathUI = FindObjectOfType<MathProblemUI>();
+            Debug.Log(mathUI);
+             
             mathUI.ShowMathProblem(this);
         }
     }
