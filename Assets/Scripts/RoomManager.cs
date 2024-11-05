@@ -30,7 +30,7 @@ public class RoomManager : MonoBehaviour
     private void InitializeScenePositions()
     {
         sceneInitialPositions.Add("SampleScene", new Vector3(2.49f, -3.24f, 0f));
-        sceneInitialPositions.Add("Level1", new Vector3(-11.68f, 9.095887f, 0f));
+        sceneInitialPositions.Add("Level1", new Vector3(-8.19f, 9.095887f, 0f));
         // 添加其他关卡的初始位置
         sceneInitialPositions.Add("Tutorial", new Vector3(-10.1f, 13.77f, 0f));
 

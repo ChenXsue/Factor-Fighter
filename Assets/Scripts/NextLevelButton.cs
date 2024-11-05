@@ -39,6 +39,15 @@ public class NextLevelButton : MonoBehaviour
 
     private void LoadNextLevel()
     {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        if (currentSceneName == "Tutorial")
+        {
+            nextLevelName = "SampleScene";
+        }
+        else
+        {
+            nextLevelName = "Level1";
+        }
         Debug.Log($"Loading next level: {nextLevelName}");
         SceneManager.LoadScene(nextLevelName);
     }
