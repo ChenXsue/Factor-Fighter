@@ -19,7 +19,7 @@
             {
                 "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "buildOutputDirList",
-                "value": "{\"m_Value\":\"/Users/chenxu/Unity Project/Factor-Fighter-develop/webgl7;/Users/chenxu/Unity Project/Factor-Fighter-develop/WebGL Builds;/Users/chenxu/Unity Project/Factor-Fighter-Liqian/WebGL6;/Users/chenxu/Unity Project/Factor-Fighter-Liqian/WebGL5;/Users/chenxu/Unity Project/Factor-Fighter-Liqian/WebGL4;/Users/chenxu/Unity Project/Factor-Fighter-Liqian/WebGL3;/Users/chenxu/Unity Project/Factor-Fighter-Liqian/WebGL2;/Users/chenxu/Unity Project/Factor-Fighter-Liqian/WebGL Builds;/Users/yuchenchen/Desktop/csci526/Factor Fighter/Factor_F-webgl 2;/Users/yuchenchen/Desktop/csci526/Factor Fighter/Factor_F-webgl\"}"
+                "value": "{\"m_Value\":\"/Users/chenxu/Unity Project/Factor-Fighter-Liqian/WebGL6;/Users/chenxu/Unity Project/Factor-Fighter-Liqian/WebGL5;/Users/chenxu/Unity Project/Factor-Fighter-Liqian/WebGL4;/Users/chenxu/Unity Project/Factor-Fighter-Liqian/WebGL3;/Users/chenxu/Unity Project/Factor-Fighter-Liqian/WebGL2;/Users/chenxu/Unity Project/Factor-Fighter-Liqian/WebGL Builds;/Users/yuchenchen/Desktop/csci526/Factor Fighter/Factor_F-webgl 2;/Users/yuchenchen/Desktop/csci526/Factor Fighter/Factor_F-webgl;;\"}"
             }
         ]
     }

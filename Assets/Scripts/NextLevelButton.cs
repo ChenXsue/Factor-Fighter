@@ -32,6 +32,15 @@ public class NextLevelButton : MonoBehaviour
         {
             Debug.LogWarning("Operator inventory is not assigned!");
         }
+        if (HealthManager.Instance != null)
+        {
+            HealthManager.Instance.ResetHealth();
+            Debug.Log("Health reset to maximum.");
+        }
+        else
+        {
+            Debug.LogWarning("HealthManager instance is not available!");
+        }
 
         // 加载下一关
         LoadNextLevel();
