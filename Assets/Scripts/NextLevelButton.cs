@@ -32,6 +32,15 @@ public class NextLevelButton : MonoBehaviour
         {
             Debug.LogWarning("Operator inventory is not assigned!");
         }
+        if (HealthManager.Instance != null)
+        {
+            HealthManager.Instance.ResetHealth();
+            Debug.Log("Health reset to maximum.");
+        }
+        else
+        {
+            Debug.LogWarning("HealthManager instance is not available!");
+        }
 
         // 加载下一关
         LoadNextLevel();
@@ -39,6 +48,15 @@ public class NextLevelButton : MonoBehaviour
 
     private void LoadNextLevel()
     {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        if (currentSceneName == "Tutorial")
+        {
+            nextLevelName = "SampleScene";
+        }
+        else
+        {
+            nextLevelName = "Level1";
+        }
         Debug.Log($"Loading next level: {nextLevelName}");
         SceneManager.LoadScene(nextLevelName);
     }
