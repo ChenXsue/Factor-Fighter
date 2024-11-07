@@ -1983,6 +1983,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7148401445655507246, guid: 857b210af79c942c7bdd1a3caf3030ff,
+        type: 3}
+      propertyPath: m_text
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8240771098374526057, guid: 857b210af79c942c7bdd1a3caf3030ff,
         type: 3}
       propertyPath: m_AnchoredPosition.x
