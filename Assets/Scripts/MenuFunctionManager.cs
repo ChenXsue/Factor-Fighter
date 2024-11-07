@@ -84,6 +84,11 @@ public class MenuFunctionManager : MonoBehaviour
             // 如果在第一关，重新加载SampleScene
             sceneToLoad = "SampleScene";
         }
+        else if (currentSceneName == "Tutorial")
+        {
+            // 如果在第一关，重新加载SampleScene
+            sceneToLoad = "Tutorial";
+        }
         else
         {
             // 如果在其他场景（比如主菜单），默认加载第一关
