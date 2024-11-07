@@ -77,7 +77,7 @@ public class MenuFunctionManager : MonoBehaviour
         if (currentSceneName.StartsWith("Level"))
         {
             // 如果当前在Level1-4中的任意一关，都重新加载Level1
-            sceneToLoad = "Level1";
+            sceneToLoad = "Level2Combined";
         }
         else if (currentSceneName == "SampleScene")
         {
@@ -119,19 +119,26 @@ public class MenuFunctionManager : MonoBehaviour
     }
     private void ResetAllGameState()
     {
-        // 重置房间状态
-        if (RoomManager.Instance != null)
+        // // 重置房间状态
+        // if (RoomManager.Instance != null)
+        // {
+        //     RoomManager.Instance.ResetGame();
+        //     Debug.Log("Reset room state: doors and collected numbers cleared");
+        // }
+
+        RoomManager roomManager = FindObjectOfType<RoomManager>();
+        if (roomManager != null)
         {
-            RoomManager.Instance.ResetGame();
+            roomManager.ResetGame();
             Debug.Log("Reset room state: doors and collected numbers cleared");
         }
 
-        // 重置敌人状态
-        if (EnemyManager.Instance != null)
-        {
-            EnemyManager.Instance.ResetEnemies();
-            Debug.Log("Reset enemy state: all enemies restored");
-        }
+        // // 重置敌人状态
+        // if (EnemyManager.Instance != null)
+        // {
+        //     EnemyManager.Instance.ResetEnemies();
+        //     Debug.Log("Reset enemy state: all enemies restored");
+        // }
 
         // 重置方块状态
         if (CubeManager.Instance != null)
