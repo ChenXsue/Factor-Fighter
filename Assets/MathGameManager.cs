@@ -15,7 +15,7 @@ public class MathGameManager : MonoBehaviour
         // Get the current level name dynamically
         string levelName = SceneManager.GetActiveScene().name;
         
-        // Start the timer for the current level
+        // Start the timer for the current level    
         GameTimer.Instance.StartTimer(levelName);
 
     }
