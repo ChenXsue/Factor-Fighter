@@ -14,6 +14,8 @@ public class MathProblemUI : MonoBehaviour
     private BasicEnemy currentBasicEnemy;
     private RoomManager roomManager;
 
+    [SerializeField] public HealthManager healthManager;
+
     private void Start()
     {
         roomManager = FindObjectOfType<RoomManager>();
@@ -66,6 +68,7 @@ public class MathProblemUI : MonoBehaviour
                 }
                 else
                 {
+                    healthManager.TakeDamage(1);
                     mathProblemPanel.SetActive(false);
                     responsePanel.SetActive(true);
                 }
@@ -79,6 +82,7 @@ public class MathProblemUI : MonoBehaviour
                 }
                 else
                 {
+                    healthManager.TakeDamage(1);
                     mathProblemPanel.SetActive(false);
                     responsePanel.SetActive(true);
                 }
@@ -92,6 +96,7 @@ public class MathProblemUI : MonoBehaviour
                 }
                 else
                 {
+                    healthManager.TakeDamage(1);
                     mathProblemPanel.SetActive(false);
                     responsePanel.SetActive(true);
                 }
@@ -107,6 +112,7 @@ public class MathProblemUI : MonoBehaviour
             else
             {
                 Debug.Log("wrong");
+                //ResumeGame();
             }
         }
         else

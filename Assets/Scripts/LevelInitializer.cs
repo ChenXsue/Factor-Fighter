@@ -7,9 +7,9 @@ public class LevelInitializer : MonoBehaviour
 
     void Start()
     {
-        if (resetHealthOnStart && HealthManager.Instance != null)
-        {
-            HealthManager.Instance.ResetHealth();
-        }
+        // if (resetHealthOnStart && HealthManager.Instance != null)
+        // {
+        //     HealthManager.Instance.ResetHealth();
+        // }
     }
 }
