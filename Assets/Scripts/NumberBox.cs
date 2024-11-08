@@ -3,23 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-
-// NumberBox.cs - 挂载在所有可拾取的数字箱子上
-public class NumberBox : MonoBehaviour
+public class NumberBox : MonoBehaviour 
 {
     [Header("Box Settings")]
     public int number;                    // 这个箱子代表的数字
     public float detectionRange = 2f;     // 玩家可以拾取的距离
     public TextMeshPro numberText;        // 显示数字的TMP组件
-
+    
     private Transform player;             // 玩家的Transform组件
     private bool isInRange = false;       // 玩家是否在范围内
     private SpriteRenderer spriteRenderer;// 箱子的渲染器组件
+    private NumberCarrier carrier;        // 缓存NumberCarrier引用
 
     void Start()
     {
         // 初始化
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        if (player != null)
+        {
+            carrier = player.GetComponent<NumberCarrier>();
+        }
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.color = Color.yellow;  // 设置箱子为黄色
         numberText.enabled = false;           // 初始时隐藏数字
@@ -28,6 +31,8 @@ public class NumberBox : MonoBehaviour
 
     void Update()
     {
+        if (player == null || carrier == null) return;
+
         // 计算与玩家的距离
         float distanceToPlayer = Vector2.Distance((Vector2)transform.position, (Vector2)player.position);
         
@@ -38,12 +43,8 @@ public class NumberBox : MonoBehaviour
             {
                 isInRange = true;
                 numberText.enabled = true;
-            }
-
-            // 在范围内按空格键拾取
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                PickUp();
+                // 通知carrier当前可拾取的箱子
+                carrier.SetCurrentBox(this);
             }
         }
         else
@@ -52,18 +53,15 @@ public class NumberBox : MonoBehaviour
             {
                 isInRange = false;
                 numberText.enabled = false;
+                // 如果离开范围，通知carrier清除当前箱子引用
+                carrier.SetCurrentBox(null);
             }
         }
     }
 
-    void PickUp()
+    public void PickUp() 
     {
-        // 获取玩家的NumberCarrier组件并尝试拾取
-        NumberCarrier carrier = player.GetComponent<NumberCarrier>();
-        if (carrier != null && !carrier.IsCarrying())
-        {
-            carrier.PickUpNumber(number);
-            Destroy(gameObject);  // 销毁箱子
-        }
+        carrier.PickUpNumber(number);
+        Destroy(gameObject);
     }
 }

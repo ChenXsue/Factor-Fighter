@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Scripts/NumberBox.cs.meta
 guid: caa57a0d48f344c4687ce4b7c28f7fd3
-========
-guid: 514230e403ca5408e9f1203b55409e33
->>>>>>>> origin/develop:Assets/Scripts/CameraManager.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

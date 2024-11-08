@@ -2,18 +2,60 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-// NumberCarrier.cs - 挂载在玩家对象上
-public class NumberCarrier : MonoBehaviour
+
+public class NumberCarrier : MonoBehaviour 
 {
     [Header("Visual Settings")]
     public GameObject numberCirclePrefab;     // 头顶圆圈的预制体
-
-    public GameObject boxPrefab;              // 新增：箱子预制体
+    public GameObject boxPrefab;              // 箱子预制体
     public Vector2 circleOffset = new Vector2(0, 1f);  // 圆圈在头顶的偏移位置
     
     private GameObject currentNumberCircle;    // 当前头顶的圆圈实例
     private int carriedNumber = 0;            // 当前携带的数字
     private bool isCarrying = false;          // 是否正在携带数字
+    private NumberBox currentBox;             // 当前可拾取的箱子
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (!isCarrying && currentBox != null)
+            {
+                // 拾取箱子
+                currentBox.PickUp();
+            }
+            else if (isCarrying)
+            {
+                // 检查是否在任何方程框范围内
+                TrapSystem[] trapSystems = FindObjectsOfType<TrapSystem>();
+                bool placedInEquation = false;
+
+                foreach (TrapSystem trap in trapSystems)
+                {
+                    if (trap.TryPlaceNumber(carriedNumber))
+                    {
+                        placedInEquation = true;
+                        break;
+                    }
+                }
+
+                if (!placedInEquation)
+                {
+                    // 如果不在方程框范围内，放下新箱子
+                    DropBox();
+                }
+
+                // 清除头顶的数字圆圈
+                ClearNumberCircle();
+            }
+        }
+    }
+
+    // 设置当前可拾取的箱子
+    public void SetCurrentBox(NumberBox box)
+    {
+        currentBox = box;
+    }
 
     // 拾取数字的方法
     public void PickUpNumber(int number)
@@ -45,34 +87,6 @@ public class NumberCarrier : MonoBehaviour
         if (circleRenderer != null)
         {
             circleRenderer.color = Color.yellow;
-        }
-    }
-
-    void Update()
-    {
-        if (isCarrying && Input.GetKeyDown(KeyCode.Space))
-        {
-            // 检查是否在任何方程框范围内
-            TrapSystem[] trapSystems = FindObjectsOfType<TrapSystem>();
-            bool placedInEquation = false;
-
-            foreach (TrapSystem trap in trapSystems)
-            {
-                if (trap.TryPlaceNumber(carriedNumber))
-                {
-                    placedInEquation = true;
-                    break;
-                }
-            }
-
-            if (!placedInEquation)
-            {
-                // 如果不在方程框范围内，放下新箱子
-                DropBox();
-            }
-
-            // 清除头顶的数字圆圈
-            ClearNumberCircle();
         }
     }
 

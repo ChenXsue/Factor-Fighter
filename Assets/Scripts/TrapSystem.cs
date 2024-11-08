@@ -84,6 +84,8 @@ public class TrapSystem : MonoBehaviour
         // 销毁方程框
         Destroy(equationBox);
         Destroy(gameObject);
+        NumberSO numberSO = NumberManager.instance.GetNumber(expectedResult);
+        NumberInventoryManager.instance.AddNumber(numberSO);
     }
 
     // // 在场景视图中显示检测范围
