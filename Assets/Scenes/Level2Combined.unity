@@ -897,6 +897,12 @@ MonoBehaviour:
   pairedDoorId: 1
   targetRoomNumber: 1
   associatedNumber: 2
+--- !u!4 &81390725 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 42604617605667649, guid: f47c1c60273994d82afa2945f8108743,
+    type: 3}
+  m_PrefabInstance: {fileID: 698922557}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &137475950
 GameObject:
   m_ObjectHideFlags: 0
@@ -1384,6 +1390,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c2f9ec516e3847819a0bc66d11b8f2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &337973269 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 42604617605667649, guid: f47c1c60273994d82afa2945f8108743,
+    type: 3}
+  m_PrefabInstance: {fileID: 78794607}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &367607364
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2599,6 +2611,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5961416660260357510, guid: 7f8a4858c33ca43d5bdc6ceaa32f336b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7793802354130516148, guid: 7f8a4858c33ca43d5bdc6ceaa32f336b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -3219,10 +3236,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorTeleportPoints:
   - doorId: 1
-    spawnPoint: {fileID: 0}
+    spawnPoint: {fileID: 337973269}
     targetRoom: 2
   - doorId: 2
-    spawnPoint: {fileID: 0}
+    spawnPoint: {fileID: 81390725}
     targetRoom: 1
   - doorId: 3
     spawnPoint: {fileID: 515772078}
