@@ -16,6 +16,7 @@ public class Number_Wall : MonoBehaviour
     void Start()
     {
         mathProblem = "What is ?";
+        mathProblemPanel.SetActive(false);
         // mathProblem = givenSide.ToString() + " * ? = " + areaSize.ToString();
     }
 
@@ -25,11 +26,11 @@ public class Number_Wall : MonoBehaviour
         {
             PauseGame();
             Debug.Log("Player has reached the number wall!");
-        }
 
-        mathProblemPanel.SetActive(true);
-        operatorsPanel.SetActive(true);
-        input.SetActive(true);
+            mathProblemPanel.SetActive(true);
+            operatorsPanel.SetActive(true);
+            input.SetActive(true);
+        }
     }
 
     public static void PauseGame()
