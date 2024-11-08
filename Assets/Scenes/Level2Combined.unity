@@ -5629,6 +5629,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8854348539792848645, guid: 03f5bff3ef54448abb070ba56200999a,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2091241994017011291, guid: 20e6b79514e294a76951f93a29db10f9,
         type: 3}
       propertyPath: waypoints.Array.size
