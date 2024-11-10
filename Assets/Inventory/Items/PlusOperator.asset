@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: PlusOperator
   m_EditorClassIdentifier: 
   itemName: Plus
-  count: 1
+  count: 0
   operatorChar: 43

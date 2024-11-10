@@ -6,15 +6,21 @@ using System.Collections.Generic;
 
 public class InputManager : MonoBehaviour
 {
+    [Header("UI References")]
     public TMP_InputField inputField;
+    public TMP_InputField numberWallInput;
     public GameObject invisibleObject;
+    public GameObject numberWallPanel;
+    public GameObject numberWall1;
+    public GameObject numberWall2;
+    public GameObject numberWall3;
     public Transform operatorSlotsParent;
     public Transform numberSlotsParent;
     public Button backspaceButton;
     
     private List<WeakReference<OperatorSlot>> operatorSlots = new List<WeakReference<OperatorSlot>>();
     private List<WeakReference<NumberSlot>> numberSlots = new List<WeakReference<NumberSlot>>();
-    private float updateInterval = 1f;
+    private float updateInterval = 0.1f;
     private float lastUpdateTime;
     
     [Header("Operator Presets")]
@@ -22,6 +28,24 @@ public class InputManager : MonoBehaviour
     [SerializeField] private OperatorSO minusOperator;
     [SerializeField] private OperatorSO multipleOperator;
     [SerializeField] private OperatorSO divideOperator;
+
+
+    public static InputManager Instance { get; private set; }
+
+    private void Awake()
+    {
+        // 确保只有一个实例
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    
 
     private void Start()
     {
@@ -35,7 +59,7 @@ public class InputManager : MonoBehaviour
         if (backspaceButton != null)
         {
             Debug.Log("Backspace button reference found");
-            backspaceButton.onClick.AddListener(OnBackspaceClicked);
+            //backspaceButton.onClick.AddListener(OnBackspaceClicked);
             Debug.Log("Backspace button listener added");
         }
         else
@@ -43,22 +67,29 @@ public class InputManager : MonoBehaviour
             Debug.LogError("Backspace button reference is missing!");
         }
 
-        UpdateSlots();
-        lastUpdateTime = Time.time;
+        UpdateSlots(); // 初始化时更新一次
     }
 
     private void Update()
     {
-        UpdateSlotsInteractability();
-    
-        if (Time.unscaledTime - lastUpdateTime >= updateInterval)
+        if (Time.time - lastUpdateTime >= updateInterval)
         {
-            UpdateSlots();
-            lastUpdateTime = Time.unscaledTime;
+            lastUpdateTime = Time.time;
+
+            if (invisibleObject != null && invisibleObject.activeSelf)
+            {
+                UpdateNumberSlots();
+            }
         }
     }
 
-    private void UpdateSlots()
+
+    private void OnEnable()
+    {
+        UpdateSlots(); // 启用时更新
+    }
+
+    public void UpdateSlots()
     {
         UpdateOperatorSlots();
         UpdateNumberSlots();
@@ -83,7 +114,7 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    private void UpdateNumberSlots()
+    public void UpdateNumberSlots()
     {
         if (numberSlotsParent == null) return;
 
@@ -105,34 +136,6 @@ public class InputManager : MonoBehaviour
     private void CleanupDestroyedSlots<T>(List<WeakReference<T>> slots) where T : class
     {
         slots.RemoveAll(weakRef => !weakRef.TryGetTarget(out _));
-    }
-
-    private void UpdateSlotsInteractability()
-    {
-        if (invisibleObject == null) return;
-
-        bool slotsInteractable = invisibleObject.activeSelf;
-        
-        foreach (var weakRef in operatorSlots)
-        {
-            if (weakRef.TryGetTarget(out OperatorSlot slot) && slot != null && slot.button != null)
-            {
-                slot.button.interactable = slotsInteractable;
-            }
-        }
-
-        foreach (var weakRef in numberSlots)
-        {
-            if (weakRef.TryGetTarget(out NumberSlot slot) && slot != null && slot.button != null)
-            {
-                slot.button.interactable = slotsInteractable;
-            }
-        }
-
-        if (backspaceButton != null)
-        {
-            backspaceButton.interactable = slotsInteractable;
-        }
     }
 
     private void OnOperatorSlotClick(OperatorSlot slot)
@@ -179,6 +182,83 @@ public class InputManager : MonoBehaviour
 
     private void OnNumberSlotClick(NumberSlot slot)
     {
+        // Number Wall Check
+        if (numberWallPanel == null || !numberWallPanel.activeSelf)
+        {
+            Debug.Log("Number Wall is not active");
+            return;
+        } else {
+            Debug.Log("Number Wall is active");
+            if (slot == null || numberWallInput == null) return;
+
+            Debug.Log("Number slot clicked for number wall");
+            // 检查当前输入的最后一个token
+            string[] tokens = numberWallInput.text.Trim().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            if (tokens.Length > 0)
+            {
+                string lastToken = tokens[tokens.Length - 1];
+                // 如果最后一个token是数字，不允许继续输入数字
+                if (int.TryParse(lastToken, out _))
+                {
+                    Debug.Log("Cannot input number after number, please input an operator first");
+                    return;
+                }
+            }
+
+            string number = slot.numberText.text;
+            if (!string.IsNullOrEmpty(numberWallInput.text) && !numberWallInput.text.EndsWith(" "))
+            {
+                numberWallInput.text += " ";
+            }
+            numberWallInput.text += number + " ";
+
+            NumberSO numberToRemove = NumberManager.instance.GetNumber(int.Parse(number));
+
+            if (numberToRemove != null)
+            {
+                NumberInventoryManager.instance.myNumberBag.RemoveItem(numberToRemove);
+                NumberInventoryManager.instance.RefreshNumberInventory();
+            }
+        }
+
+
+        // Final door number check
+        if (invisibleObject == null || !invisibleObject.activeSelf) {
+            return;
+        } else {
+            if (slot == null || inputField == null) return;
+
+            // 检查当前输入的最后一个token
+            string[] tokens = inputField.text.Trim().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            if (tokens.Length > 0)
+            {
+                string lastToken = tokens[tokens.Length - 1];
+                // 如果最后一个token是数字，不允许继续输入数字
+                if (int.TryParse(lastToken, out _))
+                {
+                    Debug.Log("Cannot input number after number, please input an operator first");
+                    return;
+                }
+            }
+
+            string number = slot.numberText.text;
+            if (!string.IsNullOrEmpty(inputField.text) && !inputField.text.EndsWith(" "))
+            {
+                inputField.text += " ";
+            }
+            inputField.text += number + " ";
+
+            NumberSO numberToRemove = NumberManager.instance.GetNumber(int.Parse(number));
+
+            if (numberToRemove != null)
+            {
+                NumberInventoryManager.instance.myNumberBag.RemoveItem(numberToRemove);
+                NumberInventoryManager.instance.RefreshNumberInventory();
+            }
+        }
+        
+        /*
+        // Final door number check
         if (invisibleObject == null || !invisibleObject.activeSelf) return;
         if (slot == null || inputField == null) return;
 
@@ -209,30 +289,34 @@ public class InputManager : MonoBehaviour
             NumberInventoryManager.instance.myNumberBag.RemoveItem(numberToRemove);
             NumberInventoryManager.instance.RefreshNumberInventory();
         }
+        */
     }
 
-    public void OnBackspaceClicked()
+    public void NumberWallSubmit()
     {
-        Debug.Log("Backspace button clicked");
 
-        if (string.IsNullOrEmpty(inputField.text))
+    }
+
+    public void BackspaceSlot(TMP_InputField input)
+    {
+        if (string.IsNullOrEmpty(input.text))
         {
             Debug.Log("Input field is empty, nothing to backspace");
             return;
         }
 
-        string[] tokens = inputField.text.Trim().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+        string[] tokens = input.text.Trim().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
         if (tokens.Length == 0) return;
 
         string lastToken = tokens[tokens.Length - 1];
 
-        if (inputField.text.EndsWith(" "))
+        if (input.text.EndsWith(" "))
         {
-            inputField.text = inputField.text.Substring(0, inputField.text.Length - lastToken.Length - 1);
+            input.text = input.text.Substring(0, input.text.Length - lastToken.Length - 1);
         }
         else
         {
-            inputField.text = inputField.text.Substring(0, inputField.text.Length - lastToken.Length);
+            input.text = input.text.Substring(0, input.text.Length - lastToken.Length);
         }
 
         if (int.TryParse(lastToken, out int number))
@@ -255,6 +339,9 @@ public class InputManager : MonoBehaviour
                 Debug.Log($"Added operator {lastToken} back to inventory");
             }
         }
+
+        // 在 backspace 后更新
+        UpdateSlots();
     }
 
     public OperatorSO GetOperatorPreset(char operatorChar)
@@ -282,7 +369,9 @@ public class InputManager : MonoBehaviour
 
     public void OnInvisibleObjectStateChanged()
     {
-        Debug.Log("OnInvisibleObjectStateChanged called");
-        UpdateSlotsInteractability();
+        if (invisibleObject != null && invisibleObject.activeSelf)
+        {
+            UpdateSlots(); // 只在面板显示时更新
+        }
     }
 }
