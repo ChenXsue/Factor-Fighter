@@ -10,7 +10,10 @@ public class InputManager : MonoBehaviour
     public TMP_InputField inputField;
     public TMP_InputField numberWallInput;
     public GameObject invisibleObject;
-    public GameObject numberWallObject;
+    public GameObject numberWallPanel;
+    public GameObject numberWall1;
+    public GameObject numberWall2;
+    public GameObject numberWall3;
     public Transform operatorSlotsParent;
     public Transform numberSlotsParent;
     public Button backspaceButton;
@@ -180,7 +183,7 @@ public class InputManager : MonoBehaviour
     private void OnNumberSlotClick(NumberSlot slot)
     {
         // Number Wall Check
-        if (numberWallObject == null || !numberWallObject.activeSelf)
+        if (numberWallPanel == null || !numberWallPanel.activeSelf)
         {
             Debug.Log("Number Wall is not active");
             return;
@@ -287,6 +290,11 @@ public class InputManager : MonoBehaviour
             NumberInventoryManager.instance.RefreshNumberInventory();
         }
         */
+    }
+
+    public void NumberWallSubmit()
+    {
+
     }
 
     public void BackspaceSlot(TMP_InputField input)
