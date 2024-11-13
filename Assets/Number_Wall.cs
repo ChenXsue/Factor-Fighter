@@ -6,10 +6,11 @@ using UnityEngine.UI;
 
 public class Number_Wall : MonoBehaviour 
 {
+    public static Number_Wall instance;
     public static bool isNumberWallActive = false;
     public int areaSize;
     public int givenSide;
-    public string answer;
+    public int answer;
     public GameObject mathProblemPanel;
     public GameObject operatorsPanel;
     public GameObject input;
@@ -17,12 +18,16 @@ public class Number_Wall : MonoBehaviour
     public static bool isGamePaused = false;
     //private string mathProblem;
 
+    void Awake()
+    {
+        instance = this;
+    }
+
     void Start()
     {
         //mathProblem = "What is ?";
         mathProblemPanel.SetActive(false);
-        int answer_int = areaSize / givenSide;
-        answer = answer_int.ToString();
+        answer = areaSize / givenSide;
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -35,24 +40,24 @@ public class Number_Wall : MonoBehaviour
 
             mathProblemPanel.SetActive(true);
             operatorsPanel.SetActive(true);
-            input.SetActive(true);
         }
     }
 
-    public void CheckAnswer()
+    public bool CheckAnswer()
     {
-        if (inputField.text == answer)
+        inputField.text = inputField.text.Trim();
+        if (inputField.text == answer.ToString())
         {
-            Debug.Log("Correct answer!");
-            ResumeGame();
+            Debug.Log("Number Wall Correct answer!");
             mathProblemPanel.SetActive(false);
-            operatorsPanel.SetActive(false);
-            input.SetActive(false);
-            isNumberWallActive = false;
+            //operatorsPanel.SetActive(false);
+            ResumeGame();
+            return true;
         }
         else
         {
-            Debug.Log("Incorrect answer!");
+            Debug.Log("Number Wall Incorrect answer!");
+            return false;
         }
     }
 

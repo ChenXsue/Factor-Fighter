@@ -14,6 +14,7 @@ public class InputManager : MonoBehaviour
     public GameObject numberWall1;
     public GameObject numberWall2;
     public GameObject numberWall3;
+    public GameObject numberWallIncorrect;
     public Transform operatorSlotsParent;
     public Transform numberSlotsParent;
     public Button backspaceButton;
@@ -186,7 +187,6 @@ public class InputManager : MonoBehaviour
         if (numberWallPanel == null || !numberWallPanel.activeSelf)
         {
             Debug.Log("Number Wall is not active");
-            return;
         } else {
             Debug.Log("Number Wall is active");
             if (slot == null || numberWallInput == null) return;
@@ -200,7 +200,7 @@ public class InputManager : MonoBehaviour
                 // 如果最后一个token是数字，不允许继续输入数字
                 if (int.TryParse(lastToken, out _))
                 {
-                    Debug.Log("Cannot input number after number, please input an operator first");
+                    Debug.Log("Cannot input number after number");
                     return;
                 }
             }
@@ -256,48 +256,35 @@ public class InputManager : MonoBehaviour
                 NumberInventoryManager.instance.RefreshNumberInventory();
             }
         }
-        
-        /*
-        // Final door number check
-        if (invisibleObject == null || !invisibleObject.activeSelf) return;
-        if (slot == null || inputField == null) return;
-
-        // 检查当前输入的最后一个token
-        string[] tokens = inputField.text.Trim().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-        if (tokens.Length > 0)
-        {
-            string lastToken = tokens[tokens.Length - 1];
-            // 如果最后一个token是数字，不允许继续输入数字
-            if (int.TryParse(lastToken, out _))
-            {
-                Debug.Log("Cannot input number after number, please input an operator first");
-                return;
-            }
-        }
-
-        string number = slot.numberText.text;
-        if (!string.IsNullOrEmpty(inputField.text) && !inputField.text.EndsWith(" "))
-        {
-            inputField.text += " ";
-        }
-        inputField.text += number + " ";
-
-        NumberSO numberToRemove = NumberManager.instance.GetNumber(int.Parse(number));
-
-        if (numberToRemove != null)
-        {
-            NumberInventoryManager.instance.myNumberBag.RemoveItem(numberToRemove);
-            NumberInventoryManager.instance.RefreshNumberInventory();
-        }
-        */
     }
 
     public void NumberWallSubmit()
     {
+        bool result = false;
+        if (numberWall1 != null)
+        {
+            Number_Wall numberWallInstance = numberWall1.GetComponent<Number_Wall>();
+            result = numberWallInstance.CheckAnswer();
+            if (result)
+            {
+                NumberSO numberToAdd = NumberManager.instance.GetNumber(numberWallInstance.areaSize);
+                if (numberToAdd != null)
+                {
+                    NumberInventoryManager.instance.myNumberBag.AddItem(numberToAdd);
+                    NumberInventoryManager.instance.RefreshNumberInventory();
+                    Debug.Log($"Number {numberWallInstance.areaSize} added to inventory");
+                }
 
+                numberWall1.SetActive(false);
+            }
+            else
+            {
+                numberWallIncorrect.SetActive(true);
+            }
+        }
     }
 
-    public void BackspaceSlot(TMP_InputField input)
+    public void NumberWallBackspace(TMP_InputField input)
     {
         if (string.IsNullOrEmpty(input.text))
         {

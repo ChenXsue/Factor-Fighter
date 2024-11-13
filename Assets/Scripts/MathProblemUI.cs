@@ -69,7 +69,6 @@ public class MathProblemUI : MonoBehaviour
                 else
                 {
                     healthManager.TakeDamage(1);
-                    mathProblemPanel.SetActive(false);
                     responsePanel.SetActive(true);
                 }
             }
@@ -83,7 +82,6 @@ public class MathProblemUI : MonoBehaviour
                 else
                 {
                     healthManager.TakeDamage(1);
-                    mathProblemPanel.SetActive(false);
                     responsePanel.SetActive(true);
                 }
             }
@@ -97,14 +95,12 @@ public class MathProblemUI : MonoBehaviour
                 else
                 {
                     healthManager.TakeDamage(1);
-                    mathProblemPanel.SetActive(false);
                     responsePanel.SetActive(true);
                 }
             }
 
             if (isCorrect)
             {
-                mathProblemPanel.SetActive(false);
                 Debug.Log("correct");
                 mathProblemPanel.SetActive(false);
                 ResumeGame();
