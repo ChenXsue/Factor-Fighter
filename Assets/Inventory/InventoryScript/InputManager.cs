@@ -74,14 +74,10 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
-        if (Time.time - lastUpdateTime >= updateInterval)
+        if (Time.unscaledTime - lastUpdateTime >= updateInterval)
         {
-            lastUpdateTime = Time.time;
-
-            if (invisibleObject != null && invisibleObject.activeSelf)
-            {
-                UpdateNumberSlots();
-            }
+            UpdateSlots();
+            lastUpdateTime = Time.unscaledTime;
         }
     }
 
@@ -275,6 +271,7 @@ public class InputManager : MonoBehaviour
         {
             Number_Wall numberWallInstance = numberWall1.GetComponent<Number_Wall>();
             result = numberWallInstance.CheckAnswer();
+            //Debug.Log(numberWallInstance.areaSize);
             if (result)
             {
                 NumberSO numberToAdd = NumberManager.instance.GetNumber(numberWallInstance.areaSize);
@@ -284,7 +281,6 @@ public class InputManager : MonoBehaviour
                     NumberInventoryManager.instance.RefreshNumberInventory();
                     Debug.Log($"Number {numberWallInstance.areaSize} added to inventory");
                 }
-
                 numberWall1.SetActive(false);
             }
             else
