@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5bff5c25-2b33-41b1-bfa2-4181e779f8d2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Irene/MainMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Irene/MainMenu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Scenes/Level1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../Scenes/Level1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Scenes/Level1.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../Scenes/Level1.unity.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Scenes/Level2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../Scenes/Level2.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Scenes/Level2.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../Scenes/Level2.unity.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Scenes/Level2Combined.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Scenes/Level2Combined.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Scenes/Level3.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Scenes/Level3.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Scenes/Level4.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Scenes/Level4.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../Scenes/MainMenu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Scenes/SampleScene.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Scenes/SampleScene.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuFunctionManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MenuFunctionManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../../ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/../Inventory/InventoryScript/InputManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Irene/MainMenu.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameInitializer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameTimer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/HealthManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/HealthUIController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/MenuButtonController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TimerForLevel.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2olqB1LB4ML5xqftG9HignN8KI9" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/timer&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5bff5c25-2b33-41b1-bfa2-4181e779f8d2" name="Changes" comment="" />
+      <created>1731454372053</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1731454372053</updated>
+      <workItem from="1731454374661" duration="2289000" />
+      <workItem from="1731456767910" duration="69000" />
+      <workItem from="1731456863460" duration="45000" />
+      <workItem from="1731456916720" duration="3956000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+</project>

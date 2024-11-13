@@ -71,37 +71,37 @@ public class MenuFunctionManager : MonoBehaviour
         // 获取当前场景名称
         string currentSceneName = SceneManager.GetActiveScene().name;
         
-        // 根据当前场景决定要加载的场景
-        string sceneToLoad;
-        
-        if (currentSceneName.StartsWith("Level"))
-        {
-            // 如果当前在Level1-4中的任意一关，都重新加载Level1
-            sceneToLoad = "Level2Combined";
-        }
-        else if (currentSceneName == "SampleScene")
-        {
-            // 如果在第一关，重新加载SampleScene
-            sceneToLoad = "SampleScene";
-        }
-        else if (currentSceneName == "Tutorial")
-        {
-            // 如果在第一关，重新加载SampleScene
-            sceneToLoad = "Tutorial";
-        }
-        else
-        {
-            // 如果在其他场景（比如主菜单），默认加载第一关
-            sceneToLoad = "SampleScene";
-            Debug.LogWarning($"Unexpected scene name: {currentSceneName}, loading SampleScene as default.");
-        }
+        // // 根据当前场景决定要加载的场景
+        // string sceneToLoad;
+        //
+        // if (currentSceneName.StartsWith("Level"))
+        // {
+        //     // 如果当前在Level1-4中的任意一关，都重新加载Level1
+        //     sceneToLoad = "Level2Combined";
+        // }
+        // else if (currentSceneName == "SampleScene")
+        // {
+        //     // 如果在第一关，重新加载SampleScene
+        //     sceneToLoad = "SampleScene";
+        // }
+        // else if (currentSceneName == "Tutorial")
+        // {
+        //     // 如果在第一关，重新加载SampleScene
+        //     sceneToLoad = "Tutorial";
+        // }
+        // else
+        // {
+        //     // 如果在其他场景（比如主菜单），默认加载第一关
+        //     sceneToLoad = "SampleScene";
+        //     Debug.LogWarning($"Unexpected scene name: {currentSceneName}, loading SampleScene as default.");
+        // }
         
         // 加载选定的场景
-        SceneManager.LoadScene(sceneToLoad);
-        StartCoroutine(StartTimerAfterLoad(sceneToLoad));
+        SceneManager.LoadScene(currentSceneName);
+        StartCoroutine(StartTimerAfterLoad(currentSceneName));
 
         
-        Debug.Log($"Restarting game: Loading scene {sceneToLoad} from {currentSceneName}");
+        Debug.Log($"Restarting game: Loading scene {currentSceneName} from {currentSceneName}");
     }
 
     public void GoToMainMenu()
@@ -140,12 +140,12 @@ public class MenuFunctionManager : MonoBehaviour
         //     Debug.Log("Reset enemy state: all enemies restored");
         // }
 
-        // 重置方块状态
-        if (CubeManager.Instance != null)
-        {
-            CubeManager.Instance.ResetCubes();
-            Debug.Log("Reset cube state: all cubes restored");
-        }
+        // // 重置方块状态
+        // if (CubeManager.Instance != null)
+        // {
+        //     CubeManager.Instance.ResetCubes();
+        //     Debug.Log("Reset cube state: all cubes restored");
+        // }
 
         // 清空背包
         ClearInventories();
