@@ -47,6 +47,7 @@ public class RoomDoor : MonoBehaviour
                     mathUI.ShowMathProblem(this);
                     roomManager.PauseGame();
                 }
+                roomManager.TeleportPlayer(other.gameObject, doorId);
             }
             else
             {
