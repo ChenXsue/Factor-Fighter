@@ -76,6 +76,7 @@ public class MathGameManager : MonoBehaviour
         try
         {
             expression = expression.Replace("×", "*");
+            expression = expression.Replace("÷", "/");
             System.Data.DataTable table = new System.Data.DataTable();
             var result = table.Compute(expression, null).ToString();
 

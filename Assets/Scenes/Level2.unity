@@ -1435,7 +1435,7 @@ PrefabInstance:
         type: 3}
       propertyPath: operatorData
       value: 
-      objectReference: {fileID: 11400000, guid: 676709c5424274aaa9551a35912ca567,
+      objectReference: {fileID: 11400000, guid: 0c11bfb759d034dd295bab9e0aa21b12,
         type: 2}
     - target: {fileID: 2520770451323461613, guid: 03f5bff3ef54448abb070ba56200999a,
         type: 3}
@@ -1465,7 +1465,7 @@ PrefabInstance:
     - target: {fileID: 4269569555374214682, guid: 03f5bff3ef54448abb070ba56200999a,
         type: 3}
       propertyPath: m_text
-      value: +
+      value: "\xF7"
       objectReference: {fileID: 0}
     - target: {fileID: 7054039399170477479, guid: 03f5bff3ef54448abb070ba56200999a,
         type: 3}

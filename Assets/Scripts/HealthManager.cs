@@ -63,6 +63,7 @@ public class HealthManager : MonoBehaviour
         Debug.Log("Game Over");
         isGameOver = true;
         // 可以触发游戏结束事件，而不是直接加载场景
+        Time.timeScale = 0f;
         gameoverCanvas.SetActive(true);
         gameoverCanvas.GetComponentInChildren<TextMeshProUGUI>().text = "You have no health left!";
     }
