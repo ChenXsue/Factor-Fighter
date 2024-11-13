@@ -371,6 +371,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &337622742 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3471439300114463983, guid: 7f8a4858c33ca43d5bdc6ceaa32f336b,
+    type: 3}
+  m_PrefabInstance: {fileID: 872769234}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &373714192
 GameObject:
   m_ObjectHideFlags: 0
@@ -738,6 +744,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4797293264433379320}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &828720362 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6652798200144313548, guid: 87607525313354eaeade0e71b2594ffb,
+    type: 3}
+  m_PrefabInstance: {fileID: 8523211822521370627}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &858584372 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4150500709454284088, guid: 7f8a4858c33ca43d5bdc6ceaa32f336b,
@@ -775,7 +787,7 @@ PrefabInstance:
     - target: {fileID: 908103982152606614, guid: 7f8a4858c33ca43d5bdc6ceaa32f336b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: BackspaceSlot
+      value: NumberWallBackspace
       objectReference: {fileID: 0}
     - target: {fileID: 908103982152606614, guid: 7f8a4858c33ca43d5bdc6ceaa32f336b,
         type: 3}
@@ -1016,6 +1028,11 @@ PrefabInstance:
       objectReference: {fileID: 872769237}
     - target: {fileID: 5859411172943705655, guid: 7f8a4858c33ca43d5bdc6ceaa32f336b,
         type: 3}
+      propertyPath: trapSystemObject
+      value: 
+      objectReference: {fileID: 828720362}
+    - target: {fileID: 5859411172943705655, guid: 7f8a4858c33ca43d5bdc6ceaa32f336b,
+        type: 3}
       propertyPath: numberWallIncorrect
       value: 
       objectReference: {fileID: 652549625}
@@ -1052,7 +1069,7 @@ PrefabInstance:
     - target: {fileID: 6697760445821458731, guid: 7f8a4858c33ca43d5bdc6ceaa32f336b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: BackspaceSlot
+      value: NumberWallBackspace
       objectReference: {fileID: 0}
     - target: {fileID: 6697760445821458731, guid: 7f8a4858c33ca43d5bdc6ceaa32f336b,
         type: 3}
@@ -1880,7 +1897,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 872769234}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 337622742}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 179a9e6358dac4518b848fff1d7c2161, type: 3}
@@ -2344,12 +2361,12 @@ PrefabInstance:
     - target: {fileID: 6966459318455574835, guid: 2d00e6546e6764df48227ae3f42bfba4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.37
+      value: -4.35
       objectReference: {fileID: 0}
     - target: {fileID: 6966459318455574835, guid: 2d00e6546e6764df48227ae3f42bfba4,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.83317715
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6966459318455574835, guid: 2d00e6546e6764df48227ae3f42bfba4,
         type: 3}
@@ -3841,6 +3858,11 @@ PrefabInstance:
       propertyPath: m_HorizontalAlignment
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6236753702951097132, guid: 87607525313354eaeade0e71b2594ffb,
+        type: 3}
+      propertyPath: InputManagerObject
+      value: 
+      objectReference: {fileID: 337622742}
     - target: {fileID: 6236753702951097132, guid: 87607525313354eaeade0e71b2594ffb,
         type: 3}
       propertyPath: spikeTraps.Array.data[0]
