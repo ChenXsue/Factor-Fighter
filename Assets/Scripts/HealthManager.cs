@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class HealthManager : MonoBehaviour 
 {
@@ -9,6 +10,8 @@ public class HealthManager : MonoBehaviour
     public bool isGameOver = false;
 
     private HealthUIController healthUIController;
+
+	[SerializeField] public GameObject gameoverCanvas;
 
     void Awake()
     {
@@ -61,6 +64,10 @@ public class HealthManager : MonoBehaviour
         Debug.Log("Game Over");
         isGameOver = true;
         // 可以触发游戏结束事件，而不是直接加载场景
-        SceneManager.LoadScene("GameOverScene");
+        //SceneManager.LoadScene("GameOverScene");
+		gameoverCanvas.SetActive(true);
+		gameoverCanvas.GetComponentInChildren<TextMeshProUGUI>().text = "You have no health left!";
+
+		
     }
 }

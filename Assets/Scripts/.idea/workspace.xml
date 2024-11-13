@@ -5,22 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5bff5c25-2b33-41b1-bfa2-4181e779f8d2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../Irene/MainMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Irene/MainMenu.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Scenes/Level1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../Scenes/Level1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Scenes/Level1.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../Scenes/Level1.unity.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Scenes/Level2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../Scenes/Level2.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Scenes/Level2.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../Scenes/Level2.unity.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Scenes/Level2Combined.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Scenes/Level2Combined.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Scenes/Level3.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Scenes/Level3.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Scenes/Level4.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Scenes/Level4.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../Scenes/MainMenu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Scenes/SampleScene.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Scenes/SampleScene.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuFunctionManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MenuFunctionManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../../ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HealthManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HealthManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
