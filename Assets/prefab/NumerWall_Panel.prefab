@@ -348,7 +348,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: What is ?
+  m_text: What is the length of w?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1137,14 +1137,13 @@ GameObject:
   - component: {fileID: 8057677163784296762}
   - component: {fileID: 8926953862716379600}
   - component: {fileID: 4782540565773030454}
-  - component: {fileID: 6236281877190737411}
   m_Layer: 5
-  m_Name: NumerWall_Panel (1)
+  m_Name: NumerWall_Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8057677163784296762
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1203,27 +1202,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6236281877190737411
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6240151401097242004}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf9ba3265061c41898376e4aa00af9fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inputField: {fileID: 3607387087525829674}
-  invisibleObject: {fileID: 6240151401097242004}
-  numberSlotsParent: {fileID: 0}
-  backspaceButton: {fileID: 4579431979734588568}
-  submitButton: {fileID: 9108356582416521868}
-  returnButton: {fileID: 9209322029748479985}
-  targetNumber: 16
-  correctAnswer: 4
-  question: {fileID: 0}
 --- !u!1 &6752072235125923534
 GameObject:
   m_ObjectHideFlags: 0

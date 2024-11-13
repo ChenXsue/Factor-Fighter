@@ -267,30 +267,68 @@ public class InputManager : MonoBehaviour
     public void NumberWallSubmit()
     {
         bool result = false;
-        if (numberWall1 != null)
+        Number_Wall numberWallInstance;
+        Number_Wall collidingInstance = null;
+        GameObject numberWallObject = null;
+
+        // Check which number wall we are colliding
+        if (numberWall1 != null || numberWall2 != null || numberWall3 != null)
         {
-            Number_Wall numberWallInstance = numberWall1.GetComponent<Number_Wall>();
-            result = numberWallInstance.CheckAnswer();
-            //Debug.Log(numberWallInstance.areaSize);
-            if (result)
+            Debug.Log("Number Wall is active");
+            if (numberWall1 != null)
             {
-                NumberSO numberToAdd = NumberManager.instance.GetNumber(numberWallInstance.areaSize);
-                if (numberToAdd != null)
+                numberWallInstance = numberWall1.GetComponent<Number_Wall>();
+                if (numberWallInstance.isColliding)
                 {
-                    NumberInventoryManager.instance.myNumberBag.AddItem(numberToAdd);
-                    NumberInventoryManager.instance.RefreshNumberInventory();
-                    Debug.Log($"Number {numberWallInstance.areaSize} added to inventory");
+                    collidingInstance = numberWallInstance;
+                    numberWallObject = numberWall1;
                 }
-                numberWall1.SetActive(false);
             }
-            else
+            if (numberWall2 != null)
             {
-                numberWallIncorrect.SetActive(true);
+                numberWallInstance = numberWall2.GetComponent<Number_Wall>();
+                if (numberWallInstance.isColliding)
+                {
+                    collidingInstance = numberWallInstance;
+                    numberWallObject = numberWall2;
+                }
             }
+            if (numberWall3 != null)
+            {
+                numberWallInstance = numberWall3.GetComponent<Number_Wall>();
+                if (numberWallInstance.isColliding)
+                {
+                    collidingInstance = numberWallInstance;
+                    numberWallObject = numberWall3;
+                }
+            }
+        } else {
+            Debug.Log("Number Wall is not active");
+            return;
+        }
+        
+        result = collidingInstance.CheckAnswer();
+        if (result)
+        {
+            NumberSO numberToAdd = NumberManager.instance.GetNumber(collidingInstance.areaSize);
+            Debug.Log($"Number {collidingInstance.areaSize} added to inventory");
+            
+            if (numberToAdd != null)
+            {
+                NumberInventoryManager.instance.myNumberBag.AddItem(numberToAdd);
+                NumberInventoryManager.instance.RefreshNumberInventory();
+                Debug.Log($"Number {collidingInstance.areaSize} added to inventory");
+            }
+
+            numberWallObject.SetActive(false);
+        }
+        else
+        {
+            numberWallIncorrect.SetActive(true);
         }
     }
 
-    public void NumberWallBackspace(TMP_InputField input)
+    public void BackpaceSlot(TMP_InputField input)
     {
         if (string.IsNullOrEmpty(input.text))
         {
