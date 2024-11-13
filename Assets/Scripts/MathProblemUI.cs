@@ -13,14 +13,38 @@ public class MathProblemUI : MonoBehaviour
     private RoomDoor currentRoomDoor;
     private BasicEnemy currentBasicEnemy;
     private RoomManager roomManager;
-    private GameObject player; // 新增：引用玩家对象
+    private GameObject player;
     
     [SerializeField] public HealthManager healthManager;
     
     private void Start()
     {
         roomManager = FindObjectOfType<RoomManager>();
-        player = GameObject.FindGameObjectWithTag("Player"); // 新增：获取玩家引用
+        player = GameObject.FindGameObjectWithTag("Player");
+        
+        
+        if (answerInputField != null)
+        {
+            answerInputField.onSubmit.AddListener(OnInputFieldSubmit);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        
+        if (answerInputField != null)
+        {
+            answerInputField.onSubmit.RemoveListener(OnInputFieldSubmit);
+        }
+    }
+    
+    // 当在输入框中按下回车键时触发
+    private void OnInputFieldSubmit(string text)
+    {
+        if (mathProblemPanel.activeSelf)
+        {
+            CheckAnswer();
+        }
     }
     
     public void ShowMathProblem(Enemy enemy)

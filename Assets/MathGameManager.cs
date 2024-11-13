@@ -20,6 +20,14 @@ public class MathGameManager : MonoBehaviour
 
     }
 
+    void Update()
+    {
+        if (quizPanel.activeSelf && Input.GetKeyDown(KeyCode.Return))
+        {
+            CalculateResult();
+        }
+    }
+
     public void CalculateResult()
     {
         string expression = userInputField.text;

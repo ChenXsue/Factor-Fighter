@@ -79,6 +79,11 @@ public class InputManager : MonoBehaviour
             UpdateSlots();
             lastUpdateTime = Time.unscaledTime;
         }
+
+        if (numberWallPanel.activeSelf && Input.GetKeyDown(KeyCode.Return))
+        {
+            NumberWallSubmit();
+        }
     }
 
 
