@@ -15,8 +15,11 @@ public class Number_Wall : MonoBehaviour
     public GameObject operatorsPanel;
     public GameObject input;
     public TMP_InputField inputField;
+    public GameObject areaText;
+    public GameObject sideObject;
+    public GameObject areaObject;
     public static bool isGamePaused = false;
-    //private string mathProblem;
+    public bool isColliding = false;
 
     void Awake()
     {
@@ -38,6 +41,7 @@ public class Number_Wall : MonoBehaviour
             PauseGame();
             Debug.Log("Player has reached the number wall!");
 
+            isColliding = true;
             mathProblemPanel.SetActive(true);
             operatorsPanel.SetActive(true);
         }
@@ -49,8 +53,13 @@ public class Number_Wall : MonoBehaviour
         if (inputField.text == answer.ToString())
         {
             Debug.Log("Number Wall Correct answer!");
+            isColliding = false;
             mathProblemPanel.SetActive(false);
-            //operatorsPanel.SetActive(false);
+            areaText.SetActive(false);
+            sideObject.SetActive(false);
+            SpriteRenderer areaSprite = areaObject.GetComponent<SpriteRenderer>();
+            areaSprite.color = Color.white;
+            
             ResumeGame();
             return true;
         }
