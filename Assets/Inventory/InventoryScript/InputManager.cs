@@ -15,6 +15,7 @@ public class InputManager : MonoBehaviour
     public GameObject numberWall2;
     public GameObject numberWall3;
     public GameObject numberWallIncorrect;
+    public GameObject trapSystemObject;
     public Transform operatorSlotsParent;
     public Transform numberSlotsParent;
     public Button backspaceButton;
@@ -256,6 +257,15 @@ public class InputManager : MonoBehaviour
                 NumberInventoryManager.instance.RefreshNumberInventory();
             }
         }
+    }
+
+    public void TrapSolved()
+    {
+        TrapSystem trapSystem = trapSystemObject.GetComponent<TrapSystem>();
+        int expectedResult = trapSystem.expectedResult;
+        NumberSO numberSO = NumberManager.instance.GetNumber(expectedResult);
+        NumberInventoryManager.instance.myNumberBag.AddItem(numberSO);
+        NumberInventoryManager.instance.RefreshNumberInventory();
     }
 
     public void NumberWallSubmit()

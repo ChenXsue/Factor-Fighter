@@ -12,6 +12,8 @@ public class TrapSystem : MonoBehaviour
     public float detectionRange = 2f;     // 检测范围
     public int expectedResult = 4;        // 期望的结果（比如8/2=4）
 
+    public GameObject InputManagerObject;
+
     private Transform player;
     private bool isInRange = false;
     private bool isSolved = false;
@@ -84,8 +86,14 @@ public class TrapSystem : MonoBehaviour
         // 销毁方程框
         Destroy(equationBox);
         Destroy(gameObject);
+
+        InputManager inputManager = InputManagerObject.GetComponent<InputManager>();
+        inputManager.TrapSolved();
+
+        /*
         NumberSO numberSO = NumberManager.instance.GetNumber(expectedResult);
         NumberInventoryManager.instance.AddNumber(numberSO);
+        */
     }
 
     // // 在场景视图中显示检测范围
