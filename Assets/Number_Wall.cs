@@ -41,6 +41,7 @@ public class Number_Wall : MonoBehaviour
             PauseGame();
             Debug.Log("Player has reached the number wall!");
 
+            inputField.text = "";
             isColliding = true;
             mathProblemPanel.SetActive(true);
             operatorsPanel.SetActive(true);
