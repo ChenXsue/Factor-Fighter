@@ -20,6 +20,14 @@ public class MathGameManager : MonoBehaviour
 
     }
 
+    void Update()
+    {
+        if (quizPanel.activeSelf && Input.GetKeyDown(KeyCode.Return))
+        {
+            CalculateResult();
+        }
+    }
+
     public void CalculateResult()
     {
         string expression = userInputField.text;
@@ -76,6 +84,7 @@ public class MathGameManager : MonoBehaviour
         try
         {
             expression = expression.Replace("×", "*");
+            expression = expression.Replace("÷", "/");
             System.Data.DataTable table = new System.Data.DataTable();
             var result = table.Compute(expression, null).ToString();
 

@@ -74,14 +74,14 @@ public class TrapSystem : MonoBehaviour
         isSolved = true;
         
         // 销毁所有相关的尖刺
-        foreach (GameObject spike in spikeTraps)
-        {
-            if (spike != null)
-            {
-                Destroy(spike);
-            }
-        }
-        spikeTraps.Clear();
+        // foreach (GameObject spike in spikeTraps)
+        // {
+        //     if (spike != null)
+        //     {
+        //         Destroy(spike);
+        //     }
+        // }
+        // spikeTraps.Clear();
         
         // 销毁方程框
         Destroy(equationBox);
