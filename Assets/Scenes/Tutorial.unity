@@ -2320,6 +2320,11 @@ PrefabInstance:
       objectReference: {fileID: 872769239}
     - target: {fileID: 443819577094759875, guid: ccf9e7c569f974f0b9567a7c8585edce,
         type: 3}
+      propertyPath: invisiblePanel
+      value: 
+      objectReference: {fileID: 858584372}
+    - target: {fileID: 443819577094759875, guid: ccf9e7c569f974f0b9567a7c8585edce,
+        type: 3}
       propertyPath: userInputField
       value: 
       objectReference: {fileID: 872769238}
