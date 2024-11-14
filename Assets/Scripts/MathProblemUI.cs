@@ -43,6 +43,7 @@ public class MathProblemUI : MonoBehaviour
     {
         if (mathProblemPanel.activeSelf)
         {
+            Debug.Log(mathProblemPanel.activeSelf);
             CheckAnswer();
         }
     }
