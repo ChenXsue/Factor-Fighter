@@ -3370,6 +3370,10 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8207520459290668366, guid: 87607525313354eaeade0e71b2594ffb,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 794437237}
     - targetCorrespondingSourceObject: {fileID: 4011360062529318689, guid: 87607525313354eaeade0e71b2594ffb,
         type: 3}
       insertIndex: -1
@@ -3385,6 +3389,45 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 794437233}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &794437235 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6129634314024317521, guid: 87607525313354eaeade0e71b2594ffb,
+    type: 3}
+  m_PrefabInstance: {fileID: 794437233}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &794437236 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8207520459290668366, guid: 87607525313354eaeade0e71b2594ffb,
+    type: 3}
+  m_PrefabInstance: {fileID: 794437233}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &794437237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794437236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 925bd04b20db8491f8202f70c21477c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spikeTraps: []
+  equationBox: {fileID: 794437236}
+  equationText: {fileID: 794437235}
+  detectionRange: 2
+  expectedResult: 4
+  space: {fileID: 0}
+  knockbackForce: 5
+  knockbackDuration: 0.3
+  InputManagerObject: {fileID: 0}
 --- !u!1001 &796733247
 PrefabInstance:
   m_ObjectHideFlags: 0
