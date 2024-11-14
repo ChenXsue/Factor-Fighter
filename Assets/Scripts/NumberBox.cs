@@ -6,10 +6,11 @@ using TMPro;
 public class NumberBox : MonoBehaviour 
 {
     [Header("Box Settings")]
-    public int number;                    // 这个箱子代表的数字
+    public int number;                    // 这个箱子算式的答案
     public float detectionRange = 2f;     // 玩家可以拾取的距离
     public TextMeshPro numberText;        // 显示数字的TMP组件
-    
+    public GameObject space; 
+
     private Transform player;             // 玩家的Transform组件
     private bool isInRange = false;       // 玩家是否在范围内
     private SpriteRenderer spriteRenderer;// 箱子的渲染器组件
@@ -26,7 +27,10 @@ public class NumberBox : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.color = Color.yellow;  // 设置箱子为黄色
         numberText.enabled = false;           // 初始时隐藏数字
-        numberText.text = number.ToString();  // 设置显示的数字
+        numberText.sortingOrder = 4; // 数值比 box 的 sortingOrder 大
+        space.SetActive(false);
+
+        // numberText.text = formula;  // 设置显示的数字
     }
 
     void Update()
@@ -43,6 +47,8 @@ public class NumberBox : MonoBehaviour
             {
                 isInRange = true;
                 numberText.enabled = true;
+                space.SetActive(true);
+
                 // 通知carrier当前可拾取的箱子
                 carrier.SetCurrentBox(this);
             }
@@ -53,6 +59,8 @@ public class NumberBox : MonoBehaviour
             {
                 isInRange = false;
                 numberText.enabled = false;
+                space.SetActive(false);
+
                 // 如果离开范围，通知carrier清除当前箱子引用
                 carrier.SetCurrentBox(null);
             }
@@ -61,7 +69,7 @@ public class NumberBox : MonoBehaviour
 
     public void PickUp() 
     {
-        carrier.PickUpNumber(number);
+        carrier.PickUpNumber(numberText.text, number);
         Destroy(gameObject);
     }
 }

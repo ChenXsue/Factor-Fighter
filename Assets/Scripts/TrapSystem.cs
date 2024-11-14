@@ -11,7 +11,11 @@ public class TrapSystem : MonoBehaviour
     public TextMeshPro equationText;      // 显示方程的文本
     public float detectionRange = 2f;     // 检测范围
     public int expectedResult = 4;        // 期望的结果（比如8/2=4）
+    public GameObject space; 
 
+    [Header("Knockback Settings")]
+    public float knockbackForce = 5f;     // 击退力的大小
+    public float knockbackDuration = 0.3f;// 击退效果的持续时间
     public GameObject InputManagerObject;
 
     private Transform player;
@@ -22,6 +26,7 @@ public class TrapSystem : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         equationText.enabled = false;
+        space.SetActive(false);
 
         // 查找所有尖刺
         GameObject[] spikes = GameObject.FindGameObjectsWithTag("Spike");
@@ -45,6 +50,7 @@ public class TrapSystem : MonoBehaviour
             {
                 isInRange = true;
                 equationText.enabled = true;
+                space.SetActive(true);
             }
         }
         else
@@ -53,6 +59,7 @@ public class TrapSystem : MonoBehaviour
             {
                 isInRange = false;
                 equationText.enabled = false;
+                space.SetActive(false);
             }
         }
     }
@@ -67,6 +74,34 @@ public class TrapSystem : MonoBehaviour
             return true;
         }
         return false;
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            Debug.Log("Triggered by player, applying damage and knockback.");
+            // 施加击退效果并禁用玩家控制
+            PlayerMovement playerMovement = collision.GetComponent<PlayerMovement>();
+            if (playerMovement != null)
+            {
+                StartCoroutine(ApplyKnockback(playerMovement, collision.GetComponent<Rigidbody2D>()));
+            }
+        }
+    }
+
+    private IEnumerator ApplyKnockback(PlayerMovement player, Rigidbody2D rb)
+    {
+        player.isKnockedBack = true;
+
+        // 计算并施加击退力
+        Vector2 knockbackDirection = (player.transform.position - transform.position).normalized;
+        rb.velocity = knockbackDirection * knockbackForce;
+
+        // 等待击退持续时间
+        yield return new WaitForSeconds(knockbackDuration);
+
+        // 恢复玩家控制
+        player.isKnockedBack = false;
     }
 
     void SolvePuzzle()
