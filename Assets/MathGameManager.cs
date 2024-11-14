@@ -8,6 +8,7 @@ public class MathGameManager : MonoBehaviour
     public TMPro.TextMeshProUGUI resultText; // Target result text (e.g., "= 12")
     public GameObject quizPanel;
     public GameObject passPanel;
+    
 
 
     void Start()

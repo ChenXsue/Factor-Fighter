@@ -1369,6 +1369,11 @@ PrefabInstance:
       propertyPath: m_text
       value: w
       objectReference: {fileID: 0}
+    - target: {fileID: 1495911442553728756, guid: e7b22cd29e1dc4b098a20aae014b9567,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1530797861431190743, guid: e7b22cd29e1dc4b098a20aae014b9567,
         type: 3}
       propertyPath: m_text
@@ -2391,6 +2396,11 @@ PrefabInstance:
       propertyPath: resultText
       value: 
       objectReference: {fileID: 872769239}
+    - target: {fileID: 443819577094759875, guid: ccf9e7c569f974f0b9567a7c8585edce,
+        type: 3}
+      propertyPath: invisiblePanel
+      value: 
+      objectReference: {fileID: 858584372}
     - target: {fileID: 443819577094759875, guid: ccf9e7c569f974f0b9567a7c8585edce,
         type: 3}
       propertyPath: userInputField
