@@ -72,8 +72,8 @@ public class NextLevelButton : MonoBehaviour
         // 根据当前场景名确定下一个场景
         nextLevelName = currentSceneName switch
         {
-            "Tutorial" => "SampleScene",
-            _ => "Level2Combined"
+            "Tutorial" => "Level1",
+            _ => "Level2"
         };
 
         Debug.Log($"Loading next level: {nextLevelName}");

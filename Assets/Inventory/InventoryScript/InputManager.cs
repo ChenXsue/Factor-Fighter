@@ -74,14 +74,15 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
-        if (Time.time - lastUpdateTime >= updateInterval)
+        if (Time.unscaledTime - lastUpdateTime >= updateInterval)
         {
-            lastUpdateTime = Time.time;
+            UpdateSlots();
+            lastUpdateTime = Time.unscaledTime;
+        }
 
-            if (invisibleObject != null && invisibleObject.activeSelf)
-            {
-                UpdateNumberSlots();
-            }
+        if (numberWallPanel.activeSelf && Input.GetKeyDown(KeyCode.Return))
+        {
+            NumberWallSubmit();
         }
     }
 

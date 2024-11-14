@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: DivideOperator
   m_EditorClassIdentifier: 
   itemName: Divide
-  count: 0
-  operatorChar: 47
+  count: 1
+  operatorChar: 247
