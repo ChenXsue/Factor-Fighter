@@ -60,6 +60,14 @@ public class InputManager : MonoBehaviour
             inputField.interactable = false;
         }
 
+        if(numberWallInput != null){
+            numberWallInput.interactable = false;
+        }
+
+        if(doorProblemInput != null){
+            doorProblemInput.interactable = false;
+        }
+
         if (backspaceButton != null)
         {
             Debug.Log("Backspace button reference found");

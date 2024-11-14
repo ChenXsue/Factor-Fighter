@@ -26,6 +26,7 @@ public class MathProblemUI : MonoBehaviour
         if (answerInputField != null)
         {
             answerInputField.onSubmit.AddListener(OnInputFieldSubmit);
+            answerInputField.contentType = TMP_InputField.ContentType.IntegerNumber;
         }
     }
 
