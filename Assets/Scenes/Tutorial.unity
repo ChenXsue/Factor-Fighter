@@ -173,27 +173,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &126744190
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 126744185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 925bd04b20db8491f8202f70c21477c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spikeTraps: []
-  equationBox: {fileID: 0}
-  equationText: {fileID: 0}
-  detectionRange: 2
-  expectedResult: 4
-  space: {fileID: 609852596}
-  knockbackForce: 10
-  knockbackDuration: 0.3
-  InputManagerObject: {fileID: 0}
 --- !u!1 &229199845
 GameObject:
   m_ObjectHideFlags: 0
@@ -695,12 +674,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4145614584407996280, guid: e7b22cd29e1dc4b098a20aae014b9567,
     type: 3}
   m_PrefabInstance: {fileID: 1138525703}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &609852596 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8504051112882897823, guid: 87607525313354eaeade0e71b2594ffb,
-    type: 3}
-  m_PrefabInstance: {fileID: 8523211822521370627}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &652549625 stripped
 GameObject:
@@ -4029,10 +4002,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 126744189}
-    - targetCorrespondingSourceObject: {fileID: 8207520459290668366, guid: 87607525313354eaeade0e71b2594ffb,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 126744190}
     - targetCorrespondingSourceObject: {fileID: 4011360062529318689, guid: 87607525313354eaeade0e71b2594ffb,
         type: 3}
       insertIndex: -1
