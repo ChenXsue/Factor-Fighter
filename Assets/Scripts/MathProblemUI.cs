@@ -96,24 +96,38 @@ public class MathProblemUI : MonoBehaviour
                 {
                     healthManager.TakeDamage(1);
                     responsePanel.SetActive(true);
-                }
+                }  
             }
             else if (currentRoomDoor != null)
             {
-                isCorrect = currentRoomDoor.CheckAnswer(playerAnswer);
-                if (isCorrect)
+                // First check if player has this number
+                NumberSO numberToUse = NumberManager.instance.GetNumber(playerAnswer);
+                if (numberToUse != null && NumberInventoryManager.instance.HasNumber(numberToUse))
                 {
-                    currentRoomDoor.Defeat();
-                    if (player != null)
+                    isCorrect = currentRoomDoor.CheckAnswer(playerAnswer);
+                    if (isCorrect)
                     {
-                        roomManager.TeleportPlayer(player, currentRoomDoor.doorId);
+                        // The number removal and exchange will be handled in RoomDoor.AttemptUnlock
+                        currentRoomDoor.AttemptUnlock(playerAnswer);
+                        if (player != null)
+                        {
+                            roomManager.TeleportPlayer(player, currentRoomDoor.doorId);
+                        }
+                    }
+                    else
+                    {
+                        healthManager.TakeDamage(1);
+                        responsePanel.SetActive(true);
                     }
                 }
                 else
                 {
-                    healthManager.TakeDamage(1);
+                    Debug.Log("You don't have this number in your inventory!");
                     responsePanel.SetActive(true);
+                    return;
                 }
+
+
             }
             else if (currentBasicEnemy != null)
             {

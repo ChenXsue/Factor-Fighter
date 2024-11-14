@@ -247,6 +247,7 @@ MonoBehaviour:
   pairedDoorId: 1
   targetRoomNumber: 1
   associatedNumber: 5
+  requiredCondition: 
 --- !u!4 &193280406 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 42604617605667649, guid: f47c1c60273994d82afa2945f8108743,
@@ -2917,6 +2918,7 @@ MonoBehaviour:
   pairedDoorId: 2
   targetRoomNumber: 1
   associatedNumber: 5
+  requiredCondition: even
 --- !u!4 &2072863408 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4378106863285830936, guid: 74823b1c2d93d40419c476213abb9752,

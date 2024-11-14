@@ -11,9 +11,15 @@ public class NumberInventoryManager : MonoBehaviour
 
     private Dictionary<int, NumberSlot> activeSlots = new Dictionary<int, NumberSlot>();
 
+    public System.Action<NumberSO> onNumberSelected;
+
     void Awake()
     {
-        if (instance != null) Destroy(this);
+        if (instance != null)
+        {
+            Destroy(this);
+            return;
+        }
         instance = this;
     }
 
@@ -22,46 +28,119 @@ public class NumberInventoryManager : MonoBehaviour
         RefreshNumberInventory();
     }
 
+
     public void RefreshNumberInventory()
     {
-        HashSet<int> usedNumbers = new HashSet<int>();
-
-        foreach (Item item in myNumberBag.Items)
+        // Clear existing slots
+        foreach (var slot in activeSlots.Values)
         {
-            if (item is NumberSO numberItem)
+            if (slot != null)
             {
-                if (activeSlots.TryGetValue(numberItem.value, out NumberSlot slot))
-                {
-                    slot.SetNumber(numberItem, numberItem.count);
-                }
-                else
-                {
-                    NumberSlot newSlot = Instantiate(numberSlotPrefab, numberSlotGrid.transform);
-                    newSlot.SetNumber(numberItem, numberItem.count);
-                    activeSlots[numberItem.value] = newSlot;
-                }
-                usedNumbers.Add(numberItem.value);
+                Destroy(slot.gameObject);
             }
         }
+        activeSlots.Clear();
 
-        List<int> numbersToRemove = new List<int>();
-        foreach (var kvp in activeSlots)
+        // Recreate slots for current inventory
+        foreach (var item in myNumberBag.Items)
         {
-            if (!usedNumbers.Contains(kvp.Key))
+            if (item is NumberSO numberSO)
             {
-                Destroy(kvp.Value.gameObject);
-                numbersToRemove.Add(kvp.Key);
+                CreateNumberSlot(numberSO);
             }
         }
-        foreach (int number in numbersToRemove)
+    }
+
+    private void CreateNumberSlot(NumberSO numberSO)
+    {
+        NumberSlot newSlot = Instantiate(numberSlotPrefab, numberSlotGrid.transform);
+        newSlot.SetNumber(numberSO, 1);
+        newSlot.SetOnClickListener(() => OnNumberSlotClicked(numberSO));
+
+        activeSlots[numberSO.value] = newSlot;
+    }
+
+    private void OnNumberSlotClicked(NumberSO numberSO)
+    {
+        Debug.Log($"Number {numberSO.value} clicked");
+        onNumberSelected?.Invoke(numberSO);
+    }
+
+
+    public void RemoveNumber(NumberSO numberToRemove)
+    {
+        if (numberToRemove == null)
         {
-            activeSlots.Remove(number);
+            Debug.LogWarning("Attempted to remove null NumberSO");
+            return;
         }
+
+        Debug.Log($"Attempting to remove number {numberToRemove.value} from inventory");
+
+        myNumberBag.RemoveItem(numberToRemove);
+        
+        RefreshNumberInventory();
+        
+    }
+
+    public bool HasNumber(NumberSO numberSO)
+    {
+        if (numberSO == null) return false;
+        foreach (var item in myNumberBag.Items)
+        {
+            if (item is NumberSO numItem && numItem.value == numberSO.value)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void AddNumber(NumberSO numberData)
     {
+        if (numberData == null)
+        {
+            Debug.LogWarning("Attempted to add null NumberSO");
+            return;
+        }
+
         myNumberBag.AddItem(numberData);
         RefreshNumberInventory();
+        Debug.Log($"Added number {numberData.value} to inventory");
     }
+
+    // Helper method to get a number from the inventory by value
+    public NumberSO GetNumberByValue(int value)
+    {
+        foreach (var item in myNumberBag.Items)
+        {
+            if (item is NumberSO numItem && numItem.value == value)
+            {
+                return numItem;
+            }
+        }
+        return null;
+    }
+
+    // Method to clear the entire inventory
+    public void ClearInventory()
+    {
+        myNumberBag.Clear();
+        RefreshNumberInventory();
+        Debug.Log("Inventory cleared");
+    }
+
+    private void OnDisable()
+    {
+        // Clean up when disabled
+        foreach (var slot in activeSlots.Values)
+        {
+            if (slot != null)
+            {
+                Destroy(slot.gameObject);
+            }
+        }
+        activeSlots.Clear();
+    }
+    
 }

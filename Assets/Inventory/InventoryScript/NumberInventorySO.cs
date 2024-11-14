@@ -46,16 +46,27 @@ public class NumberInventorySO : ScriptableObject
 
     public void RemoveItem(NumberSO itemToRemove)
     {
-        var existingItem = serializedItems.Find(i => i.value == itemToRemove.value);
+        var existingItem = serializedItems.Find(item => item.value == itemToRemove.value);
         if (existingItem != null)
         {
             existingItem.count--;
             if (existingItem.count <= 0)
             {
-                serializedItems.Remove(existingItem);
+                serializedItems.RemoveAll(item => item.value == itemToRemove.value);
             }
+            Debug.Log($"Removed number {itemToRemove.value} from bag. Remaining count: {(existingItem.count <= 0 ? 0 : existingItem.count)}");
+        }
+        else
+        {
+            Debug.LogWarning($"Attempted to remove number {itemToRemove.value} but it wasn't found in the bag");
         }
     }
+
+    public bool HasItem(int value)
+    {
+        return serializedItems.Exists(item => item.value == value && item.count > 0);
+    }
+
 
     public void Clear()
     {
