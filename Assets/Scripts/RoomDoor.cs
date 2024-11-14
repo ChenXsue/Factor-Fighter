@@ -12,26 +12,62 @@ public class RoomDoor : MonoBehaviour
     
     private RoomManager roomManager;
     private MathProblem currentProblem;
+
+    [Header("Door Condition")]
+    public string requiredCondition; // "even", "prime", "greaterThan10"
+
+
     
     void Start()
     {
         roomManager = FindObjectOfType<RoomManager>();
-        Ene_MathProblemManager problemManager = FindObjectOfType<Ene_MathProblemManager>();
-        if (problemManager != null)
+        //Ene_MathProblemManager problemManager = FindObjectOfType<Ene_MathProblemManager>();
+        // if (problemManager != null)
+        // {
+        //     currentProblem = problemManager.GetRandomMathProblem();
+        //     Debug.Log($"Math problem for door {doorId}: {currentProblem.question}");
+        // }
+
+    }
+
+    public string GetMathProblem()
+    {
+        switch (requiredCondition)
         {
-            currentProblem = problemManager.GetRandomMathProblem();
-            Debug.Log($"Math problem for door {doorId}: {currentProblem.question}");
+            case "even":
+                return "Give me an even number";
+            case "prime":
+                return "Give me a prime number";
+            case "greaterThan10":
+                return "Give me a number greater than 10";
+            default:
+                return "Invalid condition";
         }
     }
     
-    public string GetMathProblem()
+    public bool CheckAnswer(int playerNumber)
     {
-        return currentProblem.question;
+        switch (requiredCondition)
+        {
+            case "even":
+                return playerNumber % 2 == 0;
+            case "prime":
+                return IsPrime(playerNumber);
+            case "greaterThan10":
+                return playerNumber > 10;
+            default:
+                return false;
+        }
     }
-    
-    public bool CheckAnswer(int playerAnswer)
+
+    private bool IsPrime(int number)
     {
-        return playerAnswer == currentProblem.answer;
+        if (number <= 1) return false;
+        for (int i = 2; i <= Mathf.Sqrt(number); i++)
+        {
+            if (number % i == 0) return false;
+        }
+        return true;
     }
     
     private void OnTriggerEnter2D(Collider2D other)
@@ -45,10 +81,16 @@ public class RoomDoor : MonoBehaviour
             }
             else
             {
-                MathProblemUI mathUI = FindObjectOfType<MathProblemUI>();
-                if (mathUI != null)
+                // MathProblemUI mathUI = FindObjectOfType<MathProblemUI>();
+                // if (mathUI != null)
+                // {
+                //     mathUI.ShowMathProblem(this);
+                //     roomManager.PauseGame();
+                // }
+                DoorProblemUI doorProblemUI = FindObjectOfType<DoorProblemUI>();
+                if(doorProblemUI != null)
                 {
-                    mathUI.ShowMathProblem(this);
+                    doorProblemUI.ShowMathProblem(this);
                     roomManager.PauseGame();
                 }
             }

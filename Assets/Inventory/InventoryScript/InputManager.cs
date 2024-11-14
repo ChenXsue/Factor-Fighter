@@ -9,8 +9,10 @@ public class InputManager : MonoBehaviour
     [Header("UI References")]
     public TMP_InputField inputField;
     public TMP_InputField numberWallInput;
+    public TMP_InputField doorProblemInput;
     public GameObject invisibleObject;
     public GameObject numberWallPanel;
+    public GameObject doorProblemPanel;
     public GameObject numberWall1;
     public GameObject numberWall2;
     public GameObject numberWall3;
@@ -223,6 +225,44 @@ public class InputManager : MonoBehaviour
             }
         }
 
+        // Door Problem Check
+        if (doorProblemPanel == null || !doorProblemPanel.activeSelf)
+        {
+            Debug.Log("Door problem is not active");
+        } else {
+            Debug.Log("Door problem is active");
+            if (slot == null || doorProblemInput == null) return;
+
+            Debug.Log("Number slot clicked for door problem");
+            // 检查当前输入的最后一个token
+            string[] tokens = doorProblemInput.text.Trim().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            if (tokens.Length > 0)
+            {
+                string lastToken = tokens[tokens.Length - 1];
+                // 如果最后一个token是数字，不允许继续输入数字
+                if (int.TryParse(lastToken, out _))
+                {
+                    Debug.Log("Cannot input number after number");
+                    return;
+                }
+            }
+
+            string number = slot.numberText.text;
+            if (!string.IsNullOrEmpty(doorProblemInput.text) && !doorProblemInput.text.EndsWith(" "))
+            {
+                doorProblemInput.text += " ";
+            }
+            doorProblemInput.text += number + " ";
+
+            NumberSO numberToRemove = NumberManager.instance.GetNumber(int.Parse(number));
+
+            if (numberToRemove != null)
+            {
+                NumberInventoryManager.instance.myNumberBag.RemoveItem(numberToRemove);
+                NumberInventoryManager.instance.RefreshNumberInventory();
+            }
+        }
+
 
         // Final door number check
         if (invisibleObject == null || !invisibleObject.activeSelf) {
@@ -257,7 +297,7 @@ public class InputManager : MonoBehaviour
                 NumberInventoryManager.instance.myNumberBag.RemoveItem(numberToRemove);
                 NumberInventoryManager.instance.RefreshNumberInventory();
             }
-        }
+        }        
     }
 
     public void TrapSolved()
