@@ -99,6 +99,8 @@ public class RoomDoor : MonoBehaviour
     
     public void Defeat()
     {
+        WebGLDataLogger.numberUsed ++;
+        WebGLDataLogger.numberSum ++;
         Debug.Log($"Door {doorId} defeated");
         Unlock();
     }

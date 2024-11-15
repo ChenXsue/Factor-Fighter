@@ -91,10 +91,13 @@ public class MathProblemUI : MonoBehaviour
                 isCorrect = currentEnemy.CheckAnswer(playerAnswer);
                 if (isCorrect)
                 {
+                    WebGLDataLogger.answerSum++;
                     currentEnemy.Defeat();
                 }
                 else
                 {
+                    WebGLDataLogger.answerSum++;
+                    WebGLDataLogger.wrongNum++;
                     healthManager.TakeDamage(1);
                     responsePanel.SetActive(true);
                 }

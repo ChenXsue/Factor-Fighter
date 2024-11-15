@@ -60,12 +60,16 @@ public class Number_Wall : MonoBehaviour
             sideObject.SetActive(false);
             SpriteRenderer areaSprite = areaObject.GetComponent<SpriteRenderer>();
             areaSprite.color = Color.white;
-            
+            WebGLDataLogger.numberUsed ++;
+            WebGLDataLogger.numberSum ++;
+            WebGLDataLogger.answerSum++;
+
             ResumeGame();
             return true;
         }
         else
         {
+            WebGLDataLogger.wrongNum++;
             Debug.Log("Number Wall Incorrect answer!");
             return false;
         }

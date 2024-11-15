@@ -62,12 +62,15 @@ public class MathGameManager : MonoBehaviour
 
                     // Stop the timer at the end of the level
                     GameTimer.Instance.StopTimer(expression);
+                    WebGLDataLogger.answerSum++;
                 }
                 else
                 {
                     Debug.Log("Try again! The result is incorrect.");
 
                     GameTimer.Instance.AddTimePoint();
+                    WebGLDataLogger.answerSum++;
+                    WebGLDataLogger.wrongNum++;
                 }
             }
             else

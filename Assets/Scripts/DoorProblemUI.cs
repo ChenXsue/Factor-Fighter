@@ -77,6 +77,7 @@ public class DoorProblemUI : MonoBehaviour
             if (currentRoomDoor.CheckAnswer(playerNumber))
             {
                 Debug.Log("Correct answer!");
+                WebGLDataLogger.answerSum++;
                 currentRoomDoor.Defeat();
                 if(player != null)
                 {
@@ -89,6 +90,8 @@ public class DoorProblemUI : MonoBehaviour
             else
             {
                 Debug.Log("Wrong answer!");
+                WebGLDataLogger.answerSum++;
+                WebGLDataLogger.wrongNum++;
                 //responsePanel.SetActive(true);
             }
 
