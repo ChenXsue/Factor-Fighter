@@ -101,6 +101,8 @@ public class RoomDoor : MonoBehaviour
     
     public void Defeat()
     {
+        WebGLDataLogger.numberUsed ++;
+        WebGLDataLogger.numberSum ++;
         Debug.Log($"Door {doorId} defeated");
         thisDoorText.SetActive(false);
         pairedDoorText.SetActive(false);

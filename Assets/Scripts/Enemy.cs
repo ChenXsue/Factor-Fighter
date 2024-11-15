@@ -46,6 +46,7 @@ public class Enemy : MonoBehaviour
         if (operatorData != null)
         {
             OperatorInventoryManager.instance.AddOperator(operatorData);
+            WebGLDataLogger.operatorSum++;
             Debug.Log($"Added operator {operatorData.operatorChar} to inventory");
         }
         else

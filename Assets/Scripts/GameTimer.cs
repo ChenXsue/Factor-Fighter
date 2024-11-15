@@ -59,7 +59,7 @@ public class GameTimer : MonoBehaviour
     }
 
     // Method to stop the timer and log the time spent
-    public void StopTimer()
+    public void StopTimer(string expression)
     {
         if (isTiming)
         {
@@ -72,7 +72,7 @@ public class GameTimer : MonoBehaviour
             // Log to Google Sheets if dataLogger is available
             if (dataLogger != null)
             {
-                StartCoroutine(dataLogger.LogDataToGoogleSheet(currentLevel, timeSpent));
+                StartCoroutine(dataLogger.LogDataToGoogleSheet(currentLevel, timeSpent,expression));
             }
             else
             {

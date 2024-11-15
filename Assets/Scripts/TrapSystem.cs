@@ -71,7 +71,12 @@ public class TrapSystem : MonoBehaviour
         if (number == expectedResult)
         {
             SolvePuzzle();
+            WebGLDataLogger.answerSum++;
             return true;
+        }
+        else{
+            WebGLDataLogger.answerSum++;
+            WebGLDataLogger.wrongNum++;
         }
         return false;
     }
@@ -121,6 +126,7 @@ public class TrapSystem : MonoBehaviour
         // 销毁方程框
         Destroy(equationBox);
         Destroy(gameObject);
+        WebGLDataLogger.numberSum ++;
 
         InputManager inputManager = InputManagerObject.GetComponent<InputManager>();
         inputManager.TrapSolved();
