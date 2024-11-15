@@ -1230,7 +1230,19 @@ MonoBehaviour:
     type: 3}
   boxPrefab: {fileID: 7876127357355084213, guid: c8155299218294455aa61b1e85c82529,
     type: 3}
-  circleOffset: {x: 0, y: 1.5}
+  circleOffset: {x: 0, y: 0}
+--- !u!210 &1063164004
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063163992}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1001 &1138525703
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2630,6 +2642,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1063163998}
+    - targetCorrespondingSourceObject: {fileID: 7152421801146024060, guid: 92ca8aed5201b4875b87df2a67c88d39,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1063164004}
   m_SourcePrefab: {fileID: 100100000, guid: 92ca8aed5201b4875b87df2a67c88d39, type: 3}
 --- !u!1001 &3132988339564775134
 PrefabInstance:
@@ -3824,6 +3840,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236379731966959676, guid: 87607525313354eaeade0e71b2594ffb,
+        type: 3}
+      propertyPath: knockbackDuration
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 6236753702951097132, guid: 87607525313354eaeade0e71b2594ffb,
         type: 3}

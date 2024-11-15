@@ -93,6 +93,7 @@ public class NumberCarrier : MonoBehaviour
         if (circleRenderer != null)
         {
             circleRenderer.color = Color.yellow;
+            circleRenderer.sortingOrder = 1; // 圆圈在最上层
         }
     }
 
