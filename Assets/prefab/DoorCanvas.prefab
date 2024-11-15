@@ -708,8 +708,8 @@ RectTransform:
   - {fileID: 4621397204253465621}
   m_Father: {fileID: 7519255648925136501}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1340,6 +1340,7 @@ GameObject:
   - component: {fileID: 5003022053104255931}
   - component: {fileID: 3219440555395542179}
   - component: {fileID: 71858013790643588}
+  - component: {fileID: 1677547399146988167}
   m_Layer: 5
   m_Name: NumGridPlane
   m_TagString: Untagged
@@ -1429,6 +1430,21 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 1
   m_ConstraintCount: 3
+--- !u!114 &1677547399146988167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936979584795564443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a525a83db65fe4b43882464ab401cb17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashColor: {r: 1, g: 1, b: 1, a: 1}
+  flashSpeed: 2
+  isFlashing: 0
 --- !u!1 &1025234556005817633
 GameObject:
   m_ObjectHideFlags: 0
@@ -1553,6 +1569,18 @@ MonoBehaviour:
       - m_Target: {fileID: 5859411172943705655}
         m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
         m_MethodName: NumberWallSubmit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1677547399146988167}
+        m_TargetAssemblyTypeName: TutorialGlow, Assembly-CSharp
+        m_MethodName: StopFlashing
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1808,13 +1836,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1677547399146988167}
+        m_TargetAssemblyTypeName: TutorialGlow, Assembly-CSharp
+        m_MethodName: StopFlashing
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4828,6 +4856,7 @@ GameObject:
   - component: {fileID: 8248927411736524898}
   - component: {fileID: 1921965954054832879}
   - component: {fileID: 834151301723878280}
+  - component: {fileID: 6752265768456149470}
   m_Layer: 5
   m_Name: Operators
   m_TagString: Untagged
@@ -4900,7 +4929,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4743147570655321502}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
   m_Name: 
@@ -4935,6 +4964,21 @@ MonoBehaviour:
   operatorSlotGrid: {fileID: 574137716241225501}
   operatorSlotPrefab: {fileID: 8226959911079262768, guid: b39e34c60c05c478095d994d55e722fc,
     type: 3}
+--- !u!114 &6752265768456149470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4743147570655321502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a525a83db65fe4b43882464ab401cb17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashColor: {r: 1, g: 1, b: 1, a: 1}
+  flashSpeed: 2
+  isFlashing: 0
 --- !u!1 &4781847714782063913
 GameObject:
   m_ObjectHideFlags: 0
@@ -5258,7 +5302,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4997383983241166382}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 

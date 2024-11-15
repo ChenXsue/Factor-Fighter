@@ -1,31 +1,31 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class MathProblemUI : MonoBehaviour 
 {
     public TextMeshProUGUI problemText;
     public TMP_InputField answerInputField;
     public GameObject mathProblemPanel;
     public GameObject responsePanel;
-    
+
     private Enemy currentEnemy;
     private RoomDoor currentRoomDoor;
     private BasicEnemy currentBasicEnemy;
     private RoomManager roomManager;
     private GameObject player;
-    
+
     [SerializeField] public HealthManager healthManager;
 
     public float time = 10f;  // 倒计时时间
     private float timer;
     [SerializeField] public TextMeshProUGUI timerText;
-    
+
     private void Start()
     {
         roomManager = FindObjectOfType<RoomManager>();
         player = GameObject.FindGameObjectWithTag("Player");
-        
-        
+
         if (answerInputField != null)
         {
             answerInputField.onSubmit.AddListener(OnInputFieldSubmit);
@@ -35,7 +35,6 @@ public class MathProblemUI : MonoBehaviour
 
     private void OnDestroy()
     {
-        
         if (answerInputField != null)
         {
             answerInputField.onSubmit.RemoveListener(OnInputFieldSubmit);
@@ -46,7 +45,7 @@ public class MathProblemUI : MonoBehaviour
     {
         if (mathProblemPanel.activeSelf)
         {
-            timer -= Time.unscaledDeltaTime; // 使用 unscaledDeltaTime 来计时
+            timer -= Time.unscaledDeltaTime;
             UpdateTimerDisplay();
 
             if (timer <= 0)
@@ -56,7 +55,7 @@ public class MathProblemUI : MonoBehaviour
             }
         }
     }
-    
+
     private void UpdateTimerDisplay()
     {
         int seconds = Mathf.FloorToInt(timer % 60);
@@ -66,22 +65,27 @@ public class MathProblemUI : MonoBehaviour
     private void HandleTimeOut()
     {
         healthManager.TakeDamage(1); // 扣血
-        responsePanel.SetActive(true); // 显示错误反馈
-        mathProblemPanel.SetActive(false); // 隐藏问题面板
-        ResumeGame(); // 恢复游戏
+
+        if (healthManager.currentHealth > 0)
+        {
+            responsePanel.SetActive(true); // 显示错误反馈
+        }
+        else
+        {
+            mathProblemPanel.SetActive(false); // 隐藏问题面板
+        }
+
         Debug.Log("Time ran out!");
     }
-    
-    // 当在输入框中按下回车键时触发
+
     private void OnInputFieldSubmit(string text)
     {
         if (mathProblemPanel.activeSelf)
         {
-            Debug.Log(mathProblemPanel.activeSelf);
             CheckAnswer();
         }
     }
-    
+
     public void ShowMathProblem(Enemy enemy)
     {
         currentEnemy = enemy;
@@ -89,7 +93,7 @@ public class MathProblemUI : MonoBehaviour
         currentBasicEnemy = null;
         SetupProblem(enemy.GetMathProblem());
     }
-    
+
     public void ShowMathProblem(RoomDoor roomDoor)
     {
         currentRoomDoor = roomDoor;
@@ -97,7 +101,7 @@ public class MathProblemUI : MonoBehaviour
         currentBasicEnemy = null;
         SetupProblem(roomDoor.GetMathProblem());
     }
-    
+
     public void ShowMathProblem(BasicEnemy basicEnemy)
     {
         currentBasicEnemy = basicEnemy;
@@ -105,18 +109,18 @@ public class MathProblemUI : MonoBehaviour
         currentRoomDoor = null;
         SetupProblem(basicEnemy.GetMathProblem());
     }
-    
+
     private void SetupProblem(string problem)
     {
         problemText.text = problem;
         answerInputField.text = "";
         answerInputField.ActivateInputField();
         mathProblemPanel.SetActive(true);
-        timer = time; // 重置倒计时
-        UpdateTimerDisplay(); // 更新显示
+        timer = time;
+        UpdateTimerDisplay();
     }
 
-    public void resetTimer()
+    public void ResetTimer()
     {
         timer = time;
     }
@@ -126,7 +130,7 @@ public class MathProblemUI : MonoBehaviour
         if (int.TryParse(answerInputField.text, out int playerAnswer))
         {
             bool isCorrect = false;
-            
+
             if (currentEnemy != null)
             {
                 isCorrect = currentEnemy.CheckAnswer(playerAnswer);
@@ -152,8 +156,7 @@ public class MathProblemUI : MonoBehaviour
                 }
                 else
                 {
-                    healthManager.TakeDamage(1);
-                    responsePanel.SetActive(true);
+                    HandleWrongAnswer();
                 }
             }
             else if (currentBasicEnemy != null)
@@ -165,11 +168,10 @@ public class MathProblemUI : MonoBehaviour
                 }
                 else
                 {
-                    healthManager.TakeDamage(1);
-                    responsePanel.SetActive(true);
+                    HandleWrongAnswer();
                 }
             }
-            
+
             if (isCorrect)
             {
                 Debug.Log("correct");
@@ -190,10 +192,19 @@ public class MathProblemUI : MonoBehaviour
     private void HandleWrongAnswer()
     {
         healthManager.TakeDamage(1);
-        responsePanel.SetActive(true);
+
+        if (healthManager.currentHealth > 0)
+        {
+            responsePanel.SetActive(true); // 显示错误反馈
+        }
+        else
+        {
+            mathProblemPanel.SetActive(false); // 隐藏问题面板
+        }
+
         Debug.Log("Wrong answer!");
     }
-    
+
     private void ResumeGame()
     {
         if (roomManager != null)
@@ -206,7 +217,7 @@ public class MathProblemUI : MonoBehaviour
             Time.timeScale = 1f;
             Debug.Log("Game resumed (fallback)");
         }
-        
+
         currentEnemy = null;
         currentBasicEnemy = null;
         currentRoomDoor = null;
