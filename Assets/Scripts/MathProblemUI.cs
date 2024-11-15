@@ -65,6 +65,7 @@ public class MathProblemUI : MonoBehaviour
     private void HandleTimeOut()
     {
         healthManager.TakeDamage(1); // 扣血
+        Debug.Log("Current health after taking damage for time out: " + healthManager.currentHealth);
 
         if (healthManager.currentHealth > 0)
         {
@@ -76,6 +77,7 @@ public class MathProblemUI : MonoBehaviour
         }
 
         Debug.Log("Time ran out!");
+        timer = 10000;
     }
 
     private void OnInputFieldSubmit(string text)
