@@ -19,12 +19,14 @@ public class WebGLDataLogger : MonoBehaviour
         public string playerId;
         public string level;
         public float completionTime;
+        public string passFormula;
 
-        public LogData(string playerId, string level, float completionTime)
+        public LogData(string playerId, string level, float completionTime, string passFormula)
         {
             this.playerId = playerId;
             this.level = level;
             this.completionTime = completionTime;
+            this.passFormula = passFormula;
         }
     }
 
@@ -34,10 +36,30 @@ public class WebGLDataLogger : MonoBehaviour
         playerId = id;
     }
 
-    public IEnumerator LogDataToGoogleSheet(string level, float completionTime)
+    public IEnumerator LogDataToGoogleSheet(string level, float completionTime, string passFormula)
     {
+        if (level.Contains("Sample"))
+        {
+            level = "Level1";
+        }
+        if (level.Contains("Level2"))
+        {
+            level = "Level2";
+        }
+        if (passFormula.Contains("9"))
+        {
+            passFormula = "12+9";
+        }
+        if (passFormula.Contains("8"))
+        {
+            passFormula = "18+6-3";
+        }
+        if (passFormula.Contains("4"))
+        {
+            passFormula = "24-6+3";
+        }
         // 创建 LogData 实例
-        LogData data = new LogData(playerId, level, completionTime);
+        LogData data = new LogData(playerId, level, completionTime, passFormula);
 
         // 序列化 LogData 实例到 JSON
         string jsonData = JsonUtility.ToJson(data);
