@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class Spike : MonoBehaviour
@@ -27,27 +26,13 @@ public class Spike : MonoBehaviour
             // 对玩家造成伤害
             healthManager.TakeDamage(damageAmount);
 
-            // 施加击退效果并禁用玩家控制
+            // 施加击退效果
             PlayerMovement playerMovement = collision.GetComponent<PlayerMovement>();
             if (playerMovement != null)
             {
-                StartCoroutine(ApplyKnockback(playerMovement, collision.GetComponent<Rigidbody2D>()));
+                Vector2 knockbackDirection = (collision.transform.position - transform.position).normalized;
+                playerMovement.StartCoroutine(playerMovement.ApplyKnockback(knockbackDirection, knockbackForce, knockbackDuration));
             }
         }
-    }
-
-    private IEnumerator ApplyKnockback(PlayerMovement player, Rigidbody2D rb)
-    {
-        player.isKnockedBack = true;
-
-        // 计算并施加击退力
-        Vector2 knockbackDirection = (player.transform.position - transform.position).normalized;
-        rb.velocity = knockbackDirection * knockbackForce;
-
-        // 等待击退持续时间
-        yield return new WaitForSeconds(knockbackDuration);
-
-        // 恢复玩家控制
-        player.isKnockedBack = false;
     }
 }

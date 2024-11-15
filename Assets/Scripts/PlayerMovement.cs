@@ -30,4 +30,18 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector2(speedX, speedY);
         }
     }
+
+    public IEnumerator ApplyKnockback(Vector2 knockbackDirection, float knockbackForce, float knockbackDuration)
+    {
+        isKnockedBack = true;
+
+        // 设置玩家的 Rigidbody2D 速度为击退方向和力度
+        rb.velocity = knockbackDirection * knockbackForce;
+
+        // 等待击退时间
+        yield return new WaitForSeconds(knockbackDuration);
+
+        // 恢复玩家控制
+        isKnockedBack = false;
+    }
 }
