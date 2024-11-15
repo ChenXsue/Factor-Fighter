@@ -10,12 +10,36 @@ public class MathGameManager : MonoBehaviour
     public GameObject quizPanel;
     public GameObject passPanel;
 
+    private string expression;
+    
+
+
+    void Start()
+    {
+        // Get the current level name dynamically
+        string levelName = SceneManager.GetActiveScene().name;
+        
+        // Start the timer for the current level    
+        GameTimer.Instance.StartTimer(levelName);
+
+    }
+
+    void Update()
+    {
+        if (quizPanel.activeSelf && Input.GetKeyDown(KeyCode.Return))
+        {
+            CalculateResult();
+        }
+    }
+
     // This method is called when the user clicks the "Calculate" button
     public void CalculateResult()
     {
         string expression = userInputField.text; // Get the expression from the input field
 
         // Debug to check the input expression
+        string expression = userInputField.text;
+        this.expression = expression;
         Debug.Log("Evaluating expression: '" + expression + "'");
 
         if (string.IsNullOrEmpty(expression))
@@ -45,6 +69,10 @@ public class MathGameManager : MonoBehaviour
                     passPanel.SetActive(true);
 
                     Debug.Log("Success! You have succeeded.");
+
+
+                    // Stop the timer at the end of the level
+                    GameTimer.Instance.StopTimer(expression);
                 }
                 else
                 {

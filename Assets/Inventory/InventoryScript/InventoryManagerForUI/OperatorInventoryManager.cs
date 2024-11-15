@@ -10,6 +10,9 @@ public class OperatorInventoryManager : MonoBehaviour
     public GameObject operatorSlotGrid;
     public OperatorSlot operatorSlotPrefab;
 
+    private int operatorSum = 0;
+    private Dictionary<char, OperatorSlot> activeSlots = new Dictionary<char, OperatorSlot>();
+
     void Awake()
     {
         if (instance != null)
@@ -44,6 +47,7 @@ public class OperatorInventoryManager : MonoBehaviour
     public void AddOperator(OperatorSO operatorData)
     {
         Debug.Log($"AddOperator called for {operatorData.operatorChar}");
+        operatorSum++;
         myOperatorBag.AddItem(operatorData);
         RefreshOperatorInventory();
     }

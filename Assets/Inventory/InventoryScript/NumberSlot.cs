@@ -8,6 +8,7 @@ public class NumberSlot : MonoBehaviour
     public TextMeshProUGUI numberText;
     public TextMeshProUGUI countText;
     public Button button;
+    private int numberSum = 0;
 
     private void Awake()
     {
@@ -21,6 +22,7 @@ public class NumberSlot : MonoBehaviour
     {
         if (numberData != null)
         {
+            numberSum++;
             numberText.text = numberData.value.ToString();
             countText.text = count > 1 ? count.ToString() : "";
             Debug.Log($"Setting slot for number: {numberData.value}, Count: {count}");
