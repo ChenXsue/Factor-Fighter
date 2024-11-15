@@ -9,6 +9,8 @@ public class RoomDoor : MonoBehaviour
     public int pairedDoorId;
     public int targetRoomNumber;
     public int associatedNumber;
+    public GameObject thisDoorText;
+    public GameObject pairedDoorText;
     
     private RoomManager roomManager;
     private MathProblem currentProblem;
@@ -100,6 +102,8 @@ public class RoomDoor : MonoBehaviour
     public void Defeat()
     {
         Debug.Log($"Door {doorId} defeated");
+        thisDoorText.SetActive(false);
+        pairedDoorText.SetActive(false);
         Unlock();
     }
     
