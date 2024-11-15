@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 using System;
 using System.Collections.Generic;
@@ -58,6 +59,14 @@ public class InputManager : MonoBehaviour
         if (inputField != null)
         {
             inputField.interactable = false;
+        }
+
+        if(numberWallInput != null){
+            numberWallInput.interactable = false;
+        }
+
+        if(doorProblemInput != null){
+            doorProblemInput.interactable = false;
         }
 
         if (backspaceButton != null)

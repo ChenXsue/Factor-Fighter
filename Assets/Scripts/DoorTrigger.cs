@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class DoorTrigger : MonoBehaviour
 {
     // Reference to the "Number" panel under "DoorCanvas"
     public GameObject quizPanel;     // Quiz panel to show when the player reaches the door
+    public GameObject numbersPanel; // Panel where operator buttons will be displayed
     public GameObject operatorsPanel; // Panel where operator buttons will be displayed
     //public GameObject buttonPrefab;  // Prefab for the operator button to be instantiated
     public GameObject input;
@@ -29,6 +32,12 @@ public class DoorTrigger : MonoBehaviour
             input.SetActive(true);
             //Enemy.PauseGame();
             Time.timeScale = 0f;
+
+            if (SceneManager.GetActiveScene().name == "Tutorial")
+            {
+                numbersPanel.GetComponent<TutorialGlow>().StartFlashing();
+                operatorsPanel.GetComponent<TutorialGlow>().StartFlashing();
+            }
 
             // Call the method to create buttons for each operator in Operators_Bag
             // CreateOperatorButtons();

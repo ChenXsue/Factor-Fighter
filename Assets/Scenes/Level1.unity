@@ -162,6 +162,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0.02
       objectReference: {fileID: 0}
+    - target: {fileID: 6612882105627447550, guid: f47c1c60273994d82afa2945f8108743,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7850455965036114424, guid: f47c1c60273994d82afa2945f8108743,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -247,10 +252,18 @@ MonoBehaviour:
   pairedDoorId: 1
   targetRoomNumber: 1
   associatedNumber: 5
+  thisDoorText: {fileID: 193280407}
+  pairedDoorText: {fileID: 193280407}
   requiredCondition: even
 --- !u!4 &193280406 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 42604617605667649, guid: f47c1c60273994d82afa2945f8108743,
+    type: 3}
+  m_PrefabInstance: {fileID: 193280403}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &193280407 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6612882105627447550, guid: f47c1c60273994d82afa2945f8108743,
     type: 3}
   m_PrefabInstance: {fileID: 193280403}
   m_PrefabAsset: {fileID: 0}
@@ -2710,10 +2723,18 @@ MonoBehaviour:
   pairedDoorId: 2
   targetRoomNumber: 1
   associatedNumber: 5
+  thisDoorText: {fileID: 2072863409}
+  pairedDoorText: {fileID: 193280407}
   requiredCondition: even
 --- !u!4 &2072863408 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4378106863285830936, guid: 74823b1c2d93d40419c476213abb9752,
+    type: 3}
+  m_PrefabInstance: {fileID: 2072863405}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2072863409 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8344121018376098530, guid: 74823b1c2d93d40419c476213abb9752,
     type: 3}
   m_PrefabInstance: {fileID: 2072863405}
   m_PrefabAsset: {fileID: 0}
@@ -2900,12 +2921,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1913966199168584824 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8506837104500493167, guid: 87ae4fbf39e5d49debecb9f50331e52e,
-    type: 3}
-  m_PrefabInstance: {fileID: 8910431387956625310}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1969774433128648698
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3324,21 +3339,51 @@ PrefabInstance:
       propertyPath: m_Name
       value: Response
       objectReference: {fileID: 0}
-    - target: {fileID: 6062622573919994383, guid: 90bf292386aa04225b27acad9ffb9159,
+    - target: {fileID: 7961127553712115071, guid: 90bf292386aa04225b27acad9ffb9159,
         type: 3}
-      propertyPath: m_SortingOrder
-      value: 100
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7961127553712115071, guid: 90bf292386aa04225b27acad9ffb9159,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7961127553712115071, guid: 90bf292386aa04225b27acad9ffb9159,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1913966199168584824}
+      objectReference: {fileID: 1913966199168584823}
     - target: {fileID: 7961127553712115071, guid: 90bf292386aa04225b27acad9ffb9159,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 1913966199168584823}
+      objectReference: {fileID: 8910431387956625311}
+    - target: {fileID: 7961127553712115071, guid: 90bf292386aa04225b27acad9ffb9159,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 7961127553712115071, guid: 90bf292386aa04225b27acad9ffb9159,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: ResetTimer
+      objectReference: {fileID: 0}
+    - target: {fileID: 7961127553712115071, guid: 90bf292386aa04225b27acad9ffb9159,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: TMPro.TMP_InputField, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 7961127553712115071, guid: 90bf292386aa04225b27acad9ffb9159,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: MathProblemUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7961127553712115071, guid: 90bf292386aa04225b27acad9ffb9159,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3356,11 +3401,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PassCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 1791810619810594804, guid: 9398caced4dc349cab69e4fe53bd24b4,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 1921454285617432567, guid: 9398caced4dc349cab69e4fe53bd24b4,
         type: 3}
@@ -4278,6 +4318,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87ae4fbf39e5d49debecb9f50331e52e, type: 3}
+--- !u!114 &8910431387956625311 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8802966314615583730, guid: 87ae4fbf39e5d49debecb9f50331e52e,
+    type: 3}
+  m_PrefabInstance: {fileID: 8910431387956625310}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f785694ca9e8e46279f4ba749c074d86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

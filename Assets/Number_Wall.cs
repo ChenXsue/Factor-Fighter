@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Number_Wall : MonoBehaviour 
 {
@@ -12,6 +13,7 @@ public class Number_Wall : MonoBehaviour
     public int givenSide;
     public int answer;
     public GameObject mathProblemPanel;
+    public GameObject numberGridPlane;
     public GameObject operatorsPanel;
     public GameObject input;
     public TMP_InputField inputField;
@@ -41,11 +43,17 @@ public class Number_Wall : MonoBehaviour
             PauseGame();
             Debug.Log("Player has reached the number wall!");
 
+            if (SceneManager.GetActiveScene().name == "Tutorial")
+            {
+                numberGridPlane.GetComponent<TutorialGlow>().StartFlashing();
+            }
+
             inputField.text = "";
             isColliding = true;
             mathProblemPanel.SetActive(true);
-            operatorsPanel.SetActive(true);
+            // operatorsPanel.SetActive(true);
         }
+        
     }
 
     public bool CheckAnswer()
@@ -60,12 +68,16 @@ public class Number_Wall : MonoBehaviour
             sideObject.SetActive(false);
             SpriteRenderer areaSprite = areaObject.GetComponent<SpriteRenderer>();
             areaSprite.color = Color.white;
-            
+            WebGLDataLogger.numberUsed ++;
+            WebGLDataLogger.numberSum ++;
+            WebGLDataLogger.answerSum++;
+
             ResumeGame();
             return true;
         }
         else
         {
+            WebGLDataLogger.wrongNum++;
             Debug.Log("Number Wall Incorrect answer!");
             return false;
         }

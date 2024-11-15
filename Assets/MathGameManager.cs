@@ -8,7 +8,7 @@ public class MathGameManager : MonoBehaviour
     public TMPro.TextMeshProUGUI resultText; // Target result text (e.g., "= 12")
     public GameObject quizPanel;
     public GameObject passPanel;
-    
+    private string expression;
 
 
     void Start()
@@ -32,6 +32,7 @@ public class MathGameManager : MonoBehaviour
     public void CalculateResult()
     {
         string expression = userInputField.text;
+        this.expression = expression;
 
         Debug.Log("Evaluating expression: '" + expression + "'");
 
@@ -60,13 +61,16 @@ public class MathGameManager : MonoBehaviour
                     Debug.Log("Success! You have succeeded.");
 
                     // Stop the timer at the end of the level
-                    GameTimer.Instance.StopTimer();
+                    GameTimer.Instance.StopTimer(expression);
+                    WebGLDataLogger.answerSum++;
                 }
                 else
                 {
                     Debug.Log("Try again! The result is incorrect.");
 
                     GameTimer.Instance.AddTimePoint();
+                    WebGLDataLogger.answerSum++;
+                    WebGLDataLogger.wrongNum++;
                 }
             }
             else
