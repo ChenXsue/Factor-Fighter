@@ -3841,11 +3841,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5236379731966959676, guid: 87607525313354eaeade0e71b2594ffb,
-        type: 3}
-      propertyPath: knockbackDuration
-      value: 0.3
-      objectReference: {fileID: 0}
     - target: {fileID: 6236753702951097132, guid: 87607525313354eaeade0e71b2594ffb,
         type: 3}
       propertyPath: InputManagerObject

@@ -1413,7 +1413,7 @@ Transform:
   m_GameObject: {fileID: 166352894}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 20.65, y: 11.39, z: 0}
+  m_LocalPosition: {x: 25.1, y: 11.39, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8478,6 +8478,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1799595922}
+    - targetCorrespondingSourceObject: {fileID: 7152421801146024060, guid: 92ca8aed5201b4875b87df2a67c88d39,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1799595927}
   m_SourcePrefab: {fileID: 100100000, guid: 92ca8aed5201b4875b87df2a67c88d39, type: 3}
 --- !u!4 &1799595920 stripped
 Transform:
@@ -8507,7 +8511,19 @@ MonoBehaviour:
     type: 3}
   boxPrefab: {fileID: 7876127357355084213, guid: c8155299218294455aa61b1e85c82529,
     type: 3}
-  circleOffset: {x: 0, y: 1.5}
+  circleOffset: {x: 0, y: 0}
+--- !u!210 &1799595927
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1799595921}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1 &1848478805
 GameObject:
   m_ObjectHideFlags: 0

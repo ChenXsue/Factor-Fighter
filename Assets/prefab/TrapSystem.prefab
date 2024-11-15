@@ -595,7 +595,7 @@ GameObject:
   - component: {fileID: 4758393403152153544}
   - component: {fileID: 1625805621968418072}
   - component: {fileID: 4795428844997709874}
-  - component: {fileID: 5236379731966959676}
+  - component: {fileID: 3564419685788685158}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -718,7 +718,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &5236379731966959676
+--- !u!114 &3564419685788685158
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -727,18 +727,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8207520459290668366}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 925bd04b20db8491f8202f70c21477c7, type: 3}
+  m_Script: {fileID: 11500000, guid: 912374427bf774f4bb97e73d458eb904, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spikeTraps: []
-  equationBox: {fileID: 8207520459290668366}
-  equationText: {fileID: 6129634314024317521}
-  detectionRange: 2
-  expectedResult: 4
-  space: {fileID: 0}
+  damageAmount: 0
   knockbackForce: 5
   knockbackDuration: 0.3
-  InputManagerObject: {fileID: 0}
 --- !u!1 &8504051112882897823
 GameObject:
   m_ObjectHideFlags: 0
