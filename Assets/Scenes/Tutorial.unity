@@ -2841,7 +2841,7 @@ PrefabInstance:
     - target: {fileID: 7961127553712115071, guid: 90bf292386aa04225b27acad9ffb9159,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7961127553712115071, guid: 90bf292386aa04225b27acad9ffb9159,
         type: 3}
@@ -2857,7 +2857,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 1913966199168584823}
+      objectReference: {fileID: 8910431387956625311}
     - target: {fileID: 7961127553712115071, guid: 90bf292386aa04225b27acad9ffb9159,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -2865,8 +2865,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7961127553712115071, guid: 90bf292386aa04225b27acad9ffb9159,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: resetTimer
+      objectReference: {fileID: 0}
+    - target: {fileID: 7961127553712115071, guid: 90bf292386aa04225b27acad9ffb9159,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: TMPro.TMP_InputField, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 7961127553712115071, guid: 90bf292386aa04225b27acad9ffb9159,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: MathProblemUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7961127553712115071, guid: 90bf292386aa04225b27acad9ffb9159,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4017,6 +4032,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87ae4fbf39e5d49debecb9f50331e52e, type: 3}
+--- !u!114 &8910431387956625311 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8802966314615583730, guid: 87ae4fbf39e5d49debecb9f50331e52e,
+    type: 3}
+  m_PrefabInstance: {fileID: 8910431387956625310}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f785694ca9e8e46279f4ba749c074d86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
