@@ -71,5 +71,6 @@ public class TimerForLevel : MonoBehaviour
         }
         gameoverCanvas.SetActive(true);
         gameoverCanvas.GetComponentInChildren<TextMeshProUGUI>().text = "Time's up!";
+        GameTimer.Instance.StopTimer("Time's up");
     }
 }
