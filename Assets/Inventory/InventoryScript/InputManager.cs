@@ -18,6 +18,9 @@ public class InputManager : MonoBehaviour
     public GameObject numberWall2;
     public GameObject numberWall3;
     public GameObject numberWallIncorrect;
+    public GameObject angel;
+    public TMP_InputField angelInput;
+    public GameObject angelPanel;
     public GameObject trapSystemObject;
     public Transform operatorSlotsParent;
     public Transform numberSlotsParent;
@@ -234,6 +237,44 @@ public class InputManager : MonoBehaviour
             }
         }
 
+        // Angel Check
+        if (angelPanel == null || !angelPanel.activeSelf)
+        {
+            Debug.Log("Angel is not active");
+        } else {
+            Debug.Log("Angel is active");
+            if (slot == null || numberWallInput == null) return;
+
+            Debug.Log("Number slot clicked for angel");
+            // 检查当前输入的最后一个token
+            string[] tokens = angelInput.text.Trim().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            if (tokens.Length > 0)
+            {
+                string lastToken = tokens[tokens.Length - 1];
+                // 如果最后一个token是数字，不允许继续输入数字
+                if (int.TryParse(lastToken, out _))
+                {
+                    Debug.Log("Cannot input number after number");
+                    return;
+                }
+            }
+
+            string number = slot.numberText.text;
+            if (!string.IsNullOrEmpty(angelInput.text) && !angelInput.text.EndsWith(" "))
+            {
+                angelInput.text += " ";
+            }
+            angelInput.text += number + " ";
+
+            NumberSO numberToRemove = NumberManager.instance.GetNumber(int.Parse(number));
+
+            if (numberToRemove != null)
+            {
+                NumberInventoryManager.instance.myNumberBag.RemoveItem(numberToRemove);
+                NumberInventoryManager.instance.RefreshNumberInventory();
+            }
+        }
+
         // Door Problem Check
         if (doorProblemPanel == null || !doorProblemPanel.activeSelf)
         {
@@ -316,6 +357,22 @@ public class InputManager : MonoBehaviour
         NumberSO numberSO = NumberManager.instance.GetNumber(expectedResult);
         NumberInventoryManager.instance.myNumberBag.AddItem(numberSO);
         NumberInventoryManager.instance.RefreshNumberInventory();
+    }
+
+    public void AngelSubmit()
+    {
+        if (angel != null)
+        {
+            int numberToAdd = angel.GetComponent<Angel>().CalculateNumber();
+            NumberSO numberSO = NumberManager.instance.GetNumber(numberToAdd);
+            NumberInventoryManager.instance.myNumberBag.AddItem(numberSO);
+            NumberInventoryManager.instance.RefreshNumberInventory();
+
+            angel.SetActive(false);
+            angelPanel.SetActive(false);
+            angel.GetComponent<Angel>().ResumeGame();
+
+        }
     }
 
     public void NumberWallSubmit()
