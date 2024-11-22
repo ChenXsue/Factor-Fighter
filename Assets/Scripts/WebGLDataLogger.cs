@@ -86,7 +86,14 @@ public class WebGLDataLogger : MonoBehaviour
             string result = FindSolution(passFormula, solutions);
             passFormula = result;
         }
-
+        if(passFormula == "Time's up"){
+            if(level.Contains("Level1") || level.Contains("Tutorial")){
+                completionTime = 90;
+            }
+            else{
+                completionTime = 300;
+            }
+        }
         double accuracy = (double)(answerSum - wrongNum) / answerSum;
         // 创建 LogData 实例
         LogData data = new LogData(playerId, level, completionTime, passFormula, operatorSum, numberSum, operatorUsed, numberUsed, accuracy);
@@ -138,7 +145,7 @@ public class WebGLDataLogger : MonoBehaviour
         }
 
         // 如果没有找到匹配的解法
-        return "未找到对应的解法";
+        return input;
     }
 
     // 标准化表达式，将数字和运算符排序
