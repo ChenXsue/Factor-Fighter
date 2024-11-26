@@ -9,6 +9,8 @@ public class MathProblemUI : MonoBehaviour
     public GameObject mathProblemPanel;
     public GameObject responsePanel;
 
+    public GameObject responseTimeOutPanel;
+
     private Enemy currentEnemy;
     private RoomDoor currentRoomDoor;
     private BasicEnemy currentBasicEnemy;
@@ -69,7 +71,8 @@ public class MathProblemUI : MonoBehaviour
 
         if (healthManager.currentHealth > 0)
         {
-            responsePanel.SetActive(true); // 显示错误反馈
+            // responsePanel.SetActive(true); // 显示错误反馈
+            responseTimeOutPanel.SetActive(true);
         }
         else
         {
