@@ -8,6 +8,7 @@ public class MathGameManager : MonoBehaviour
     public TMPro.TextMeshProUGUI resultText; // Target result text (e.g., "= 12")
     public GameObject quizPanel;
     public GameObject passPanel;
+    private string expression;
 
 
     void Start()
@@ -15,14 +16,23 @@ public class MathGameManager : MonoBehaviour
         // Get the current level name dynamically
         string levelName = SceneManager.GetActiveScene().name;
         
-        // Start the timer for the current level
+        // Start the timer for the current level    
         GameTimer.Instance.StartTimer(levelName);
 
+    }
+
+    void Update()
+    {
+        if (quizPanel.activeSelf && Input.GetKeyDown(KeyCode.Return))
+        {
+            CalculateResult();
+        }
     }
 
     public void CalculateResult()
     {
         string expression = userInputField.text;
+        this.expression = expression;
 
         Debug.Log("Evaluating expression: '" + expression + "'");
 
@@ -51,13 +61,16 @@ public class MathGameManager : MonoBehaviour
                     Debug.Log("Success! You have succeeded.");
 
                     // Stop the timer at the end of the level
-                    GameTimer.Instance.StopTimer();
+                    GameTimer.Instance.StopTimer(expression);
+                    WebGLDataLogger.answerSum++;
                 }
                 else
                 {
                     Debug.Log("Try again! The result is incorrect.");
 
                     GameTimer.Instance.AddTimePoint();
+                    WebGLDataLogger.answerSum++;
+                    WebGLDataLogger.wrongNum++;
                 }
             }
             else
@@ -76,6 +89,7 @@ public class MathGameManager : MonoBehaviour
         try
         {
             expression = expression.Replace("×", "*");
+            expression = expression.Replace("÷", "/");
             System.Data.DataTable table = new System.Data.DataTable();
             var result = table.Compute(expression, null).ToString();
 

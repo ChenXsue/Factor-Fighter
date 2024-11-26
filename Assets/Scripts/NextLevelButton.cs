@@ -2,12 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
-public class NextLevelButton : MonoBehaviour
+public class NextLevelButton : MonoBehaviour 
 {
+    [Header("Inventories")]
     [SerializeField] private NumberInventorySO numberInventory;
     [SerializeField] private OperatorInventorySO operatorInventory;
+    
+    [Header("References")]
+    [SerializeField] private HealthManager healthManager;  // 添加HealthManager引用
+    
+    [Header("Level Settings")]
     [SerializeField] private string nextLevelName = "Level1";
+
+    private void Awake()
+    {
+        // 如果没有在Inspector中指定，尝试查找
+        if (healthManager == null)
+        {
+            healthManager = FindObjectOfType<HealthManager>();
+            if (healthManager == null)
+            {
+                Debug.LogError("HealthManager not found! Please assign in inspector.");
+            }
+        }
+    }
 
     public void OnNextLevelButtonClick()
     {
@@ -32,14 +50,16 @@ public class NextLevelButton : MonoBehaviour
         {
             Debug.LogWarning("Operator inventory is not assigned!");
         }
-        if (HealthManager.Instance != null)
+
+        // 重置生命值
+        if (healthManager != null)
         {
-            HealthManager.Instance.ResetHealth();
+            healthManager.ResetHealth();
             Debug.Log("Health reset to maximum.");
         }
         else
         {
-            Debug.LogWarning("HealthManager instance is not available!");
+            Debug.LogWarning("HealthManager is not assigned!");
         }
 
         // 加载下一关
@@ -48,6 +68,14 @@ public class NextLevelButton : MonoBehaviour
 
     private void LoadNextLevel()
     {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        // 根据当前场景名确定下一个场景
+        nextLevelName = currentSceneName switch
+        {
+            "Tutorial" => "Level1",
+            _ => "Level2"
+        };
+
         Debug.Log($"Loading next level: {nextLevelName}");
         SceneManager.LoadScene(nextLevelName);
     }

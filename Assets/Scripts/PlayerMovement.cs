@@ -1,34 +1,47 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
     public float movementSpeed;
-    float speedX, speedY;
-    Rigidbody2D rb;
+    private float speedX, speedY;
+    private Rigidbody2D rb;
+    private RoomManager roomManager;
+    public bool isKnockedBack = false;  // 用于控制击退状态
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        if (RoomManager.Instance.isFirstSpawn)
+        roomManager = FindObjectOfType<RoomManager>();
+        
+        // 设置初始位置
+        if (roomManager != null && roomManager.defaultSpawnPoint != null)
         {
-            Debug.Log("Game instance is first spawn");
-            RoomManager.Instance.isFirstSpawn = false;
-        }
-        else
-        {
-            // Debug.Log("Player spawn position: " + RoomManager.Instance.playerSpawnPosition);
-            transform.position = RoomManager.Instance.playerSpawnPosition;
+            transform.position = roomManager.defaultSpawnPoint.position;
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        speedX = Input.GetAxisRaw("Horizontal") * movementSpeed;
-        speedY = Input.GetAxisRaw("Vertical") * movementSpeed;
-        rb.velocity = new Vector2(speedX, speedY);
+        if (!isKnockedBack) // 如果不处于击退状态，允许玩家控制
+        {
+            speedX = Input.GetAxisRaw("Horizontal") * movementSpeed;
+            speedY = Input.GetAxisRaw("Vertical") * movementSpeed;
+            rb.velocity = new Vector2(speedX, speedY);
+        }
+    }
+
+    public IEnumerator ApplyKnockback(Vector2 knockbackDirection, float knockbackForce, float knockbackDuration)
+    {
+        isKnockedBack = true;
+
+        // 设置玩家的 Rigidbody2D 速度为击退方向和力度
+        rb.velocity = knockbackDirection * knockbackForce;
+
+        // 等待击退时间
+        yield return new WaitForSeconds(knockbackDuration);
+
+        // 恢复玩家控制
+        isKnockedBack = false;
     }
 }

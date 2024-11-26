@@ -4,24 +4,19 @@ using UnityEngine;
 public class NumberPickup : MonoBehaviour
 {
     public int numberValue;
-    public string cubeId; // 确保在Inspector中设置唯一的ID
+    public GameObject NumberText;
+    //public string cubeId; // 确保在Inspector中设置唯一的ID
+
+    private bool isPickedUp;
 
     private void Start()
     {
-        if (string.IsNullOrEmpty(cubeId))
-        {
-            cubeId = "Cube_" + GetInstanceID();
-        }
-
-        if (CubeManager.Instance.IsCubePickedUp(cubeId))
-        {
-            gameObject.SetActive(false);
-        }
+        isPickedUp = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && !CubeManager.Instance.IsCubePickedUp(cubeId))
+        if (other.CompareTag("Player") && isPickedUp == false)
         {
             PickUpCube();
         }
@@ -29,10 +24,11 @@ public class NumberPickup : MonoBehaviour
 
     private void PickUpCube()
     {
-        CubeManager.Instance.PickUpCube(cubeId);
+        // CubeManager.Instance.PickUpCube(cubeId);
         NumberSO numberSO = NumberManager.instance.GetNumber(numberValue);
         NumberInventoryManager.instance.AddNumber(numberSO);
         Debug.Log($"Picked up number: {numberValue}");
-        gameObject.SetActive(false);
+        isPickedUp = true;
+        NumberText.SetActive(false);
     }
 }
