@@ -16,6 +16,7 @@ public class Number_Wall : MonoBehaviour
     public GameObject numberGridPlane;
     public GameObject operatorsPanel;
     public GameObject input;
+    public GameObject bluebox;
     public TMP_InputField inputField;
     public GameObject areaText;
     public GameObject sideObject;
@@ -33,6 +34,15 @@ public class Number_Wall : MonoBehaviour
         //mathProblem = "What is ?";
         mathProblemPanel.SetActive(false);
         answer = areaSize / givenSide;
+        bluebox.transform.SetParent(mathProblemPanel.transform, false); // 将 bluebox 添加为 mathProblemPanel 的子对象
+        bluebox.GetComponent<Canvas>().sortingOrder = 1; // 设置 bluebox 的渲染顺序高于 panel
+        if (inputField.placeholder != null)
+            {
+                TMP_Text placeholderText = inputField.placeholder.GetComponent<TMP_Text>();
+                placeholderText.text = "W"; // 设置占位符内容
+                placeholderText.color = Color.gray; // 设置占位符颜色
+            }
+        
     }
 
     void OnTriggerEnter2D(Collider2D other)
