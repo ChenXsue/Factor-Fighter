@@ -77,7 +77,7 @@ public class MathProblemUI : MonoBehaviour
         }
 
         Debug.Log("Time ran out!");
-        timer = 10000;
+        timer = 59;
     }
 
     private void OnInputFieldSubmit(string text)
@@ -208,6 +208,7 @@ public class MathProblemUI : MonoBehaviour
         }
 
         Debug.Log("Wrong answer!");
+        timer = 59;
     }
 
     private void ResumeGame()
