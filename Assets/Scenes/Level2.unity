@@ -1998,6 +1998,11 @@ PrefabInstance:
       objectReference: {fileID: 965614013}
     - target: {fileID: 3335503022466067967, guid: e7b22cd29e1dc4b098a20aae014b9567,
         type: 3}
+      propertyPath: numberGridPlane
+      value: 
+      objectReference: {fileID: 2115965830}
+    - target: {fileID: 3335503022466067967, guid: e7b22cd29e1dc4b098a20aae014b9567,
+        type: 3}
       propertyPath: mathProblemPanel
       value: 
       objectReference: {fileID: 765538964}
@@ -9711,7 +9716,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 965614008}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2115965830}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a525a83db65fe4b43882464ab401cb17, type: 3}
@@ -10006,6 +10011,11 @@ PrefabInstance:
       propertyPath: quizPanel
       value: 
       objectReference: {fileID: 1965275853}
+    - target: {fileID: 6197658029055667330, guid: 208b6e571a4934fffb45602091755001,
+        type: 3}
+      propertyPath: numbersPanel
+      value: 
+      objectReference: {fileID: 2115965830}
     - target: {fileID: 6197658029055667330, guid: 208b6e571a4934fffb45602091755001,
         type: 3}
       propertyPath: operatorsPanel
@@ -10431,6 +10441,12 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &2115965830 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 936979584795564443, guid: 7f8a4858c33ca43d5bdc6ceaa32f336b,
+    type: 3}
+  m_PrefabInstance: {fileID: 965614008}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2122786506
 GameObject:
   m_ObjectHideFlags: 0

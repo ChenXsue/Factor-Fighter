@@ -1022,6 +1022,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 8523211822521370627}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &846285281 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7574340226854385811, guid: 7f8a4858c33ca43d5bdc6ceaa32f336b,
+    type: 3}
+  m_PrefabInstance: {fileID: 872769234}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &858584372 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4150500709454284088, guid: 7f8a4858c33ca43d5bdc6ceaa32f336b,
@@ -1496,7 +1502,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 872769234}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 846285281}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
@@ -3011,6 +3017,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6197658029055667330, guid: 208b6e571a4934fffb45602091755001,
+        type: 3}
+      propertyPath: input
+      value: 
+      objectReference: {fileID: 846285281}
+    - target: {fileID: 6197658029055667330, guid: 208b6e571a4934fffb45602091755001,
+        type: 3}
+      propertyPath: quizPanel
+      value: 
+      objectReference: {fileID: 858584372}
+    - target: {fileID: 6197658029055667330, guid: 208b6e571a4934fffb45602091755001,
+        type: 3}
+      propertyPath: numbersPanel
+      value: 
+      objectReference: {fileID: 468020518}
+    - target: {fileID: 6197658029055667330, guid: 208b6e571a4934fffb45602091755001,
+        type: 3}
+      propertyPath: operatorsPanel
+      value: 
+      objectReference: {fileID: 872769236}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
