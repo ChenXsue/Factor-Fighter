@@ -267,6 +267,7 @@ GameObject:
   - component: {fileID: 324158086}
   - component: {fileID: 324158088}
   - component: {fileID: 324158087}
+  - component: {fileID: 324158089}
   m_Layer: 5
   m_Name: Goal_star
   m_TagString: Untagged
@@ -332,6 +333,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 324158085}
   m_CullTransparentMesh: 1
+--- !u!114 &324158089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 324158085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6f86be6a17464b438fa3f7eb8ee698a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPosition: {x: 0, y: 0}
+  endPosition: {x: -521.8818, y: 125.6049}
+  startScale: {x: 2, y: 2, z: 2}
+  endScale: {x: 1, y: 1, z: 1}
+  animationDuration: 2
+  startDelay: 1
 --- !u!1 &325019678
 GameObject:
   m_ObjectHideFlags: 0
@@ -1603,12 +1622,12 @@ PrefabInstance:
     - target: {fileID: 6485198143884299738, guid: 7f8a4858c33ca43d5bdc6ceaa32f336b,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 65.9
+      value: 65.8999
       objectReference: {fileID: 0}
     - target: {fileID: 6485198143884299738, guid: 7f8a4858c33ca43d5bdc6ceaa32f336b,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -152.9
+      value: -152.90002
       objectReference: {fileID: 0}
     - target: {fileID: 6578795716208456841, guid: 7f8a4858c33ca43d5bdc6ceaa32f336b,
         type: 3}
@@ -1703,7 +1722,7 @@ PrefabInstance:
     - target: {fileID: 8183445125199475039, guid: 7f8a4858c33ca43d5bdc6ceaa32f336b,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.14996338
+      value: 0.14990234
       objectReference: {fileID: 0}
     - target: {fileID: 8183445125199475039, guid: 7f8a4858c33ca43d5bdc6ceaa32f336b,
         type: 3}
