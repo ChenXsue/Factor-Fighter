@@ -32,7 +32,7 @@ public class Number_Wall : MonoBehaviour
     void Start()
     {
         //mathProblem = "What is ?";
-        mathProblemPanel.SetActive(false);
+        mathProblemPanel.SetActive(true);
         answer = areaSize / givenSide;
         bluebox.transform.SetParent(mathProblemPanel.transform, false); // 将 bluebox 添加为 mathProblemPanel 的子对象
         bluebox.GetComponent<Canvas>().sortingOrder = 1; // 设置 bluebox 的渲染顺序高于 panel

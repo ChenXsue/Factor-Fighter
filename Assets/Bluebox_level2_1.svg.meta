@@ -39,16 +39,16 @@ ScriptedImporter:
   spriteData:
     TessellationDetail: 0
     SpriteRect:
-      name: 
+      name: Bluebox_level2_1Sprite
       originalName: 
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5000003}
       alignment: 0
       border: {x: 0, y: 0, z: 0, w: 0}
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 0
-        height: 0
-      spriteID: 377ee677d36a548aa889c768b1dd7929
+        width: 265
+        height: 115
+      spriteID: 631c294c6e2264da9a4050ae2db0916c
     PhysicsOutlines: []

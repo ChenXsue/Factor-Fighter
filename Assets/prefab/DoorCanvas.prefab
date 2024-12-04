@@ -7834,7 +7834,6 @@ MonoBehaviour:
   timerText: {fileID: 3496004570628521266}
   gameoverCanvas: {fileID: 0}
   menuCanvas: {fileID: 1250360110497450268}
-  startDelay: 3
 --- !u!1 &7873871949683403429
 GameObject:
   m_ObjectHideFlags: 0
@@ -8632,8 +8631,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57ab5661e6fda474aa7ca8ad13ffe341, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heartPrefab: {fileID: 0}
-  healthPanel: {fileID: 0}
+  healthText: {fileID: 0}
+  healthManager: {fileID: 0}
 --- !u!1 &8950684290530151545
 GameObject:
   m_ObjectHideFlags: 0
