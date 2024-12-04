@@ -9,6 +9,7 @@ public class InputManager : MonoBehaviour
 {
     [Header("UI References")]
     public TMP_InputField inputField;
+    public GameObject placeHolder;
     public TMP_InputField numberWallInput;
     public TMP_InputField doorProblemInput;
     public GameObject invisibleObject;
@@ -58,7 +59,7 @@ public class InputManager : MonoBehaviour
     private void Start()
     {
         Debug.Log("InputManager Start method called");
-
+        placeHolder.SetActive(true);
         if (inputField != null)
         {
             inputField.interactable = false;
@@ -206,7 +207,7 @@ public class InputManager : MonoBehaviour
         } else {
             Debug.Log("Number Wall is active");
             if (slot == null || numberWallInput == null) return;
-
+            placeHolder.SetActive(false);
             Debug.Log("Number slot clicked for number wall");
             // 检查当前输入的最后一个token
             string[] tokens = numberWallInput.text.Trim().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
@@ -258,7 +259,7 @@ public class InputManager : MonoBehaviour
                     return;
                 }
             }
-
+            
             string number = slot.numberText.text;
             if (!string.IsNullOrEmpty(angelInput.text) && !angelInput.text.EndsWith(" "))
             {
@@ -446,6 +447,7 @@ public class InputManager : MonoBehaviour
             Debug.Log("Input field is empty, nothing to backspace");
             return;
         }
+        placeHolder.SetActive(true);
 
         string[] tokens = input.text.Trim().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
         if (tokens.Length == 0) return;
