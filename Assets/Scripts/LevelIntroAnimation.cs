@@ -55,6 +55,9 @@ public class LevelIntroAnimation : MonoBehaviour
         introSequence.Join(goalText.rectTransform.DOAnchorPos(
             new Vector2(-150f, 0f), textFadeDuration).SetEase(Ease.OutQuad));
         
+        // 添加这行日志
+        introSequence.AppendCallback(() => Debug.Log("Star fade in completed at: " + Time.time));
+        
         introSequence.AppendInterval(0.5f);
         
         // Fade out text then move star

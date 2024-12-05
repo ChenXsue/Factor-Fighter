@@ -16,7 +16,7 @@ public class TimerForLevel : MonoBehaviour
     [SerializeField] public TextMeshProUGUI timerText;
     [SerializeField] public GameObject gameoverCanvas;     
     [SerializeField] public GameObject menuCanvas;
-    [SerializeField] private float startDelay = 3f;  // 延迟开始的时间
+    [SerializeField] private float startDelay = 5.3f;  // 延迟开始的时间
 
     void Start()
     {
