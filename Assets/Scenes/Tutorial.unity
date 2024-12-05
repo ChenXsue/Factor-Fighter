@@ -2166,6 +2166,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1138525703}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &976556197 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8492404781748355212, guid: 7f8a4858c33ca43d5bdc6ceaa32f336b,
+    type: 3}
+  m_PrefabInstance: {fileID: 872769234}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1024976152
 GameObject:
   m_ObjectHideFlags: 0
@@ -2542,6 +2548,11 @@ PrefabInstance:
       propertyPath: sideObject
       value: 
       objectReference: {fileID: 566213960}
+    - target: {fileID: 3335503022466067967, guid: e7b22cd29e1dc4b098a20aae014b9567,
+        type: 3}
+      propertyPath: placeHolder
+      value: 
+      objectReference: {fileID: 976556197}
     - target: {fileID: 3335503022466067967, guid: e7b22cd29e1dc4b098a20aae014b9567,
         type: 3}
       propertyPath: operatorsPanel
