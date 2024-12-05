@@ -12,6 +12,7 @@ public class Number_Wall : MonoBehaviour
     public int areaSize;
     public int givenSide;
     public int answer;
+    public GameObject placeHolder;
     public GameObject mathProblemPanel;
     public GameObject numberGridPlane;
     public GameObject operatorsPanel;
@@ -51,6 +52,9 @@ public class Number_Wall : MonoBehaviour
             inputField.text = "";
             isColliding = true;
             mathProblemPanel.SetActive(true);
+            InputManager.Instance.numberWallInput = inputField; // 将inputField传递给InputManager
+            InputManager.Instance.numberWallPanel = mathProblemPanel; // 将panel传递给InputManager
+            InputManager.Instance.placeHolder = placeHolder; // 将panel传递给InputManager
             // operatorsPanel.SetActive(true);
         }
         
