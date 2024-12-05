@@ -4083,6 +4083,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6155756211846277011, guid: 7f8a4858c33ca43d5bdc6ceaa32f336b,
         type: 3}
+      propertyPath: startDelay
+      value: 5.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6155756211846277011, guid: 7f8a4858c33ca43d5bdc6ceaa32f336b,
+        type: 3}
       propertyPath: gameoverCanvas
       value: 
       objectReference: {fileID: 1379759430}
@@ -4239,16 +4244,16 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1892220470006379857, guid: 7f8a4858c33ca43d5bdc6ceaa32f336b,
         type: 3}
-      insertIndex: 0
-      addedObject: {fileID: 223672136}
-    - targetCorrespondingSourceObject: {fileID: 1892220470006379857, guid: 7f8a4858c33ca43d5bdc6ceaa32f336b,
-        type: 3}
-      insertIndex: 9
+      insertIndex: 8
       addedObject: {fileID: 263467451}
     - targetCorrespondingSourceObject: {fileID: 1892220470006379857, guid: 7f8a4858c33ca43d5bdc6ceaa32f336b,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2105904629}
+    - targetCorrespondingSourceObject: {fileID: 1892220470006379857, guid: 7f8a4858c33ca43d5bdc6ceaa32f336b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 223672136}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f8a4858c33ca43d5bdc6ceaa32f336b, type: 3}
 --- !u!224 &965614009 stripped
