@@ -19,7 +19,6 @@ public class InputManager : MonoBehaviour
     public GameObject numberWall2;
     public GameObject numberWall3;
     public GameObject numberWallIncorrect;
-    public GameObject angel;
     public TMP_InputField angelInput;
     public GameObject angelPanel;
     public GameObject trapSystemObject;
@@ -361,20 +360,25 @@ public class InputManager : MonoBehaviour
         NumberInventoryManager.instance.RefreshNumberInventory();
     }
 
-    public void AngelSubmit()
+    public void AngelSubmit(string OperationNumber)
     {
-        if (angel != null)
+        if (!string.IsNullOrEmpty(angelInput.text))
         {
-            int numberToAdd = angel.GetComponent<Angel>().CalculateNumber();
+            int numberToAdd = angelPanel.GetComponent<AngelPanel>().CalculateOperation(OperationNumber);
+            if (numberToAdd == 0)
+            {
+                Debug.LogError("Invalid number to add: " + numberToAdd);
+                return;
+            }
+
             NumberSO numberSO = NumberManager.instance.GetNumber(numberToAdd);
             NumberInventoryManager.instance.myNumberBag.AddItem(numberSO);
             NumberInventoryManager.instance.RefreshNumberInventory();
 
-            angel.SetActive(false);
+            angelPanel.GetComponent<AngelPanel>().updateAngel();
             angelPanel.SetActive(false);
-            angel.GetComponent<Angel>().ResumeGame();
-
         }
+        return;
     }
 
     public void NumberWallSubmit()
