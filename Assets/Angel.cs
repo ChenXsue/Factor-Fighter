@@ -7,14 +7,15 @@ public class Angel : MonoBehaviour
 {
     public GameObject angelPanel;
     public  TMP_InputField inputField;
-    public int scalar;
+    public string Operation1;
+    public string Operation2;
+    public int AngelID;
     private RoomManager roomManager;
 
     // Start is called before the first frame update
     void Start()
     {
         roomManager = FindObjectOfType<RoomManager>();
-        scalar = 3;
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -27,17 +28,11 @@ public class Angel : MonoBehaviour
             {
                 roomManager.PauseGame();
 
+                angelPanel.GetComponent<AngelPanel>().SetCurrentAngelID(AngelID, Operation1, Operation2);
                 angelPanel.SetActive(true);
+                angelPanel.GetComponent<AngelPanel>().AngelGameObject = gameObject;
             }
         }
-    }
-
-    public int CalculateNumber()
-    {
-        int number = int.Parse(inputField.text);
-        int result = number * scalar;
-        Debug.Log($"The result is {result}");
-        return result;
     }
 
     public void ResumeGame()
