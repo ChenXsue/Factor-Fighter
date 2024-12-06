@@ -68,7 +68,7 @@ public class WebGLDataLogger : MonoBehaviour
             }
         }
         numberUsed++;
-        if (level.Contains("Level1"))
+        if (level.Contains("Level1") || level.Contains("Level3") || level.Contains("Level4"))
         {
             numberSum += 3; // Level 1 has 4 number initially
         }
