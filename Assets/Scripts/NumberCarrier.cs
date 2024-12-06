@@ -76,16 +76,16 @@ public class NumberCarrier : MonoBehaviour
         Vector3 circlePosition = (Vector2)transform.position + circleOffset;
         currentNumberCircle = Instantiate(numberCirclePrefab, circlePosition, Quaternion.identity);
         currentNumberCircle.transform.SetParent(transform);
-        currentNumberCircle.transform.localScale = new Vector3(8f, 6f, 6f); // 拉伸宽度
+        // currentNumberCircle.transform.localScale = new Vector3(8f, 6f, 6f); // 拉伸宽度
 
         // 设置圆圈中的数字
         TextMeshPro numberText = currentNumberCircle.GetComponentInChildren<TextMeshPro>();
         if (numberText != null)
         {
             numberText.text = carriedQuestion;
-            numberText.rectTransform.pivot = new Vector2(0.54f, 0.65f);
+            // numberText.rectTransform.pivot = new Vector2(0.54f, 0.65f);
             numberText.sortingOrder = 1; // 数值比 box 的 sortingOrder 大
-            numberText.fontSize = 15; // 设置字体大小为26
+            // numberText.fontSize = 15; // 设置字体大小为26
         }
 
         // 设置圆圈为黄色
@@ -109,13 +109,13 @@ public class NumberCarrier : MonoBehaviour
         {
             boxScript.number = answer;
             boxScript.numberText.text = carriedQuestion;
-            boxScript.numberText.enableAutoSizing = false; // 禁用 Auto Size
+            // boxScript.numberText.enableAutoSizing = false; // 禁用 Auto Size
             // boxScript.numberText.margin = new Vector4(-2, 0, 0, 0); // 左边距 -10
-            boxScript.numberText.rectTransform.anchorMin = new Vector2(0.5f, 1.5f); // 锚点设置为顶部
-            boxScript.numberText.rectTransform.anchorMax = new Vector2(0.5f, 1.5f);
-            boxScript.numberText.rectTransform.pivot = new Vector2(0.57f, 0.55f);
+            // boxScript.numberText.rectTransform.anchorMin = new Vector2(0.5f, 1.5f); // 锚点设置为顶部
+            // boxScript.numberText.rectTransform.anchorMax = new Vector2(0.5f, 1.5f);
+            // boxScript.numberText.rectTransform.pivot = new Vector2(0.57f, 0.55f);
             boxScript.numberText.sortingOrder = 1; // 数值比 box 的 sortingOrder 大
-            boxScript.numberText.fontSize = 20; // 设置字体大小为26
+            // boxScript.numberText.fontSize = 20; // 设置字体大小为26
             // boxScript.numberText.fontStyle = TMPro.FontStyles.Bold; // 设置字体加粗
             // 调试输出
             // Debug.Log("Text is set to: " + boxScript.numberText.text);

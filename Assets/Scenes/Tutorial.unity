@@ -1615,6 +1615,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoorCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3630842808227985666, guid: 7f8a4858c33ca43d5bdc6ceaa32f336b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4150500709454284088, guid: 7f8a4858c33ca43d5bdc6ceaa32f336b,
         type: 3}
       propertyPath: m_IsActive
@@ -4554,12 +4559,12 @@ PrefabInstance:
     - target: {fileID: 4525235260571446293, guid: bfbead8c0d94d457fbb9f077a2d60892,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 40.64
+      value: 40.66
       objectReference: {fileID: 0}
     - target: {fileID: 5180753666406160112, guid: bfbead8c0d94d457fbb9f077a2d60892,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.72
+      value: 11.75
       objectReference: {fileID: 0}
     - target: {fileID: 5776146508482169362, guid: bfbead8c0d94d457fbb9f077a2d60892,
         type: 3}
@@ -4614,7 +4619,7 @@ PrefabInstance:
     - target: {fileID: 8337724899971213601, guid: bfbead8c0d94d457fbb9f077a2d60892,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -11.89
+      value: -11.95
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
