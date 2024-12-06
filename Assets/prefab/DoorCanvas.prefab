@@ -3616,8 +3616,8 @@ MonoBehaviour:
   numberWall1: {fileID: 0}
   numberWall2: {fileID: 0}
   numberWall3: {fileID: 0}
+  numberWall4: {fileID: 0}
   numberWallIncorrect: {fileID: 0}
-  angel: {fileID: 0}
   angelInput: {fileID: 0}
   angelPanel: {fileID: 0}
   trapSystemObject: {fileID: 0}
@@ -3628,6 +3628,8 @@ MonoBehaviour:
   minusOperator: {fileID: 11400000, guid: d9070315bbc954cc29807090bfa9fa86, type: 2}
   multipleOperator: {fileID: 11400000, guid: 631f416f4d3444bf6aab47d7e7e42eb0, type: 2}
   divideOperator: {fileID: 11400000, guid: 0c11bfb759d034dd295bab9e0aa21b12, type: 2}
+  leftParenthesisOperator: {fileID: 0}
+  rightParenthesisOperator: {fileID: 0}
 --- !u!1 &3486956594507770758
 GameObject:
   m_ObjectHideFlags: 0
