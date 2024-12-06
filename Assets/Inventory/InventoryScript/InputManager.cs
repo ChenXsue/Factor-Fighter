@@ -426,6 +426,10 @@ public class InputManager : MonoBehaviour
 
     public void AngelSubmit(string OperationNumber)
     {
+        Debug.Log($"Attempting to submit with operation: {OperationNumber}");
+        Debug.Log($"Current angelInput reference status: {(angelInput != null ? "Valid" : "Null")}");
+        Debug.Log($"Current input text: {(angelInput != null ? angelInput.text : "No input")}");
+
         if (!string.IsNullOrEmpty(angelInput.text))
         {
             int numberToAdd = angelPanel.GetComponent<AngelPanel>().CalculateOperation(OperationNumber);

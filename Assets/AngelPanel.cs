@@ -17,11 +17,16 @@ public class AngelPanel : MonoBehaviour
         currAngelID = 0;
         // Operation1.GetComponentInChildren<TextMeshProUGUI>().text = "";
         // Operation2.GetComponentInChildren<TextMeshProUGUI>().text = "";
+        if (inputNumber != null)
+        {
+            inputNumber.interactable = false;
+        }
     }
 
     public void SetCurrentAngelID(int angelID, string operation1, string operation2)
     {
         currAngelID = angelID;
+        Debug.Log($"Current angelInput reference status: {(inputNumber != null ? "Valid" : "Null")}");
         Debug.Log("Current Angel ID: " + currAngelID);
         Operation1.GetComponentInChildren<TextMeshProUGUI>().text = operation1;
         Debug.Log("Operation1: " + operation1);
