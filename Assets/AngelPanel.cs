@@ -88,6 +88,7 @@ public class AngelPanel : MonoBehaviour
         }
 
         Debug.Log("Angel Number to add: " + numberToAdd);
+        inputNumber.text = "";
 
         if (numberToAdd > 0)
         {

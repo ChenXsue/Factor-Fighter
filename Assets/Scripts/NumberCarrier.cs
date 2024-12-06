@@ -85,7 +85,7 @@ public class NumberCarrier : MonoBehaviour
             numberText.text = carriedQuestion;
             numberText.rectTransform.pivot = new Vector2(0.54f, 0.65f);
             numberText.sortingOrder = 1; // 数值比 box 的 sortingOrder 大
-            numberText.fontSize = 20; // 设置字体大小为26
+            numberText.fontSize = 15; // 设置字体大小为26
         }
 
         // 设置圆圈为黄色
@@ -115,7 +115,7 @@ public class NumberCarrier : MonoBehaviour
             boxScript.numberText.rectTransform.anchorMax = new Vector2(0.5f, 1.5f);
             boxScript.numberText.rectTransform.pivot = new Vector2(0.57f, 0.55f);
             boxScript.numberText.sortingOrder = 1; // 数值比 box 的 sortingOrder 大
-            boxScript.numberText.fontSize = 24; // 设置字体大小为26
+            boxScript.numberText.fontSize = 20; // 设置字体大小为26
             // boxScript.numberText.fontStyle = TMPro.FontStyles.Bold; // 设置字体加粗
             // 调试输出
             // Debug.Log("Text is set to: " + boxScript.numberText.text);

@@ -32,6 +32,7 @@ public class Angel : MonoBehaviour
                 angelPanel.SetActive(true);
                 angelPanel.GetComponent<AngelPanel>().AngelGameObject = gameObject;
             }
+            Debug.Log($"Current angelInput reference status: {(inputField != null ? "Valid" : "Null")}");
         }
     }
 

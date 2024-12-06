@@ -301,14 +301,13 @@ public class InputManager : MonoBehaviour
                 NumberInventoryManager.instance.RefreshNumberInventory();
             }
         }
-
         // Angel Check
         if (angelPanel == null || !angelPanel.activeSelf)
         {
             Debug.Log("Angel is not active");
         } else {
             Debug.Log("Angel is active");
-            if (slot == null || numberWallInput == null) return;
+            if (slot == null || angelInput == null) return;
 
             Debug.Log("Number slot clicked for angel");
             // 检查当前输入的最后一个token
@@ -339,6 +338,8 @@ public class InputManager : MonoBehaviour
                 NumberInventoryManager.instance.RefreshNumberInventory();
             }
         }
+
+        
 
         // Door Problem Check
         if (doorProblemPanel == null || !doorProblemPanel.activeSelf)
@@ -426,9 +427,19 @@ public class InputManager : MonoBehaviour
 
     public void AngelSubmit(string OperationNumber)
     {
+        Debug.Log($"Scene name: {UnityEngine.SceneManagement.SceneManager.GetActiveScene().name}");
         Debug.Log($"Attempting to submit with operation: {OperationNumber}");
-        Debug.Log($"Current angelInput reference status: {(angelInput != null ? "Valid" : "Null")}");
-        Debug.Log($"Current input text: {(angelInput != null ? angelInput.text : "No input")}");
+        Debug.Log($"Angel Panel active: {angelPanel.activeSelf}");
+        Debug.Log($"Angel Panel component exists: {angelPanel.GetComponent<AngelPanel>() != null}");
+        
+        var panel = angelPanel.GetComponent<AngelPanel>();
+        if (panel != null)
+        {
+            Debug.Log($"Input Number component exists: {panel.inputNumber != null}");
+            Debug.Log($"Operation1 button exists: {panel.Operation1 != null}");
+            Debug.Log($"Operation2 button exists: {panel.Operation2 != null}");
+        }
+    
 
         if (!string.IsNullOrEmpty(angelInput.text))
         {
@@ -445,6 +456,7 @@ public class InputManager : MonoBehaviour
 
             angelPanel.GetComponent<AngelPanel>().updateAngel();
             angelPanel.SetActive(false);
+            
         }
         return;
     }
