@@ -9,15 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe40476d9f86a4dd28cbbb954c2e4d9b, type: 3}
-  m_Name: Number Inventory
+  m_Script: {fileID: 11500000, guid: bfde9112323c6406ea009ee480a26a22, type: 3}
+  m_Name: LeftParenthesis
   m_EditorClassIdentifier: 
-  serializedItems:
-  - value: 12
-    count: 1
-  - value: 4
-    count: 1
-  - value: 2
-    count: 1
-  - value: 3
-    count: 1
+  itemName: LeftParenthesis
+  count: 0
+  operatorChar: 40

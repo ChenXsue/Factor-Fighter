@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 480c0780f10d54616882023000298954
   - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/MR3_2004/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/Level1.unity
@@ -17,12 +17,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level2.unity
     guid: 8fe7cbf50d32648d39f8a6c5059c344f
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Level3.unity
-    guid: 9822b68939bad486c854807c072d3698
-  - enabled: 0
+    guid: 9a553a7fe602a4dab9a39da254dcd29b
+  - enabled: 1
     path: Assets/Scenes/Level4.unity
-    guid: 3f80a3a5e63df41fabe7be5451835739
+    guid: 06ca38d1306454385bc3cc9b8181641d
   - enabled: 1
     path: Assets/Scenes/GameOverScene.unity
     guid: 1de89c00aee0547c7b66be993fefdeb3

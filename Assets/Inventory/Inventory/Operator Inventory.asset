@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89fbffc0677bb4706a4f7dd7bc34493b, type: 3}
   m_Name: Operator Inventory
   m_EditorClassIdentifier: 
-  items: []
+  items:
+  - {fileID: 11400000, guid: 9381d855a7ec14864a41025d31dca7ff, type: 2}
+  - {fileID: 11400000, guid: 7542b13b2e0324d268ecaee904e92e82, type: 2}
+  - {fileID: 11400000, guid: 631f416f4d3444bf6aab47d7e7e42eb0, type: 2}
+  - {fileID: 11400000, guid: 676709c5424274aaa9551a35912ca567, type: 2}

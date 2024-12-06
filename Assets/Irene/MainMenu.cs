@@ -19,5 +19,13 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadSceneAsync("Level2");
     }
+    public void level4()
+    {
+        SceneManager.LoadSceneAsync("Level3");
+    }
+    public void level5()
+    {
+        SceneManager.LoadSceneAsync("Level4");
+    }
 
 }

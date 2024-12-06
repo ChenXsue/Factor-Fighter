@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
 {
     public string enemyId;
     private MathProblem currentProblem;
-    public OperatorSO operatorData;
+    public OperatorSO[] operatorData;
     public GameObject operatorsPanel;
     
     private RoomManager roomManager;
@@ -43,15 +43,21 @@ public class Enemy : MonoBehaviour
     public void Defeat()
     {
         isDefeated = true;
-        if (operatorData != null)
+        if (operatorData != null && operatorData.Length > 0)
         {
-            OperatorInventoryManager.instance.AddOperator(operatorData);
-            WebGLDataLogger.operatorSum++;
-            Debug.Log($"Added operator {operatorData.operatorChar} to inventory");
+            foreach(var op in operatorData)  // 遍历所有运算符
+            {
+                if(op != null)
+                {
+                    OperatorInventoryManager.instance.AddOperator(op);
+                    WebGLDataLogger.operatorSum++;
+                    Debug.Log($"Added operator {op.operatorChar} to inventory");
+                }
+            }
         }
         else
         {
-            Debug.LogWarning("No operator set for this enemy!");
+            Debug.LogWarning("No operators set for this enemy!");
         }
         gameObject.SetActive(false);
     }
