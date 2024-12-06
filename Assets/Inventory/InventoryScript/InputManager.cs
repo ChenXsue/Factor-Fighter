@@ -18,6 +18,7 @@ public class InputManager : MonoBehaviour
     public GameObject numberWall1;
     public GameObject numberWall2;
     public GameObject numberWall3;
+    public GameObject numberWall4;
     public GameObject numberWallIncorrect;
     public TMP_InputField angelInput;
     public GameObject angelPanel;
@@ -453,7 +454,7 @@ public class InputManager : MonoBehaviour
         GameObject numberWallObject = null;
 
         // Check which number wall we are colliding
-        if (numberWall1 != null || numberWall2 != null || numberWall3 != null)
+        if (numberWall1 != null || numberWall2 != null || numberWall3 != null || numberWall4 != null)
         {
             Debug.Log("Number Wall is active");
             if (numberWall1 != null)
@@ -481,6 +482,15 @@ public class InputManager : MonoBehaviour
                 {
                     collidingInstance = numberWallInstance;
                     numberWallObject = numberWall3;
+                }
+            }
+            if (numberWall4 != null)
+            {
+                numberWallInstance = numberWall4.GetComponent<Number_Wall>();
+                if (numberWallInstance.isColliding)
+                {
+                    collidingInstance = numberWallInstance;
+                    numberWallObject = numberWall4;
                 }
             }
         } else {
@@ -569,9 +579,9 @@ public class InputManager : MonoBehaviour
             case '/':
                 return divideOperator;
             case '(':
-                return leftParenthesisOperator;  // 需要添加这个成员变量
+                return leftParenthesisOperator;  
             case ')':
-                return rightParenthesisOperator; // 需要添加这个成员变量
+                return rightParenthesisOperator; 
             default:
                 Debug.LogError($"Unknown operator character: {operatorChar}");
                 return null;

@@ -3985,6 +3985,7 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 3753957639757246093, guid: e7b22cd29e1dc4b098a20aae014b9567, type: 3}
     - {fileID: 8965670727295042136, guid: e7b22cd29e1dc4b098a20aae014b9567, type: 3}
+    - {fileID: 3335503022466067967, guid: e7b22cd29e1dc4b098a20aae014b9567, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -3996,6 +3997,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 4145614584407996280, guid: e7b22cd29e1dc4b098a20aae014b9567,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1578729278}
     - targetCorrespondingSourceObject: {fileID: 6129140069051989562, guid: e7b22cd29e1dc4b098a20aae014b9567,
         type: 3}
       insertIndex: -1
@@ -13688,7 +13693,7 @@ PrefabInstance:
         type: 3}
       propertyPath: numberWall1
       value: 
-      objectReference: {fileID: 1519455156}
+      objectReference: {fileID: 371401367}
     - target: {fileID: 5859411172943705655, guid: 7f8a4858c33ca43d5bdc6ceaa32f336b,
         type: 3}
       propertyPath: numberWall2
@@ -13698,7 +13703,12 @@ PrefabInstance:
         type: 3}
       propertyPath: numberWall3
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1011603701}
+    - target: {fileID: 5859411172943705655, guid: 7f8a4858c33ca43d5bdc6ceaa32f336b,
+        type: 3}
+      propertyPath: numberWall4
+      value: 
+      objectReference: {fileID: 1945494612}
     - target: {fileID: 5859411172943705655, guid: 7f8a4858c33ca43d5bdc6ceaa32f336b,
         type: 3}
       propertyPath: numberWallInput
@@ -14358,6 +14368,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6966459318455574835, guid: 2d00e6546e6764df48227ae3f42bfba4,
     type: 3}
   m_PrefabInstance: {fileID: 488388451}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1011603701 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 735119028174827162, guid: e7b22cd29e1dc4b098a20aae014b9567,
+    type: 3}
+  m_PrefabInstance: {fileID: 579966415}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1018645533
 PrefabInstance:
@@ -20970,6 +20986,31 @@ MonoBehaviour:
   thisDoorText: {fileID: 93577477}
   pairedDoorText: {fileID: 1902035730}
   requiredCondition: multipleOf4
+--- !u!114 &1578729278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371401367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 782c4da5163c1496e981c4bdb7c94292, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  areaSize: 12
+  givenSide: 4
+  answer: 3
+  placeHolder: {fileID: 363375785}
+  mathProblemPanel: {fileID: 81973114}
+  numberGridPlane: {fileID: 2115965830}
+  operatorsPanel: {fileID: 965614013}
+  input: {fileID: 436894241}
+  inputField: {fileID: 436894242}
+  areaText: {fileID: 371401368}
+  sideObject: {fileID: 371401367}
+  areaObject: {fileID: 371401366}
+  isColliding: 0
 --- !u!1001 &1585063963
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25529,6 +25570,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6652798200144313548, guid: 87607525313354eaeade0e71b2594ffb,
     type: 3}
   m_PrefabInstance: {fileID: 794437233}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1945494612 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 735119028174827162, guid: e7b22cd29e1dc4b098a20aae014b9567,
+    type: 3}
+  m_PrefabInstance: {fileID: 1375354797}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1945936099
 PrefabInstance:
