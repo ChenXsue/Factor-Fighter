@@ -16,7 +16,7 @@ public class RoomDoor : MonoBehaviour
     private MathProblem currentProblem;
 
     [Header("Door Condition")]
-    public string requiredCondition; // "even", "prime", "greaterThan10"
+    public string requiredCondition; // "even", "prime", "greaterThan10","multipleOf3","multipleOf4"
 
 
     
@@ -42,6 +42,10 @@ public class RoomDoor : MonoBehaviour
                 return "Give me a prime number";
             case "greaterThan10":
                 return "Give me a number greater than 10";
+            case "multipleOf3":
+                return "Give me a multiple of 3";
+            case "multipleOf4":
+                return "Give me a multiple of 4";
             default:
                 return "Invalid condition";
         }
@@ -57,6 +61,10 @@ public class RoomDoor : MonoBehaviour
                 return IsPrime(playerNumber);
             case "greaterThan10":
                 return playerNumber > 10;
+            case "multipleOf3":
+                return playerNumber % 3 == 0;
+            case "multipleOf4":
+                return playerNumber % 4 == 0;
             default:
                 return false;
         }
