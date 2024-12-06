@@ -13,9 +13,13 @@ MonoBehaviour:
   m_Name: Number Inventory
   m_EditorClassIdentifier: 
   serializedItems:
-  - value: 21
+  - value: 3
+    count: 7
+  - value: 18
     count: 1
+  - value: 23
+    count: 3
+  - value: 6
+    count: 3
   - value: 2
     count: 2
-  - value: 4
-    count: 1

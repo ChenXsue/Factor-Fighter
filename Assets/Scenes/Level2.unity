@@ -2651,12 +2651,12 @@ PrefabInstance:
     - target: {fileID: 6183230643070625501, guid: c8155299218294455aa61b1e85c82529,
         type: 3}
       propertyPath: m_text
-      value: 42/7
+      value: 51/17
       objectReference: {fileID: 0}
     - target: {fileID: 6183230643070625501, guid: c8155299218294455aa61b1e85c82529,
         type: 3}
       propertyPath: m_fontSize
-      value: 24
+      value: 15.9
       objectReference: {fileID: 0}
     - target: {fileID: 6183230643070625501, guid: c8155299218294455aa61b1e85c82529,
         type: 3}
