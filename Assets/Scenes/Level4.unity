@@ -21270,7 +21270,7 @@ MonoBehaviour:
   input: {fileID: 436894241}
   inputField: {fileID: 436894242}
   areaText: {fileID: 371401368}
-  sideObject: {fileID: 371401367}
+  sideObject: {fileID: 1519455156}
   areaObject: {fileID: 371401366}
   isColliding: 0
 --- !u!1001 &1585063963
