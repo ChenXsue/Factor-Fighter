@@ -11053,6 +11053,12 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1463004059}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1463004061 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5853848647099959317, guid: 90bf292386aa04225b27acad9ffb9159,
+    type: 3}
+  m_PrefabInstance: {fileID: 1463004059}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1473079883
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13931,6 +13937,11 @@ PrefabInstance:
       propertyPath: responsePanel
       value: 
       objectReference: {fileID: 754482420}
+    - target: {fileID: 8802966314615583730, guid: 87ae4fbf39e5d49debecb9f50331e52e,
+        type: 3}
+      propertyPath: responseTimeOutPanel
+      value: 
+      objectReference: {fileID: 1463004061}
     - target: {fileID: 8888815670811003147, guid: 87ae4fbf39e5d49debecb9f50331e52e,
         type: 3}
       propertyPath: m_Pivot.x
