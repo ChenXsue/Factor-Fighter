@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using System;
 using System.Collections.Generic;
+using System.Linq;  // 在文件顶部添加
 
 public class InputManager : MonoBehaviour
 {
@@ -160,6 +161,67 @@ public class InputManager : MonoBehaviour
         slots.RemoveAll(weakRef => !weakRef.TryGetTarget(out _));
     }
 
+    // private void OnOperatorSlotClick(OperatorSlot slot)
+    // {
+    //     if (invisibleObject == null || !invisibleObject.activeSelf) return;
+    //     if (slot == null || inputField == null) return;
+
+    //     // 获取当前运算符
+    //     char operatorChar = slot.operatorText.text[0];
+    //     bool isParenthesis = operatorChar == '(' || operatorChar == ')';
+
+    //     // 检查当前输入的最后一个token
+    //     string[] tokens = inputField.text.Trim().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+        
+    //     // 如果输入为空
+    //     if (tokens.Length == 0)
+    //     {
+    //         // 只允许输入 +、- 和左括号
+    //         if (!isParenthesis && operatorChar != '+' && operatorChar != '-')
+    //         {
+    //             Debug.Log("Can only input +, -, or ( at the beginning");
+    //             return;
+    //         }
+    //         // 如果是右括号，不允许在开始时输入
+    //         if (operatorChar == ')')
+    //         {
+    //             Debug.Log("Cannot input ) at the beginning");
+    //             return;
+    //         }
+    //     }
+    //     // 如果最后一个token是运算符
+    //     else if (tokens.Length > 0)
+    //     {
+    //         string lastToken = tokens[tokens.Length - 1];
+    //         // 如果最后是运算符，只允许输入左括号
+    //         if (IsOperator(lastToken[0]))
+    //         {
+    //             if (!isParenthesis || operatorChar == ')')
+    //             {
+    //                 Debug.Log("Cannot input two operators consecutively except for opening parenthesis");
+    //                 return;
+    //             }
+    //         }
+    //     }
+
+    //     // 添加空格和运算符
+    //     if (!string.IsNullOrEmpty(inputField.text) && !inputField.text.EndsWith(" "))
+    //     {
+    //         inputField.text += " ";
+    //     }
+    //     inputField.text += operatorChar + " ";
+
+    //     // 从背包中移除运算符（包括括号）
+    //     OperatorSO operatorToRemove = OperatorInventoryManager.instance.myOperatorBag.items
+    //         .Find(item => item is OperatorSO && (item as OperatorSO).operatorChar == operatorChar) as OperatorSO;
+
+    //     if (operatorToRemove != null)
+    //     {
+    //         OperatorInventoryManager.instance.myOperatorBag.RemoveItem(operatorToRemove);
+    //         OperatorInventoryManager.instance.RefreshOperatorInventory();
+    //     }
+    // }
+
     private void OnOperatorSlotClick(OperatorSlot slot)
     {
         if (invisibleObject == null || !invisibleObject.activeSelf) return;
@@ -188,16 +250,59 @@ public class InputManager : MonoBehaviour
                 return;
             }
         }
-        // 如果最后一个token是运算符
+        // 如果有之前的输入
         else if (tokens.Length > 0)
         {
             string lastToken = tokens[tokens.Length - 1];
-            // 如果最后是运算符，只允许输入左括号
-            if (IsOperator(lastToken[0]))
+            
+            // 如果最后是右括号，只能接运算符（不能接数字或左括号）
+            if (lastToken == ")")
             {
-                if (!isParenthesis || operatorChar == ')')
+                if (operatorChar == '(' || !IsOperator(operatorChar))
                 {
-                    Debug.Log("Cannot input two operators consecutively except for opening parenthesis");
+                    Debug.Log("After ), can only input operators except (");
+                    return;
+                }
+            }
+            
+            // 如果最后是左括号，不能直接接运算符（除了+/-）
+            if (lastToken == "(")
+            {
+                if (IsOperator(operatorChar) && operatorChar != '+' && operatorChar != '-' && operatorChar != '(')
+                {
+                    Debug.Log("After (, can only input numbers, +, -, or another (");
+                    return;
+                }
+            }
+            
+            // 如果最后是运算符（不含括号），只能接数字或左括号
+            if (IsOperator(lastToken[0]) && lastToken != "(" && lastToken != ")")
+            {
+                if (operatorChar != '(')
+                {
+                    Debug.Log("After an operator, can only input numbers or (");
+                    return;
+                }
+            }
+            
+            // 如果最后是数字，不能接左括号
+            if (int.TryParse(lastToken, out _))
+            {
+                if (operatorChar == '(')
+                {
+                    Debug.Log("Cannot input ( after a number");
+                    return;
+                }
+            }
+            
+            // 检查括号匹配
+            if (operatorChar == ')')
+            {
+                int leftCount = tokens.Count(t => t == "(");
+                int rightCount = tokens.Count(t => t == ")");
+                if (leftCount <= rightCount)
+                {
+                    Debug.Log("Cannot add ) without matching (");
                     return;
                 }
             }
@@ -210,7 +315,7 @@ public class InputManager : MonoBehaviour
         }
         inputField.text += operatorChar + " ";
 
-        // 从背包中移除运算符（包括括号）
+        // 从背包中移除运算符
         OperatorSO operatorToRemove = OperatorInventoryManager.instance.myOperatorBag.items
             .Find(item => item is OperatorSO && (item as OperatorSO).operatorChar == operatorChar) as OperatorSO;
 
@@ -221,47 +326,7 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    // private void OnOperatorSlotClick(OperatorSlot slot)
-    // {
-    //     if (invisibleObject == null || !invisibleObject.activeSelf) return;
-    //     if (slot == null || inputField == null) return;
-
-    //     // 检查当前输入的最后一个token
-    //     string[] tokens = inputField.text.Trim().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-        
-    //     // 如果输入为空，只允许输入+ -
-    //     if (tokens.Length == 0)
-    //     {
-    //         char operatorChar = slot.operatorText.text[0];
-    //         if (operatorChar != '+' && operatorChar != '-')
-    //         {
-    //             Debug.Log("Can only input + or - at the beginning");
-    //             return;
-    //         }
-    //     }
-    //     // 如果最后一个token是运算符，不允许继续输入运算符
-    //     else if (tokens.Length > 0 && IsOperator(tokens[tokens.Length - 1][0]))
-    //     {
-    //         Debug.Log("Cannot input two operators consecutively");
-    //         return;
-    //     }
-
-    //     char op = slot.operatorText.text[0];
-    //     if (!string.IsNullOrEmpty(inputField.text) && !inputField.text.EndsWith(" "))
-    //     {
-    //         inputField.text += " ";
-    //     }
-    //     inputField.text += op + " ";
-
-    //     OperatorSO operatorToRemove = OperatorInventoryManager.instance.myOperatorBag.items
-    //         .Find(item => item is OperatorSO && (item as OperatorSO).operatorChar == op) as OperatorSO;
-
-    //     if (operatorToRemove != null)
-    //     {
-    //         OperatorInventoryManager.instance.myOperatorBag.RemoveItem(operatorToRemove);
-    //         OperatorInventoryManager.instance.RefreshOperatorInventory();
-    //     }
-    // }
+  
 
     private void OnNumberSlotClick(NumberSlot slot)
     {
@@ -393,6 +458,11 @@ public class InputManager : MonoBehaviour
             {
                 string lastToken = tokens[tokens.Length - 1];
                 // 如果最后一个token是数字，不允许继续输入数字
+                if (lastToken == ")")
+                {
+                    Debug.Log("Cannot input number after right parenthesis )");
+                    return;
+                }
                 if (int.TryParse(lastToken, out _))
                 {
                     Debug.Log("Cannot input number after number, please input an operator first");
