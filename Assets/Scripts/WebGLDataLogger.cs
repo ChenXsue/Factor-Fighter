@@ -90,6 +90,9 @@ public class WebGLDataLogger : MonoBehaviour
             if(level.Contains("Level1") || level.Contains("Tutorial")){
                 completionTime = 90;
             }
+            if(level.Contains("Level4")){
+                completionTime = 600;
+            }
             else{
                 completionTime = 300;
             }
